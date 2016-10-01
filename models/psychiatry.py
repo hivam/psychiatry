@@ -7,10 +7,12 @@ from openerp.tools.translate import _
 class psychiatry_whoqolbref_answer(osv.osv):
     _name = 'psychiatry.whoqolbref.answer'
     _columns = {
-        'category': fields.selection([('G', 'General'), ('F', 'Salud física'),
-                                      ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
-                                      ('E', 'Entorno')], 'Categoría'),
-        'answer': fields.char('Respuesta', size=25),
+        # 'category': fields.selection([('G', 'General'), ('F', 'Salud física'),
+        #                               ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
+        #                               ('E', 'Entorno')], 'Categoría'),
+        'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
+                                          ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
+        'answer': fields.char('Respuesta', size=15),
         'measure': fields.integer('Valor', size=1),
         }
 
