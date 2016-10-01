@@ -98,8 +98,6 @@
                   <field name="arch" type="xml">
                       <tree string = "Evaluaciones WHOQOL-BREF" >
                           <field name = "date"/>
-                          <!-- <field name = "question"/>
-                          <field name = "answer_scale"/> -->
                       </tree>
                   </field>
               </record>
@@ -116,16 +114,16 @@
                           </group>
 
                           <notebook colspan="2" col='2'>
-                              <page string="Preguntas">
+                              <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1">
                                       <tree string="Preguntas">
                                           <field name="question_id"/>
-                                          <!-- <field name="review_systems"/> -->
+                                          <field name="answer_id"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id"/>
-                                              <!-- <field name="review_systems"/> -->
+                                              <field name="answer_id"/>
                                           </group>
                                       </form>
                                   </field>

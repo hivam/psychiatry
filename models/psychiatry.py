@@ -14,14 +14,6 @@ class psychiatry_whoqolbref_answer(osv.osv):
         'measure': fields.integer('Valor', size=1),
         }
 
-    # def name_get(self, cr, uid, ids, context={}):
-    #     if not len(ids):
-    #         return []
-    #     rec_name = 'answer'
-    #     res = [(r['id'], r[rec_name][1])
-    #            for r in self.read(cr, uid, ids, [rec_name], context)]
-    #     return res
-
 psychiatry_whoqolbref_answer()
 
 class psychiatry_whoqolbref_question(osv.osv):
@@ -34,17 +26,7 @@ class psychiatry_whoqolbref_question(osv.osv):
         'question': fields.char('Pregunta', size=150),
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
-        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', size=15),
-        # 'measure': fields.integer('Valor', size=1),
         }
-
-    # def name_get(self, cr, uid, ids, context={}):
-    #     if not len(ids):
-    #         return []
-    #     rec_name = 'question'
-    #     res = [(r['id'], r[rec_name][1])
-    #            for r in self.read(cr, uid, ids, [rec_name], context)]
-    #     return res
 
 psychiatry_whoqolbref_question()
 
@@ -64,9 +46,10 @@ class psychiatry_whoqolbref_questions(osv.osv):
     _rec_name = 'evaluation_id'
     _columns = {
         'evaluation_id': fields.many2one('psychiatry.whoqolbref.evaluation', 'Evaluación'),
-        'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Preguntas', required=True,
+        'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta', required=True,
                                            ondelete='restrict'),
-        # 'review_systems': fields.text('Review systems', required=True),
+        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True,
+                                           ondelete='restrict', domain=[('question_id.answer_scale', '=', answer_id.answer_scale)]),
     }
 
     def name_get(self, cr, uid, ids, context={}):
