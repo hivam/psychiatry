@@ -10,7 +10,6 @@
                   <field name="type">tree</field>
                   <field name="arch" type="xml">
                       <tree string = "Respuestas WHOQOL-BREF" >
-                          <!-- <field name = "category"/> -->
                           <field name = "answer_scale"/>
                           <field name = "answer"/>
                           <field name = "measure"/>
@@ -26,7 +25,6 @@
                   <field name="arch" type="xml">
                       <form string = "Respuestas WHOQOL-BREF">
                           <group>
-                            <!-- <field name = "category"/> -->
                             <field name = "answer_scale"/>
                             <field name = "answer"/>
                             <field name = "measure"/>
@@ -47,6 +45,48 @@
               <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
               <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings"/>
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
+
+      <!-- Vista  tipo lista preguntas whoqolbref-->
+
+              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_tree">
+                  <field name="name">Preguntas WHOQOL-BREF</field>
+                  <field name="model">psychiatry.whoqolbref.question</field>
+                  <field name="type">tree</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Preguntas WHOQOL-BREF" >
+                          <field name = "category"/>
+                          <field name = "question"/>
+                          <field name = "answer_scale"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario preguntas whoqolbref-->
+              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_form">
+                  <field name="name">Preguntas WHOQOL-BREF</field>
+                  <field name="model">psychiatry.whoqolbref.question</field>
+                  <field name="type">form</field>
+                  <field name="arch" type="xml">
+                      <form string = "Preguntas WHOQOL-BREF">
+                          <group>
+                            <field name = "category"/>
+                            <field name = "question"/>
+                            <field name = "answer_scale"/>
+                          </group>
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_question">
+                  <field name="name">Preguntas WHOQOL-BREF</field>
+                  <field name="res_model">psychiatry.whoqolbref.question</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
 
     </data>
 </openerp>

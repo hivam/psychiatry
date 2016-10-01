@@ -7,9 +7,6 @@ from openerp.tools.translate import _
 class psychiatry_whoqolbref_answer(osv.osv):
     _name = 'psychiatry.whoqolbref.answer'
     _columns = {
-        # 'category': fields.selection([('G', 'General'), ('F', 'Salud física'),
-        #                               ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
-        #                               ('E', 'Entorno')], 'Categoría'),
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
         'answer': fields.char('Respuesta', size=15),
@@ -25,3 +22,26 @@ class psychiatry_whoqolbref_answer(osv.osv):
         return res
 
 psychiatry_whoqolbref_answer()
+
+class psychiatry_whoqolbref_question(osv.osv):
+    _name = 'psychiatry.whoqolbref.question'
+    _columns = {
+        'category': fields.selection([('G', 'General'), ('F', 'Salud física'),
+                                      ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
+                                      ('E', 'Entorno')], 'Categoría'),
+        'question': fields.char('Pregunta', size=50),
+        'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
+                                          ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
+        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', size=15),
+        # 'measure': fields.integer('Valor', size=1),
+        }
+
+    def name_get(self, cr, uid, ids, context={}):
+        if not len(ids):
+            return []
+        rec_name = 'question'
+        res = [(r['id'], r[rec_name][1])
+               for r in self.read(cr, uid, ids, [rec_name], context)]
+        return res
+
+psychiatry_whoqolbref_question()
