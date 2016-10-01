@@ -22,4 +22,4 @@ class psychiatry_whoqolbref_answer(osv.osv):
                for r in self.read(cr, uid, ids, [rec_name], context)]
         return res
 
-co_presupuesto()
+psychiatry_whoqolbref_answer()
