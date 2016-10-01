@@ -43,7 +43,8 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
-              <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings"/>
+              <menuitem name="WHOQOL-BREF" parent="menu_psychiatry" id="menu_view_psychiatry_whoqolbref" sequence="10"/>
+              <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="20"/>
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
 
       <!-- Vista  tipo lista preguntas whoqolbref-->
@@ -87,6 +88,64 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- Vista  tipo lista evaluaciones whoqolbref-->
+
+              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
+                  <field name="name">Evaluaciones WHOQOL-BREF</field>
+                  <field name="model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="type">tree</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Evaluaciones WHOQOL-BREF" >
+                          <field name = "date"/>
+                          <!-- <field name = "question"/>
+                          <field name = "answer_scale"/> -->
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario evaluaciones whoqolbref-->
+              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
+                  <field name="name">Evaluaciones WHOQOL-BREF</field>
+                  <field name="model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="type">form</field>
+                  <field name="arch" type="xml">
+                      <form string = "Evaluaciones WHOQOL-BREF">
+                          <group>
+                            <field name = "date"/>
+                          </group>
+
+                          <notebook colspan="2" col='2'>
+                              <page string="Preguntas">
+                                  <field name="question_ids" nolabel="1">
+                                      <tree string="Preguntas">
+                                          <field name="question_id"/>
+                                          <!-- <field name="review_systems"/> -->
+                                      </tree>
+                                      <form string="Preguntas">
+                                          <group>
+                                              <field name="question_id"/>
+                                              <!-- <field name="review_systems"/> -->
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+                          </notebook>
+
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
+                  <field name="name">Evaluaciones WHOQOL-BREF</field>
+                  <field name="res_model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_menu_view_psychiatry_whoqolbref"/>
 
     </data>
 </openerp>
