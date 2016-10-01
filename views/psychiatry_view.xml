@@ -145,7 +145,7 @@
               </record>
 
       <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_menu_view_psychiatry_whoqolbref"/>
+              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_whoqolbref"/>
 
     </data>
 </openerp>
