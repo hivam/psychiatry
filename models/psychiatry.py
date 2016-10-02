@@ -27,7 +27,7 @@ class psychiatry_whoqolbref_question(osv.osv):
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
         'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', ondelete='restrict',
-                                      domain=[('answer_scale', '=', answer_scale)]),        
+                                      domain=[('answer_id.answer_scale', '=', answer_scale)]),        
         }
 
 psychiatry_whoqolbref_question()
