@@ -3,7 +3,6 @@
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-# from datetime import datetime
 import time
 
 class psychiatry_whoqolbref_answer(osv.osv):
@@ -41,7 +40,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
                                              ondelete='restrict'),
         }
 
-    _defaults= {
+    _defaults = {
     'date': lambda *a: time.strftime('%Y-%m-%d'),
     }
 
