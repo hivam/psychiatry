@@ -49,7 +49,7 @@ class psychiatry_whoqolbref_questions(osv.osv):
         'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta', required=True,
                                            ondelete='restrict'),
         'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True,
-                                           ondelete='restrict', domain=[('question_id.answer_scale', '=', answer_id.answer_scale)]),
+                                           ondelete='restrict'),
     }
 
     def name_get(self, cr, uid, ids, context={}):

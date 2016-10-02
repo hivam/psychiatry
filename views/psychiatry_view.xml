@@ -117,7 +117,7 @@
                               <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1">
                                       <tree string="Preguntas">
-                                          <field name="question_id"/>
+                                          <field name="question_id"/>                                          
                                           <field name="answer_id"/>
                                       </tree>
                                       <form string="Preguntas">
