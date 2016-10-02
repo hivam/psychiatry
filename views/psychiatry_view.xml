@@ -120,13 +120,13 @@
                                       <tree string="Preguntas" editable="bottom">
                                           <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
                                           <field name="answer_scale" invisible="True"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="radio" options='{"horizontal": 1}'/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
                                               <field name="answer_scale" invisible="True"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="radio" options='{"horizontal": 1}'/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection"/>
                                           </group>
                                       </form>
                                   </field>
