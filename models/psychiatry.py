@@ -3,7 +3,8 @@
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-from datetime import datetime
+# from datetime import datetime
+import time
 
 class psychiatry_whoqolbref_answer(osv.osv):
     _name = 'psychiatry.whoqolbref.answer'
