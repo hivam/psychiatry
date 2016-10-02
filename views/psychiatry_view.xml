@@ -119,14 +119,14 @@
                                   <field name="question_ids" nolabel="1">
                                       <tree string="Preguntas" editable="bottom">
                                           <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
-                                          <field name="answer_scale"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]"/>
+                                          <field name="answer_scale" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="radio"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
-                                              <field name="answer_scale"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]"/>
+                                              <field name="answer_scale" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="radio"/>
                                           </group>
                                       </form>
                                   </field>
