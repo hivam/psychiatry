@@ -26,7 +26,6 @@ class psychiatry_whoqolbref_question(osv.osv):
         'question': fields.char('Pregunta', size=150),
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
-        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', ondelete='restrict'),
         }
 
 psychiatry_whoqolbref_question()
@@ -35,7 +34,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
     _name = 'psychiatry.whoqolbref.evaluation'
     _rec_name = 'date'
     _columns = {
-        'date': fields.datetime('Fecha', required=True),
+        'date': fields.date('Fecha', required=True),
         'question_ids': fields.one2many('psychiatry.whoqolbref.questions', 'evaluation_id', 'Preguntas',
                                              ondelete='restrict'),
         }

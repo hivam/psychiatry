@@ -120,13 +120,13 @@
                                       <tree string="Preguntas" editable="bottom">
                                           <field name="question_id"/>
                                           <field name="answer_scale"/>
-                                          <field name="answer_id"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id"/>
                                               <field name="answer_scale"/>
-                                              <field name="answer_id"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]"/>
                                           </group>
                                       </form>
                                   </field>
