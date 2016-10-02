@@ -61,14 +61,14 @@ class psychiatry_whoqolbref_questions(osv.osv):
                for r in self.read(cr, uid, ids, [rec_name], context)]
         return res
 
-    def onchange_answer_scale(self, cr, uid, ids, question_id, answer_scale, context={}):
+    def onchange_answer_scale(self, cr, uid, ids, question_id, context={}):
         values = {}
-        res = {}
-        if not question_id and not answer_scale:
-            return res
-        question_scale = question_id.answer_scale
+        if not question_id:
+            return values
+        question_answer_scale = self.pool.get('psychiatry.whoqolbref.question').browse(cr, uid, question_id, context=context)
+        answer_scale_value = question_answer_scale.answer_scale
         values.update({
-            'answer_scale': question_scale,
+            'answer_scale': answer_scale_value,
         })
         return {'value': values}
 
