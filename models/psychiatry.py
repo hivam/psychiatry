@@ -48,7 +48,7 @@ class psychiatry_whoqolbref_questions(osv.osv):
         'evaluation_id': fields.many2one('psychiatry.whoqolbref.evaluation', 'Evaluación'),
         'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta', required=True,
                                            ondelete='restrict'),
-        'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True, readonly=True),
+        'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
         'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True,
                                            ondelete='restrict'),
     }
@@ -60,5 +60,16 @@ class psychiatry_whoqolbref_questions(osv.osv):
         res = [(r['id'], r[rec_name][1])
                for r in self.read(cr, uid, ids, [rec_name], context)]
         return res
+
+    def onchange_answer_scale(self, cr, uid, ids, question_id, answer_scale, context={}):
+        values = {}
+        res = {}
+        if not question_id and not answer_scale:
+            return res
+        question_scale = question_id.answer_scale
+        values.update({
+            'answer_scale': question_scale,
+        })
+        return {'value': values}
 
 psychiatry_whoqolbref_questions()
