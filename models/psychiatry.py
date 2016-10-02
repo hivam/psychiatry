@@ -3,6 +3,7 @@
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
+from datetime import datetime
 
 class psychiatry_whoqolbref_answer(osv.osv):
     _name = 'psychiatry.whoqolbref.answer'
@@ -10,7 +11,7 @@ class psychiatry_whoqolbref_answer(osv.osv):
     _columns = {
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
-        'answer': fields.char('Respuesta', size=15),
+        'answer': fields.char('Respuesta', size=25),
         'measure': fields.integer('Valor', size=1),
         }
 
@@ -39,6 +40,10 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
                                              ondelete='restrict'),
         }
 
+    _defaults= {
+    'date': lambda *a: time.strftime('%Y-%m-%d'),
+    }
+
 psychiatry_whoqolbref_evaluation()
 
 class psychiatry_whoqolbref_questions(osv.osv):
@@ -51,6 +56,7 @@ class psychiatry_whoqolbref_questions(osv.osv):
         'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
         'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True,
                                            ondelete='restrict'),
+        'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
     }
 
     def name_get(self, cr, uid, ids, context={}):
@@ -69,6 +75,17 @@ class psychiatry_whoqolbref_questions(osv.osv):
         answer_scale_value = question_answer_scale.answer_scale
         values.update({
             'answer_scale': answer_scale_value,
+        })
+        return {'value': values}
+
+    def onchange_answer_measure(self, cr, uid, ids, answer_id, context={}):
+        values = {}
+        if not answer_id:
+            return values
+        answer_id_measure = self.pool.get('psychiatry.whoqolbref.answer').browse(cr, uid, answer_id, context=context)
+        answer_scale_measure = answer_id_measure.measure
+        values.update({
+            'answer_measure': answer_scale_measure,
         })
         return {'value': values}
 
