@@ -26,7 +26,7 @@ class psychiatry_whoqolbref_question(osv.osv):
         'question': fields.char('Pregunta', size=150),
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
-        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', ondelete='restrict'),
+        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', ondelete='restrict'),
         }
 
 psychiatry_whoqolbref_question()
@@ -49,8 +49,9 @@ class psychiatry_whoqolbref_questions(osv.osv):
         'evaluation_id': fields.many2one('psychiatry.whoqolbref.evaluation', 'Evaluación'),
         'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta', required=True,
                                            ondelete='restrict'),
-        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', ondelete='restrict',
-        #                                    ondelete='restrict'),
+        'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True, readonly=True),
+        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True,
+                                           ondelete='restrict'),
     }
 
     def name_get(self, cr, uid, ids, context={}):

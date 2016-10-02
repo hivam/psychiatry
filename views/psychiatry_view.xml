@@ -73,7 +73,7 @@
                             <field name = "category"/>
                             <field name = "question"/>
                             <field name = "answer_scale"/>
-                            <field name = "answer_id" domain="[('answer_scale', '=', answer_scale)]"/>
+                            <!-- <field name = "answer_id" domain="[('answer_scale', '=', answer_scale)]"/> -->
                           </group>
                       </form>
                   </field>
@@ -117,14 +117,16 @@
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1">
-                                      <tree string="Preguntas">
+                                      <tree string="Preguntas" editable="bottom">
                                           <field name="question_id"/>
-                                          <!-- <field name="answer_id"/> -->
+                                          <field name="answer_scale"/>
+                                          <field name="answer_id"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id"/>
-                                              <!-- <field name="answer_id"/> -->
+                                              <field name="answer_scale"/>
+                                              <field name="answer_id"/>
                                           </group>
                                       </form>
                                   </field>
