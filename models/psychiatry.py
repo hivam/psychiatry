@@ -39,8 +39,13 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
         'question_ids': fields.one2many('psychiatry.whoqolbref.questions', 'evaluation_id', 'Preguntas'),
         }
 
+    def _get_question_ids(self, cr, uid, context):
+        ids = self.pool.get('psychiatry.whoqolbref.questions').search(cr, uid, context=context)
+        return ids
+
     _defaults = {
     'date': lambda *a: time.strftime('%Y-%m-%d'),
+    'question_ids': _get_question_ids
     }
 
 psychiatry_whoqolbref_evaluation()
