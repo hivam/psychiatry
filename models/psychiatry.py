@@ -56,8 +56,8 @@ class psychiatry_whoqolbref_questions(osv.osv):
     _columns = {
         'evaluation_id': fields.many2one('psychiatry.whoqolbref.evaluation', 'Evaluación', ondelete='cascade'),
         'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta'),
-        'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
-        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
+        # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
+        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
     }
 
@@ -69,16 +69,16 @@ class psychiatry_whoqolbref_questions(osv.osv):
                for r in self.read(cr, uid, ids, [rec_name], context)]
         return res
 
-    def onchange_answer_scale(self, cr, uid, ids, question_id, context={}):
-        values = {}
-        if not question_id:
-            return values
-        question_answer_scale = self.pool.get('psychiatry.whoqolbref.question').browse(cr, uid, question_id, context=context)
-        answer_scale_value = question_answer_scale.answer_scale
-        values.update({
-            'answer_scale': answer_scale_value,
-        })
-        return {'value': values}
+    # def onchange_answer_scale(self, cr, uid, ids, question_id, context={}):
+    #     values = {}
+    #     if not question_id:
+    #         return values
+    #     question_answer_scale = self.pool.get('psychiatry.whoqolbref.question').browse(cr, uid, question_id, context=context)
+    #     answer_scale_value = question_answer_scale.answer_scale
+    #     values.update({
+    #         'answer_scale': answer_scale_value,
+    #     })
+    #     return {'value': values}
 
     # def onchange_answer_measure(self, cr, uid, ids, answer_id, context={}):
     #     values = {}
