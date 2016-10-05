@@ -57,7 +57,7 @@ class psychiatry_whoqolbref_questions(osv.osv):
         'evaluation_id': fields.many2one('psychiatry.whoqolbref.evaluation', 'Evaluación', ondelete='cascade'),
         'question_id': fields.many2one('psychiatry.whoqolbref.question', 'Pregunta', required=True),
         'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
-        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta', required=True),
+        'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
         'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
     }
 
