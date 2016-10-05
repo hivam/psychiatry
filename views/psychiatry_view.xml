@@ -120,15 +120,17 @@
                                       <tree string="Preguntas" editable="bottom">
                                           <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
                                           <field name="answer_scale" invisible="True"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" on_change="onchange_answer_measure(answer_id)"/>
-                                          <field name="answer_measure" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                          <!-- on_change="onchange_answer_measure(answer_id)" -->
+                                          <!-- <field name="answer_measure" invisible="True"/> -->
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="question_id" on_change="onchange_answer_scale(question_id)"/>
                                               <field name="answer_scale" invisible="True"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" on_change="onchange_answer_measure(answer_id)"/>
-                                              <field name="answer_measure" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                              <!-- on_change="onchange_answer_measure(answer_id)" -->
+                                              <!-- <field name="answer_measure" invisible="True"/> -->
                                           </group>
                                       </form>
                                   </field>
