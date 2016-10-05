@@ -45,7 +45,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
 
     _defaults = {
     'date': lambda *a: time.strftime('%Y-%m-%d'),
-    'question_ids': _get_question_ids
+    'question_ids': _get_question_ids,
     }
 
 psychiatry_whoqolbref_evaluation()
