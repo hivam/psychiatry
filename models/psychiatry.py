@@ -40,7 +40,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
         }
 
     def _get_question_ids(self, cr, uid, context):
-        ids = self.pool.get('psychiatry.whoqolbref.questions').search(cr, uid, context=context)
+        ids = self.pool.get('psychiatry.whoqolbref.questions').search(cr, uid, [], context=context)
         return ids
 
     _defaults = {
