@@ -52,7 +52,7 @@ class psychiatry_whoqolbref_evaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
     _rec_name = 'date'
     # _columns = {
-    date= fields.Date.today(string=u'Fecha', required=True),
+    date= fields.Date.today(),
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas'),
         # }
 
