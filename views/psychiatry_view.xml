@@ -7,7 +7,6 @@
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
                   <field name="name">Respuestas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
-                  <!-- <field name="type">tree</field> -->
                   <field name="arch" type="xml">
                       <tree string = "Respuestas WHOQOL-BREF" >
                           <field name = "name"/>
@@ -21,7 +20,6 @@
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_form">
                   <field name="name">Respuestas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
-                  <!-- <field name="type">form</field> -->
                   <field name="arch" type="xml">
                       <form string = "Respuestas WHOQOL-BREF">
                           <group>
@@ -52,7 +50,6 @@
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_tree">
                   <field name="name">Preguntas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.question</field>
-                  <!-- <field name="type">tree</field> -->
                   <field name="arch" type="xml">
                       <tree string = "Preguntas WHOQOL-BREF" >
                           <field name = "name"/>
@@ -66,14 +63,12 @@
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_form">
                   <field name="name">Preguntas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.question</field>
-                  <!-- <field name="type">form</field> -->
                   <field name="arch" type="xml">
                       <form string = "Preguntas WHOQOL-BREF">
-                          <group>                            
+                          <group>
                             <field name = "name"/>
                             <field name = "category"/>
                             <field name = "answer_scale"/> -->
-                            <!-- <field name = "answer_id" domain="[('answer_scale', '=', answer_scale)]"/> -->
                           </group>
                       </form>
                   </field>
@@ -90,7 +85,7 @@
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
 
-      <!-- Vista  tipo lista evaluaciones whoqolbref
+      <!-- Vista  tipo lista evaluaciones whoqolbref -->
 
               <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
@@ -101,7 +96,7 @@
                           <field name = "date"/>
                       </tree>
                   </field>
-              </record> -->
+              </record>
 
       <!-- Vista  tipo formulario evaluaciones whoqolbref-->
               <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
