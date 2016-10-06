@@ -11,7 +11,7 @@
                   <field name="arch" type="xml">
                       <tree string = "Respuestas WHOQOL-BREF" >
                           <field name = "answer_scale"/>
-                          <field name = "answer"/>
+                          <field name = "name"/>
                           <field name = "measure"/>
                       </tree>
                   </field>
@@ -26,7 +26,7 @@
                       <form string = "Respuestas WHOQOL-BREF">
                           <group>
                             <field name = "answer_scale"/>
-                            <field name = "answer"/>
+                            <field name = "name"/>
                             <field name = "measure"/>
                           </group>
                       </form>
@@ -56,7 +56,7 @@
                   <field name="arch" type="xml">
                       <tree string = "Preguntas WHOQOL-BREF" >
                           <field name = "category"/>
-                          <field name = "question"/>
+                          <field name = "name"/>
                           <field name = "answer_scale"/>
                       </tree>
                   </field>
@@ -71,7 +71,7 @@
                       <form string = "Preguntas WHOQOL-BREF">
                           <group>
                             <field name = "category"/>
-                            <field name = "question"/>
+                            <field name = "name"/>
                             <field name = "answer_scale"/>
                             <!-- <field name = "answer_id" domain="[('answer_scale', '=', answer_scale)]"/> -->
                           </group>
