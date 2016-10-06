@@ -111,12 +111,13 @@
                   <field name="arch" type="xml">
                       <form string = "Evaluaciones WHOQOL-BREF">
                           <group>
-                            <field name = "date"/>
+                            <field name = "date" on_change="onchange_questions(date)"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
-                                  <field name="question_ids" nolabel="1" context="{'evaluation_id' : id}">
+                                  <field name="question_ids" nolabel="1" >
+                                    <!-- context="{'evaluation_id' : id}" -->
                                       <tree string="Preguntas" >
                                         <!-- editable="bottom" -->
                                           <field name="evaluation_id" invisible="True"/>

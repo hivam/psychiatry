@@ -44,13 +44,25 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
         'question_ids': fields.one2many('psychiatry.whoqolbref.questions', 'evaluation_id', 'Preguntas'),
         }
 
-    def _get_question_ids(self, cr, uid, context):
-        ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
-        return ids
+    def onchange_questions(self, cr, uid, ids, date, context=None):
+        res={}
+        lis=[]
+        evaluation = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
+        for line in evaluation.question_ids:
+            res={
+                'question_id':line.question_id.id,
+                 }
+            lis.append(res)
+        res={'value':{'question_ids':lis}}
+        return res
+
+    # def _get_question_ids(self, cr, uid, context):
+    #     ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
+    #     return ids
 
     _defaults = {
     'date': lambda *a: time.strftime('%Y-%m-%d'),
-    'question_ids': _get_question_ids,
+    # 'question_ids': _get_question_ids,
     }
 
 psychiatry_whoqolbref_evaluation()
@@ -96,8 +108,8 @@ class psychiatry_whoqolbref_questions(osv.osv):
     #     })
     #     return {'value': values}
 
-    _defaults = {
-        'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
-    }
+    # _defaults = {
+    #     'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
+    # }
 
 psychiatry_whoqolbref_questions()
