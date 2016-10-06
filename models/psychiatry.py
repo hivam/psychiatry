@@ -28,16 +28,16 @@ class Psychiatry_Whoqolbref_Answer(models.Model):
 # psychiatry_whoqolbref_answer()
 
 # class psychiatry_whoqolbref_question(osv.osv):
-# class Psychiatry_Whoqolbref_Question(models.Model):
-#     _name = 'psychiatry.whoqolbref.question'
+class Psychiatry_Whoqolbref_Question(models.Model):
+    _name = 'psychiatry.whoqolbref.question'
     # _rec_name = 'question'
     # _columns = {
-    # category= fields.Selection((('G', 'General'), ('F', 'Salud física'),
-    #                               ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
-    #                               ('E', 'Entorno')), string=u'Categoría'),
-    # name= fields.Char(string=u'Pregunta', size=150),
-    # answer_scale= fields.Selection((('A', 'A'), ('B', 'B'), ('C', 'C'),
-    #                                   ('D', 'D'), ('E', 'E'), ('F', 'F')), string=u'Escala'),
+    name= fields.Char(string=u'Pregunta', size=150)
+    category= fields.Selection([('G', 'General'), ('F', 'Salud física'),
+                                ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
+                                ('E', 'Entorno')], string=u'Categoría')
+    answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
+                                    ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala')
     # active: fields.Boolean('Active'),
         # }
 
