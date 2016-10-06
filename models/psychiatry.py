@@ -91,4 +91,8 @@ class psychiatry_whoqolbref_questions(osv.osv):
     #     })
     #     return {'value': values}
 
+    _defaults = {
+        'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
+    }
+
 psychiatry_whoqolbref_questions()
