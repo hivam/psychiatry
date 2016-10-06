@@ -79,6 +79,13 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
     # }
 
+    def name_get(self):
+        res = []
+        evaluaciones = self.browse(cr, uid, ids, context)
+        for record in evaluaciones:
+            res.append((record.id, record.date))
+        return res
+
     # def name_get(self, cr, uid, ids, context={}):
     #     if not len(ids):
     #         return []
