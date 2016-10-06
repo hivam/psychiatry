@@ -87,49 +87,49 @@
 
       <!-- Vista  tipo lista evaluaciones whoqolbref -->
 
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
+              <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="arch" type="xml">
+                  <field name="model">psychiatry.whoqolbref.evaluation</field> -->
+                  <!-- <field name="arch" type="xml">
                       <tree string = "Evaluaciones WHOQOL-BREF" >
-                          <field name = "name" string="Fecha"/>
+                          <field name = "date"/>
                       </tree>
                   </field>
-              </record>
+              </record> -->
 
       <!-- Vista  tipo formulario evaluaciones whoqolbref -->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
+              <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
                       <form string = "Evaluaciones WHOQOL-BREF">
                           <group>
-                            <field name = "name" string="Fecha"/>
+                            <field name = "date"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1" >
-                                    <!-- context="{'evaluation_id' : id}" -->
+                                    context="{'evaluation_id' : id}"
                                       <tree string="Preguntas" >
-                                        <!-- editable="bottom" -->
+                                        editable="bottom"
                                           <field name="evaluation_id" invisible="True"/>
                                           <field name="question_id" />
-                                          <!-- on_change="onchange_answer_scale(question_id)" -->
-                                          <!-- <field name="answer_scale" invisible="True"/> -->
-                                          <!-- <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" /> -->
-                                          <!-- on_change="onchange_answer_measure(answer_id)" -->
-                                          <!-- <field name="answer_measure" invisible="True"/> -->
+                                          on_change="onchange_answer_scale(question_id)"
+                                          <field name="answer_scale" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                          on_change="onchange_answer_measure(answer_id)"
+                                          <field name="answer_measure" invisible="True"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="evaluation_id" invisible="True"/>
                                               <field name="question_id" />
-                                              <!-- on_change="onchange_answer_scale(question_id)" -->
-                                              <!-- <field name="answer_scale" invisible="True"/> -->
-                                              <!-- <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" /> -->
-                                              <!-- on_change="onchange_answer_measure(answer_id)" -->
-                                              <!-- <field name="answer_measure" invisible="True"/> -->
+                                              on_change="onchange_answer_scale(question_id)"
+                                              <field name="answer_scale" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                              on_change="onchange_answer_measure(answer_id)"
+                                              <field name="answer_measure" invisible="True"/>
                                           </group>
                                       </form>
                                   </field>
@@ -138,18 +138,18 @@
 
                       </form>
                   </field>
-              </record>
+              </record> -->
 
       <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
+              <!-- <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="res_model">psychiatry.whoqolbref.evaluation</field>
                   <field name="view_type">form</field>
                   <field name="view_mode">tree,form</field>
-              </record>
+              </record> -->
 
       <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_whoqolbref"/>
+              <!-- <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_whoqolbref"/> -->
 
     </data>
 </openerp>
