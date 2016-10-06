@@ -48,7 +48,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
         res={}
         lis=[]
         evaluation = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
-        for line in evaluation.question_ids:
+        for line in evaluation.question_id:
             res={
                 'question_id':line.question_id.id,
                  }
