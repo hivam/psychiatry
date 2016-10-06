@@ -90,20 +90,18 @@
               <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field> -->
-                  <!-- <field name="type">tree</field> -->
                   <!-- <field name="arch" type="xml">
                       <tree string = "Evaluaciones WHOQOL-BREF" >
                           <field name = "date"/>
                       </tree>
                   </field>
-              </record>
+              </record> -->
 
-      <!-- Vista  tipo formulario evaluaciones whoqolbref-->
+      <!-- Vista  tipo formulario evaluaciones whoqolbref -->
               <!-- <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.evaluation</field> -->
-                  <!-- <field name="type">form</field> -->
-                  <!-- <field name="arch" type="xml">
+                  <field name="model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="arch" type="xml">
                       <form string = "Evaluaciones WHOQOL-BREF">
                           <group>
                             <field name = "date"/>
@@ -111,34 +109,34 @@
 
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
-                                  <field name="question_ids" nolabel="1" > -->
-                                    <!-- context="{'evaluation_id' : id}" -->
-                                      <!-- <tree string="Preguntas" > -->
-                                        <!-- editable="bottom" -->
-                                          <!-- <field name="evaluation_id" invisible="True"/>
-                                          <field name="question_id" /> -->
-                                          <!-- on_change="onchange_answer_scale(question_id)" -->
-                                          <!-- <field name="answer_scale" invisible="True"/> -->
-                                          <!-- <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" /> -->
-                                          <!-- on_change="onchange_answer_measure(answer_id)" -->
-                                          <!-- <field name="answer_measure" invisible="True"/> -->
-                                      <!-- </tree>
+                                  <field name="question_ids" nolabel="1" >
+                                    context="{'evaluation_id' : id}"
+                                      <tree string="Preguntas" >
+                                        editable="bottom"
+                                          <field name="evaluation_id" invisible="True"/>
+                                          <field name="question_id" />
+                                          on_change="onchange_answer_scale(question_id)"
+                                          <field name="answer_scale" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                          on_change="onchange_answer_measure(answer_id)"
+                                          <field name="answer_measure" invisible="True"/>
+                                      </tree>
                                       <form string="Preguntas">
                                           <group>
                                               <field name="evaluation_id" invisible="True"/>
-                                              <field name="question_id" /> -->
-                                              <!-- on_change="onchange_answer_scale(question_id)" -->
-                                              <!-- <field name="answer_scale" invisible="True"/> -->
-                                              <!-- <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" /> -->
-                                              <!-- on_change="onchange_answer_measure(answer_id)" -->
-                                              <!-- <field name="answer_measure" invisible="True"/> -->
-                                          <!-- </group>
+                                              <field name="question_id" />
+                                              on_change="onchange_answer_scale(question_id)"
+                                              <field name="answer_scale" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                              on_change="onchange_answer_measure(answer_id)"
+                                              <field name="answer_measure" invisible="True"/>
+                                          </group>
                                       </form>
                                   </field>
                               </page>
-                          </notebook> -->
+                          </notebook>
 
-                      <!-- </form>
+                      </form>
                   </field>
               </record> -->
 
