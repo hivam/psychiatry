@@ -50,8 +50,9 @@ class Psychiatry_Whoqolbref_Question(models.Model):
 # class psychiatry_whoqolbref_evaluation(osv.osv):
 class psychiatry_whoqolbref_evaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
-    _rec_name = 'date'
+    # _rec_name = 'date'
     # _columns = {
+    name = fields.Char(string=u'Referencia'),
     date= fields.Date.today(),
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas'),
         # }
@@ -72,7 +73,7 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
     _name = "psychiatry.whoqolbref.questions"
     # _rec_name = 'evaluation_id'
     # _columns = {
-    name = fields.Char(string=u'Referencia')
+    name = fields.Char(string=u'Referencia'),
     evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade'),
     question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta'),
         # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
