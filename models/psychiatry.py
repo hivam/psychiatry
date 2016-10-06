@@ -30,6 +30,10 @@ class psychiatry_whoqolbref_question(osv.osv):
         'active': fields.boolean('Active'),
         }
 
+    _defaults = {
+        'active': 1,
+    }
+
 psychiatry_whoqolbref_question()
 
 class psychiatry_whoqolbref_evaluation(osv.osv):
