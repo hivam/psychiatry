@@ -3,12 +3,12 @@
 
 from openerp import models, fields, api, exceptions, _
 from openerp.tools.translate import _
-from math import ceil
-import logging
-from datetime import datetime
-from openerp.tools import email_split
-from math import floor
-logger = logging.getLogger(__name__)
+# from math import ceil
+# import logging
+# from datetime import datetime
+# from openerp.tools import email_split
+# from math import floor
+# logger = logging.getLogger(__name__)
 
 # from openerp.osv import fields, osv
 # from openerp.tools.translate import _
@@ -19,25 +19,25 @@ class Psychiatry_Whoqolbref_Answer(models.Model):
     _name = 'psychiatry.whoqolbref.answer'
     # _rec_name = 'answer'
     # _columns = {
-    answer_scale= fields.Selection((('A', 'A'), ('B', 'B'), ('C', 'C'),
-                                      ('D', 'D'), ('E', 'E'), ('F', 'F')), string=u'Escala'),
     name= fields.Char(string=u'Respuesta', size=25),
+    answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
+                                    ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala'),
     measure= fields.Integer(string=u'Valor', size=1),
         # }
 
 # psychiatry_whoqolbref_answer()
 
 # class psychiatry_whoqolbref_question(osv.osv):
-class Psychiatry_Whoqolbref_Question(models.Model):
-    _name = 'psychiatry.whoqolbref.question'
+# class Psychiatry_Whoqolbref_Question(models.Model):
+#     _name = 'psychiatry.whoqolbref.question'
     # _rec_name = 'question'
     # _columns = {
-    category= fields.Selection((('G', 'General'), ('F', 'Salud física'),
-                                  ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
-                                  ('E', 'Entorno')), string=u'Categoría'),
-    name= fields.Char(string=u'Pregunta', size=150),
-    answer_scale= fields.Selection((('A', 'A'), ('B', 'B'), ('C', 'C'),
-                                      ('D', 'D'), ('E', 'E'), ('F', 'F')), string=u'Escala'),
+    # category= fields.Selection((('G', 'General'), ('F', 'Salud física'),
+    #                               ('P', 'Psicológica'), ('R', 'Relaciones interpersonales'),
+    #                               ('E', 'Entorno')), string=u'Categoría'),
+    # name= fields.Char(string=u'Pregunta', size=150),
+    # answer_scale= fields.Selection((('A', 'A'), ('B', 'B'), ('C', 'C'),
+    #                                   ('D', 'D'), ('E', 'E'), ('F', 'F')), string=u'Escala'),
     # active: fields.Boolean('Active'),
         # }
 
@@ -48,13 +48,13 @@ class Psychiatry_Whoqolbref_Question(models.Model):
 # psychiatry_whoqolbref_question()
 
 # class psychiatry_whoqolbref_evaluation(osv.osv):
-class psychiatry_whoqolbref_evaluation(models.Model):
-    _name = 'psychiatry.whoqolbref.evaluation'
+# class psychiatry_whoqolbref_evaluation(models.Model):
+#     _name = 'psychiatry.whoqolbref.evaluation'
     # _rec_name = 'date'
     # _columns = {
-    name = fields.Char(string=u'Referencia'),
-    date= fields.Date.today(),
-    question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas'),
+    # name = fields.Char(string=u'Referencia'),
+    # date= fields.Date.today(),
+    # question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas'),
         # }
 
     # def _get_question_ids(self, cr, uid, context):
@@ -69,13 +69,13 @@ class psychiatry_whoqolbref_evaluation(models.Model):
 # psychiatry_whoqolbref_evaluation()
 
 # class psychiatry_whoqolbref_questions(osv.osv):
-class Psychiatry_Whoqolbref_Questions(models.Model):
-    _name = "psychiatry.whoqolbref.questions"
+# class Psychiatry_Whoqolbref_Questions(models.Model):
+#     _name = "psychiatry.whoqolbref.questions"
     # _rec_name = 'evaluation_id'
     # _columns = {
-    name = fields.Char(string=u'Referencia'),
-    evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade'),
-    question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta'),
+    # name = fields.Char(string=u'Referencia'),
+    # evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade'),
+    # question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta'),
         # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
         # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
