@@ -70,8 +70,9 @@ class psychiatry_whoqolbref_evaluation(models.Model):
 # class psychiatry_whoqolbref_questions(osv.osv):
 class Psychiatry_Whoqolbref_Questions(models.Model):
     _name = "psychiatry.whoqolbref.questions"
-    _rec_name = 'evaluation_id'
+    # _rec_name = 'evaluation_id'
     # _columns = {
+    name = fields.Char(string=u'Referencia')
     evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade'),
     question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta'),
         # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
@@ -79,9 +80,6 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
     # }
 
-    @api.multi
-    def name_get(self):
-        return (self.id, self.date)
 
     # def name_get(self, cr, uid, ids, context={}):
     #     if not len(ids):
