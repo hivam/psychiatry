@@ -47,27 +47,6 @@ class Psychiatry_Whoqolbref_Question(models.Model):
 
 # psychiatry_whoqolbref_question()
 
-# class psychiatry_whoqolbref_evaluation(osv.osv):
-class psychiatry_whoqolbref_evaluation(models.Model):
-    _name = 'psychiatry.whoqolbref.evaluation'
-    # _rec_name = 'date'
-    # _columns = {
-    # name = fields.Char(string=u'Referencia')
-    name= fields.Date.today()
-    question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas')
-        # }
-
-    # def _get_question_ids(self, cr, uid, context):
-    #     ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
-    #     return ids
-
-    # _defaults = {
-    # 'date': lambda *a: time.strftime('%Y-%m-%d'),
-    # 'question_ids': _get_question_ids,
-    # }
-
-# psychiatry_whoqolbref_evaluation()
-
 # class psychiatry_whoqolbref_questions(osv.osv):
 class Psychiatry_Whoqolbref_Questions(models.Model):
 #     _name = "psychiatry.whoqolbref.questions"
@@ -117,3 +96,24 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
     # }
 
 # psychiatry_whoqolbref_questions()
+
+# class psychiatry_whoqolbref_evaluation(osv.osv):
+class psychiatry_whoqolbref_evaluation(models.Model):
+    _name = 'psychiatry.whoqolbref.evaluation'
+    # _rec_name = 'date'
+    # _columns = {
+    # name = fields.Char(string=u'Referencia')
+    name= fields.Date.today()
+    question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas')
+        # }
+
+    # def _get_question_ids(self, cr, uid, context):
+    #     ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
+    #     return ids
+
+    # _defaults = {
+    # 'date': lambda *a: time.strftime('%Y-%m-%d'),
+    # 'question_ids': _get_question_ids,
+    # }
+
+# psychiatry_whoqolbref_evaluation()
