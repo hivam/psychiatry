@@ -19,10 +19,10 @@ class Psychiatry_Whoqolbref_Answer(models.Model):
     _name = 'psychiatry.whoqolbref.answer'
     # _rec_name = 'answer'
     # _columns = {
-    name= fields.Char(string=u'Respuesta', size=25),
+    name= fields.Char(string=u'Respuesta', size=25)
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
-                                    ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala'),
-    measure= fields.Integer(string=u'Valor', size=1),
+                                    ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala')
+    measure= fields.Integer(string=u'Valor', size=1)
         # }
 
 # psychiatry_whoqolbref_answer()
