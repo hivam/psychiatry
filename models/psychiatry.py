@@ -27,6 +27,7 @@ class psychiatry_whoqolbref_question(osv.osv):
         'question': fields.char('Pregunta', size=150),
         'answer_scale': fields.selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                           ('D', 'D'), ('E', 'E'), ('F', 'F')], 'Escala'),
+        'active': fields.boolean('Active'),
         }
 
 psychiatry_whoqolbref_question()
@@ -40,7 +41,7 @@ class psychiatry_whoqolbref_evaluation(osv.osv):
         }
 
     def _get_question_ids(self, cr, uid, context):
-        ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [], context=context)
+        ids = self.pool.get('psychiatry.whoqolbref.question').search(cr, uid, [( 'active',  '=', 1)], context=context)
         return ids
 
     _defaults = {
@@ -91,8 +92,8 @@ class psychiatry_whoqolbref_questions(osv.osv):
     #     })
     #     return {'value': values}
 
-    _defaults = {
-        'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
-    }
+    # _defaults = {
+    #     'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
+    # }
 
 psychiatry_whoqolbref_questions()
