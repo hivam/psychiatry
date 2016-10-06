@@ -48,13 +48,13 @@ class Psychiatry_Whoqolbref_Question(models.Model):
 # psychiatry_whoqolbref_question()
 
 # class psychiatry_whoqolbref_evaluation(osv.osv):
-# class psychiatry_whoqolbref_evaluation(models.Model):
-#     _name = 'psychiatry.whoqolbref.evaluation'
+class psychiatry_whoqolbref_evaluation(models.Model):
+    _name = 'psychiatry.whoqolbref.evaluation'
     # _rec_name = 'date'
     # _columns = {
-    # name = fields.Char(string=u'Referencia'),
-    # date= fields.Date.today(),
-    # question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas'),
+    # name = fields.Char(string=u'Referencia')
+    name= fields.Date.today()
+    question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id', string=u'Preguntas')
         # }
 
     # def _get_question_ids(self, cr, uid, context):
@@ -69,13 +69,13 @@ class Psychiatry_Whoqolbref_Question(models.Model):
 # psychiatry_whoqolbref_evaluation()
 
 # class psychiatry_whoqolbref_questions(osv.osv):
-# class Psychiatry_Whoqolbref_Questions(models.Model):
+class Psychiatry_Whoqolbref_Questions(models.Model):
 #     _name = "psychiatry.whoqolbref.questions"
     # _rec_name = 'evaluation_id'
     # _columns = {
-    # name = fields.Char(string=u'Referencia'),
-    # evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade'),
-    # question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta'),
+    name = fields.Char(string=u'Referencia')
+    evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', string=u'Evaluación', ondelete='cascade')
+    question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta')
         # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
         # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
