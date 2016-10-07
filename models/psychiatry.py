@@ -38,7 +38,7 @@ class Psychiatry_Whoqolbref_Question(models.Model):
                                 ('E', 'Entorno')], string=u'Categoría')
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                     ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala')
-    active: fields.Boolean('Active', default=True)
+    active= fields.Boolean('Active', default=True)
         # }
 
     # _defaults = {
