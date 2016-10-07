@@ -4,11 +4,11 @@
 from openerp import models, fields, api, exceptions, _
 from openerp.tools.translate import _
 # from math import ceil
-# import logging
+import logging
 # from datetime import datetime
 # from openerp.tools import email_split
 # from math import floor
-# logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 # from openerp.osv import fields, osv
 # from openerp.tools.translate import _
@@ -63,6 +63,9 @@ class psychiatry_whoqolbref_evaluation(models.Model):
         question_fill=[]
         for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_ids': record.id}])
+			logger.info('##########################################')
+			logger.info(question_fill)
+			logger.info('##########################################')
         self.question_ids = question_fill
 
     # def _get_question_ids(self, cr, uid, context):
@@ -82,7 +85,7 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
     # _rec_name = 'evaluation_id'
     # _columns = {
     # name = fields.Char(string=u'Referencia'),
-    evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation')
+    evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', ondelete='cascade')
     question_id= fields.Many2one('psychiatry.whoqolbref.question')
         # 'answer_scale': fields.related('question_id', 'answer_scale', string="Escala", type="char", store=True),
         # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
