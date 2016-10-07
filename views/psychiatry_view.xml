@@ -110,12 +110,12 @@
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1" >
-                                      <tree string="Preguntas" editable="bottom">                                        
+                                      <tree string="Preguntas" editable="bottom">
                                           <field name="evaluation_id" invisible="True"/>
                                           <field name="question_id" />
                                           <field name="answer_scale" invisible="True"/>
                                           <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                          <!-- <field name="answer_measure" invisible="True"/> -->
+                                          <field name="answer_measure"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
@@ -123,7 +123,7 @@
                                               <field name="question_id" />
                                               <field name="answer_scale" invisible="True"/>
                                               <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                              <!-- <field name="answer_measure" invisible="True"/> -->
+                                              <field name="answer_measure"/>
                                           </group>
                                       </form>
                                   </field>

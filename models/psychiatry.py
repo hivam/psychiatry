@@ -53,5 +53,5 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
     evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', ondelete='cascade')
     question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta')
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
-    answer_id= fields.Many2one('psychiatry.whoqolbref.answer', 'Respuesta')
-        # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
+    answer_id= fields.Many2one('psychiatry.whoqolbref.answer', string=u'Respuesta')
+    answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'"Valor")
