@@ -112,7 +112,7 @@
                                   <field name="question_ids" nolabel="1" >
                                       <tree string="Preguntas" editable="bottom">
                                           <field name="evaluation_id" invisible="True"/>
-                                          <field name="question_id" />
+                                          <field name="question_id" readonly="True"/>
                                           <field name="answer_scale" invisible="True"/>
                                           <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
                                           <field name="answer_measure" readonly="True"/>
@@ -120,7 +120,7 @@
                                       <form string="Preguntas">
                                           <group>
                                               <field name="evaluation_id" invisible="True"/>
-                                              <field name="question_id" />
+                                              <field name="question_id" readonly="True"/>
                                               <field name="answer_scale" invisible="True"/>
                                               <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
                                               <field name="answer_measure" readonly="True"/>
