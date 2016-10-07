@@ -58,19 +58,11 @@ class psychiatry_whoqolbref_evaluation(models.Model):
         # }
 
     @api.onchange('date')
-    def  onchange_date(self):
-        questions_pool = self.env['psychiatry.whoqolbref.questions']
-            # categorias_pool =  self.env['crm.categorias.altafact.gvb']
+    def _onchange_date(self):
+        questions_pool = self.env['psychiatry.whoqolbref.question']
         question_fill=[]
-            # for n in categorias_pool.search([('id','=',self.categoria_id.id)]):
-            #     logger.info('##########################################')
-            #     logger.info(n.id)
-            #     logger.info('##########################################')
         for record in questions_pool.browse(self):
-            question_fill.append([0, 0,{'question_id': record.id}])
-                # logger.info('##########################################')
-                # logger.info(parametros)
-                # logger.info('##########################################')
+            question_fill.append([0, 0,{'question_ids': record.id}])
         self.question_ids = question_fill
 
     # def _get_question_ids(self, cr, uid, context):
