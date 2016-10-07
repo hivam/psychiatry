@@ -110,8 +110,7 @@
                           <notebook colspan="2" col='2'>
                               <page string="WHOQOL-BREF">
                                   <field name="question_ids" nolabel="1" >
-                                      <tree string="Preguntas" >
-                                        <!-- editable="bottom" -->
+                                      <tree string="Preguntas" editable="bottom">                                        
                                           <field name="evaluation_id" invisible="True"/>
                                           <field name="question_id" />
                                           <field name="answer_scale" invisible="True"/>
