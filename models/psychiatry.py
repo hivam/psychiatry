@@ -63,9 +63,9 @@ class psychiatry_whoqolbref_evaluation(models.Model):
         question_fill=[]
         for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_ids': record.id}])
-			logger.info('##########################################')
-			logger.info(question_fill)
-			logger.info('##########################################')
+            logger.info('##########################################')
+            logger.info(question_fill)
+            logger.info('##########################################')
         self.question_ids = question_fill
 
     # def _get_question_ids(self, cr, uid, context):
