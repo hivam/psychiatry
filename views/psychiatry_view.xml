@@ -115,7 +115,7 @@
                                           <field name="question_id" />
                                           <field name="answer_scale" invisible="True"/>
                                           <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                          <field name="answer_measure"/>
+                                          <field name="answer_measure" readonly="True"/>
                                       </tree>
                                       <form string="Preguntas">
                                           <group>
@@ -123,7 +123,7 @@
                                               <field name="question_id" />
                                               <field name="answer_scale" invisible="True"/>
                                               <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                              <field name="answer_measure"/>
+                                              <field name="answer_measure" readonly="True"/>
                                           </group>
                                       </form>
                                   </field>
