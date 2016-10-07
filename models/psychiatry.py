@@ -62,7 +62,7 @@ class psychiatry_whoqolbref_evaluation(models.Model):
         questions_pool = self.env['psychiatry.whoqolbref.question']
         question_fill=[]
         for record in questions_pool.search([('active','=', 1)]):
-            question_fill.append([0, 0,{'question_ids': record.id}])
+            question_fill.append([0, 0,{'question_id': record.id}])
             logger.info('##########################################')
             logger.info(question_fill)
             logger.info('##########################################')
