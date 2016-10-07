@@ -53,43 +53,5 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
     evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', ondelete='cascade')
     question_id= fields.Many2one('psychiatry.whoqolbref.question', string=u'Pregunta')
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
-        # 'answer_id': fields.many2one('psychiatry.whoqolbref.answer', 'Respuesta'),
+    answer_id= fields.Many2one('psychiatry.whoqolbref.answer', 'Respuesta')
         # 'answer_measure': fields.related('answer_id', 'measure', string="Valor", type="integer", store=True),
-    # }
-
-
-    # def name_get(self, cr, uid, ids, context={}):
-    #     if not len(ids):
-    #         return []
-    #     rec_name = 'evaluation_id'
-    #     res = [(r['id'], r[rec_name][1])
-    #            for r in self.read(cr, uid, ids, [rec_name], context)]
-    #     return res
-
-    # def onchange_answer_scale(self, cr, uid, ids, question_id, context={}):
-    #     values = {}
-    #     if not question_id:
-    #         return values
-    #     question_answer_scale = self.pool.get('psychiatry.whoqolbref.question').browse(cr, uid, question_id, context=context)
-    #     answer_scale_value = question_answer_scale.answer_scale
-    #     values.update({
-    #         'answer_scale': answer_scale_value,
-    #     })
-    #     return {'value': values}
-
-    # def onchange_answer_measure(self, cr, uid, ids, answer_id, context={}):
-    #     values = {}
-    #     if not answer_id:
-    #         return values
-    #     answer_id_measure = self.pool.get('psychiatry.whoqolbref.answer').browse(cr, uid, answer_id, context=context)
-    #     answer_scale_measure = answer_id_measure.measure
-    #     values.update({
-    #         'answer_measure': answer_scale_measure,
-    #     })
-    #     return {'value': values}
-
-    # _defaults = {
-    #     'evaluation_id': lambda self, cr, uid, context: context.get('evaluation_id', False),
-    # }
-
-# psychiatry_whoqolbref_questions()
