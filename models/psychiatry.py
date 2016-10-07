@@ -38,7 +38,7 @@ class Psychiatry_Whoqolbref_Question(models.Model):
                                 ('E', 'Entorno')], string=u'Categoría')
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                     ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala')
-    # active: fields.Boolean('Active'),
+    active: fields.Boolean('Active', default=True)
         # }
 
     # _defaults = {
@@ -61,7 +61,7 @@ class psychiatry_whoqolbref_evaluation(models.Model):
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.whoqolbref.question']
         question_fill=[]
-        for record in questions_pool.browse(self):
+        for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_ids': record.id}])
         self.question_ids = question_fill
 
