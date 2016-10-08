@@ -2,13 +2,13 @@
 <openerp>
     <data>
 
-      <!-- Vista  tipo lista respuestas whoqolbref-->
+      <!-- Vista  tipo lista respuestas whoqolbref y Scl90r-->
 
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
-                  <field name="name">Respuestas WHOQOL-BREF</field>
+                  <field name="name">Respuestas</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
                   <field name="arch" type="xml">
-                      <tree string = "Respuestas WHOQOL-BREF" >
+                      <tree string = "Respuestas" >
                           <field name = "name"/>
                           <field name = "answer_scale"/>
                           <field name = "measure"/>
@@ -16,12 +16,12 @@
                   </field>
               </record>
 
-      <!-- Vista  tipo formulario respuestas whoqolbref-->
+      <!-- Vista  tipo formulario respuestas whoqolbref y Scl90r-->
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_form">
-                  <field name="name">Respuestas WHOQOL-BREF</field>
+                  <field name="name">Respuestas</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
                   <field name="arch" type="xml">
-                      <form string = "Respuestas WHOQOL-BREF">
+                      <form string = "Respuestas">
                           <group>
                             <field name = "name"/>
                             <field name = "answer_scale"/>
@@ -33,7 +33,7 @@
 
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_answer">
-                  <field name="name">Respuestas WHOQOL-BREF</field>
+                  <field name="name">Respuestas</field>
                   <field name="res_model">psychiatry.whoqolbref.answer</field>
                   <field name="view_type">form</field>
                   <field name="view_mode">tree,form</field>
@@ -41,7 +41,7 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
-              <menuitem name="WHOQOL-BREF" parent="menu_psychiatry" id="menu_view_psychiatry_whoqolbref" sequence="10"/>
+              <menuitem name="EVALUACIONES" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="10"/>
               <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="20"/>
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
 
@@ -143,7 +143,107 @@
               </record>
 
       <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_whoqolbref"/>
+              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- Vista  tipo lista preguntas Scl90r-->
+
+              <record model="ir.ui.view" id="view_psychiatry_scl90r_question_tree">
+                  <field name="name">Preguntas SCL-90-R</field>
+                  <field name="model">psychiatry.scl90r.question</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Preguntas SCL-90-R" >
+                          <field name = "name"/>
+                          <field name = "category"/>
+                          <field name = "answer_scale"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario preguntas Scl90r-->
+              <record model="ir.ui.view" id="view_psychiatry_scl90r_question_form">
+                  <field name="name">Preguntas SCL-90-R</field>
+                  <field name="model">psychiatry.scl90r.question</field>
+                  <field name="arch" type="xml">
+                      <form string = "Preguntas SCL-90-R">
+                          <group>
+                            <field name = "name"/>
+                            <field name = "category"/>
+                            <field name = "answer_scale"/> -->
+                          </group>
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_scl90r_question">
+                  <field name="name">Preguntas SCL-90-R</field>
+                  <field name="res_model">psychiatry.scl90r.question</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_scl90r_question" id="psychiatry_scl90r_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- Vista  tipo lista evaluaciones Scl90r -->
+
+              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_tree">
+                  <field name="name">Evaluaciones SCL-90-R</field>
+                  <field name="model">psychiatry.scl90r.evaluation</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Evaluaciones SCL-90-R" >
+                          <field name = "date"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario evaluaciones Scl90r -->
+              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_form">
+                  <field name="name">Evaluaciones SCL-90-R</field>
+                  <field name="model">psychiatry.scl90r.evaluation</field>
+                  <field name="arch" type="xml">
+                      <form string = "Evaluaciones SCL-90-R">
+                          <group>
+                            <field name = "date"/>
+                          </group>
+
+                          <notebook colspan="2" col='2'>
+                              <page string="SCL-90-R">
+                                  <field name="question_ids" nolabel="1" >
+                                      <tree string="Preguntas" editable="bottom">
+                                          <field name="evaluation_id" invisible="True"/>
+                                          <field name="question_id" readonly="True"/>
+                                          <field name="answer_scale" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                          <field name="answer_measure" invisible="True"/>
+                                      </tree>
+                                      <form string="Preguntas">
+                                          <group>
+                                              <field name="evaluation_id" invisible="True"/>
+                                              <field name="question_id" readonly="True"/>
+                                              <field name="answer_scale" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                              <field name="answer_measure" invisible="True"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+                          </notebook>
+
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_scl90r_evaluation">
+                  <field name="name">Evaluaciones SCL-90-R</field>
+                  <field name="res_model">psychiatry.scl90r.evaluation</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_scl90r_evaluation" id="psychiatry_scl90r_evaluation" parent="menu_view_psychiatry_evaluations"/>
 
     </data>
 </openerp>
