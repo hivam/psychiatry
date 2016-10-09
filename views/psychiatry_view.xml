@@ -145,6 +145,8 @@
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_evaluations"/>
 
+<!-- ################################################################################################################# -->
+
       <!-- Vista  tipo lista preguntas Scl90r-->
 
               <record model="ir.ui.view" id="view_psychiatry_scl90r_question_tree">
@@ -244,6 +246,110 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_scl90r_evaluation" id="psychiatry_scl90r_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
+      <!-- Vista  tipo lista preguntas MoCa-->
+
+              <record model="ir.ui.view" id="view_psychiatry_moca_question_tree">
+                  <field name="name">Preguntas MoCa</field>
+                  <field name="model">psychiatry.moca.question</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Preguntas MoCa" >
+                          <field name = "name"/>
+                          <field name = "category"/>
+                          <field name = "answer_scale"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario preguntas MoCa-->
+              <record model="ir.ui.view" id="view_psychiatry_moca_question_form">
+                  <field name="name">Preguntas MoCa</field>
+                  <field name="model">psychiatry.moca.question</field>
+                  <field name="arch" type="xml">
+                      <form string = "Preguntas MoCa">
+                          <group>
+                            <field name = "name"/>
+                            <field name = "category"/>
+                            <field name = "answer_scale"/> -->
+                          </group>
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_moca_question">
+                  <field name="name">Preguntas MoCa</field>
+                  <field name="res_model">psychiatry.moca.question</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_moca_question" id="psychiatry_moca_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- Vista  tipo lista evaluaciones MoCa -->
+
+              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_tree">
+                  <field name="name">Evaluaciones MoCa</field>
+                  <field name="model">psychiatry.moca.evaluation</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Evaluaciones MoCa" >
+                          <field name = "date"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista  tipo formulario evaluaciones MoCa -->
+              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_form">
+                  <field name="name">Evaluaciones MoCa</field>
+                  <field name="model">psychiatry.moca.evaluation</field>
+                  <field name="arch" type="xml">
+                      <form string = "Evaluaciones MoCa">
+                          <group>
+                            <field name = "date"/>
+                          </group>
+
+                          <notebook colspan="2" col='2'>
+                              <page string="MoCa">
+                                  <field name="question_ids" nolabel="1" >
+                                      <tree string="Preguntas" editable="bottom">
+                                          <field name="evaluation_id" invisible="True"/>
+                                          <field name="question_id" readonly="True"/>
+                                          <field name="answer_scale" invisible="True"/>
+                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                          <field name="answer_measure" invisible="True"/>
+                                      </tree>
+                                      <form string="Preguntas">
+                                          <group>
+                                              <field name="evaluation_id" invisible="True"/>
+                                              <field name="question_id" readonly="True"/>
+                                              <field name="answer_scale" invisible="True"/>
+                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                              <field name="answer_measure" invisible="True"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+                          </notebook>
+
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_moca_evaluation">
+                  <field name="name">Evaluaciones MoCa</field>
+                  <field name="res_model">psychiatry.moca.evaluation</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_moca_evaluation" id="psychiatry_moca_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
 
     </data>
 </openerp>

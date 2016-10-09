@@ -15,9 +15,9 @@ class Psychiatry_Whoqolbref_Answer(models.Model):
     _name = 'psychiatry.whoqolbref.answer'
 
     name= fields.Char(string=u'Respuesta', size=25)
-    answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
-                                    ('D', 'D'), ('E', 'E'), ('F', 'F'),
-                                    ('G', 'G')], string=u'Escala')
+    answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'),
+                                    ('E', 'E'), ('F', 'F'), ('G', 'G'), ('H', 'H'),
+                                    ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
     measure= fields.Integer(string=u'Valor', size=1)
 
 class Psychiatry_Whoqolbref_Question(models.Model):
@@ -90,6 +90,44 @@ class Psychiatry_Scl90r_Questions(models.Model):
 
     evaluation_id= fields.Many2one('psychiatry.scl90r.evaluation', ondelete='cascade')
     question_id= fields.Many2one('psychiatry.scl90r.question', string=u'Pregunta')
+    answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
+    answer_id= fields.Many2one('psychiatry.whoqolbref.answer', string=u'Respuesta')
+    answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'Valor')
+
+#################################################################################################################
+
+class Psychiatry_Moca_Question(models.Model):
+    _name = 'psychiatry.moca.question'
+
+    name= fields.Char(string=u'Pregunta', size=150)
+    category= fields.Selection([('1', 'Alternancia conceptual'), ('2', 'Capacidades visuoconstructivas - Cubo'),
+                                ('3', 'Capacidades visuoconstructivas - Reloj'), ('4', 'Denominación'),
+                                ('5', 'Memoria'), ('6', 'Atención'),
+                                ('7', 'Repetición de frases'), ('8', 'Fluidez verbal'),
+                                ('9', 'Similitudes'), ('10', 'Recuerdo diferido'),
+                                ('11', 'Orientación')], string=u'Dimensión')
+    answer_scale= fields.Selection([('H', 'H'), ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
+    active= fields.Boolean('Active', default=True)
+
+class psychiatry_Moca_evaluation(models.Model):
+    _name = 'psychiatry.moca.evaluation'
+
+    date= fields.Date()
+    question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
+
+    @api.onchange('date')
+    def _onchange_date(self):
+        questions_pool = self.env['psychiatry.moca.question']
+        question_fill=[]
+        for record in questions_pool.search([('active','=', 1)]):
+            question_fill.append([0, 0,{'question_id': record.id}])
+        self.question_ids = question_fill
+
+class Psychiatry_Moca_Questions(models.Model):
+    _name = "psychiatry.moca.questions"
+
+    evaluation_id= fields.Many2one('psychiatry.moca.evaluation', ondelete='cascade')
+    question_id= fields.Many2one('psychiatry.moca.question', string=u'Pregunta')
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
     answer_id= fields.Many2one('psychiatry.whoqolbref.answer', string=u'Respuesta')
     answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'Valor')
