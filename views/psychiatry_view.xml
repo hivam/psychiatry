@@ -59,7 +59,7 @@
       <!-- Definimos la accion del menu -->
               <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
               <menuitem name="Hospitalización" parent="menu_psychiatry" id="menu_view_psychiatry_hospitalization" sequence="10"/>
-              <menuitem id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" action="base.action_partner_form" sequence="20"/>
+              <!-- <menuitem id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" action="base.action_partner_form" sequence="20"/> -->
               <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
               <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30"/>
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
