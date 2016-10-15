@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 
 #################################################################################################################
 
-class ResPartner(models.Model):
-    _inherit = 'res.partner'
-
-    patient= fields.Boolean(string=u'Paciente')
+# class ResPartner(models.Model):
+#     _inherit = 'res.partner'
+#
+#     patient= fields.Boolean(string=u'Paciente')
 
 #################################################################################################################
 
