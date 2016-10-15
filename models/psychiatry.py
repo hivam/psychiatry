@@ -3,6 +3,7 @@
 
 from openerp import models, fields, api, exceptions, _
 from openerp.tools.translate import _
+import re
 # from math import ceil
 import logging
 # from datetime import datetime
@@ -13,10 +14,10 @@ logger = logging.getLogger(__name__)
 
 #################################################################################################################
 
-# class ResPartner(models.Model):
-#     _inherit = 'res.partner'
-#
-#     patient= fields.Boolean(string=u'Paciente')
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    patient= fields.Boolean(string=u'Paciente')
 
 #################################################################################################################
 
