@@ -11,7 +11,16 @@ import logging
 logger = logging.getLogger(__name__)
 # import time
 
-class Psychiatry_Whoqolbref_Answer(models.Model):
+#################################################################################################################
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    patient= fields.Boolean(string=u'Paciente')
+
+#################################################################################################################
+
+class PsychiatryWhoqolbrefAnswer(models.Model):
     _name = 'psychiatry.whoqolbref.answer'
 
     name= fields.Char(string=u'Respuesta', size=25)
@@ -20,7 +29,7 @@ class Psychiatry_Whoqolbref_Answer(models.Model):
                                     ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
     measure= fields.Integer(string=u'Valor', size=1)
 
-class Psychiatry_Whoqolbref_Question(models.Model):
+class PsychiatryWhoqolbrefQuestion(models.Model):
     _name = 'psychiatry.whoqolbref.question'
 
     name= fields.Char(string=u'Pregunta', size=150)
@@ -29,9 +38,9 @@ class Psychiatry_Whoqolbref_Question(models.Model):
                                 ('E', 'Entorno')], string=u'Categoría')
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'),
                                     ('D', 'D'), ('E', 'E'), ('F', 'F')], string=u'Escala')
-    active= fields.Boolean('Active', default=True)
+    active= fields.Boolean(string=u'Active', default=True)
 
-class psychiatry_whoqolbref_evaluation(models.Model):
+class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
     date= fields.Date()
@@ -48,7 +57,7 @@ class psychiatry_whoqolbref_evaluation(models.Model):
             # logger.info('##########################################')
         self.question_ids = question_fill
 
-class Psychiatry_Whoqolbref_Questions(models.Model):
+class PsychiatryWhoqolbrefQuestions(models.Model):
     _name = "psychiatry.whoqolbref.questions"
 
     evaluation_id= fields.Many2one('psychiatry.whoqolbref.evaluation', ondelete='cascade')
@@ -59,7 +68,7 @@ class Psychiatry_Whoqolbref_Questions(models.Model):
 
 #################################################################################################################
 
-class Psychiatry_Scl90r_Question(models.Model):
+class PsychiatryScl90rQuestion(models.Model):
     _name = 'psychiatry.scl90r.question'
 
     name= fields.Char(string=u'Pregunta', size=150)
@@ -71,7 +80,7 @@ class Psychiatry_Scl90r_Question(models.Model):
     answer_scale= fields.Selection([('G', 'G')], string=u'Escala')
     active= fields.Boolean('Active', default=True)
 
-class psychiatry_Scl90r_evaluation(models.Model):
+class PsychiatryScl90rEvaluation(models.Model):
     _name = 'psychiatry.scl90r.evaluation'
 
     date= fields.Date()
@@ -85,7 +94,7 @@ class psychiatry_Scl90r_evaluation(models.Model):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
 
-class Psychiatry_Scl90r_Questions(models.Model):
+class PsychiatryScl90rQuestions(models.Model):
     _name = "psychiatry.scl90r.questions"
 
     evaluation_id= fields.Many2one('psychiatry.scl90r.evaluation', ondelete='cascade')
@@ -96,7 +105,7 @@ class Psychiatry_Scl90r_Questions(models.Model):
 
 #################################################################################################################
 
-class Psychiatry_Moca_Question(models.Model):
+class PsychiatryMocaQuestion(models.Model):
     _name = 'psychiatry.moca.question'
 
     name= fields.Char(string=u'Pregunta', size=150)
@@ -109,7 +118,7 @@ class Psychiatry_Moca_Question(models.Model):
     answer_scale= fields.Selection([('H', 'H'), ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
     active= fields.Boolean('Active', default=True)
 
-class psychiatry_Moca_evaluation(models.Model):
+class PsychiatryMocaEvaluation(models.Model):
     _name = 'psychiatry.moca.evaluation'
 
     date= fields.Date()
@@ -123,7 +132,7 @@ class psychiatry_Moca_evaluation(models.Model):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
 
-class Psychiatry_Moca_Questions(models.Model):
+class PsychiatryMocaQuestions(models.Model):
     _name = "psychiatry.moca.questions"
 
     evaluation_id= fields.Many2one('psychiatry.moca.evaluation', ondelete='cascade')
@@ -131,3 +140,5 @@ class Psychiatry_Moca_Questions(models.Model):
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
     answer_id= fields.Many2one('psychiatry.whoqolbref.answer', string=u'Respuesta')
     answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'Valor')
+
+#################################################################################################################

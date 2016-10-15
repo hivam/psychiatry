@@ -2,6 +2,21 @@
 <openerp>
     <data>
 
+      <!-- Vista  tipo formulario Paciente -->
+      <record id="view_psychiatry_patient_form" model="ir.ui.view">
+         <field name="inherit_id" ref="base.view_partner_address_form" />
+          <field name="model">res.partner</field>
+          <field name="arch" type="xml">
+
+            <field name="parent_id" position="after">
+                <field name="patient"/>
+            </field>
+
+          </field>
+      </record>
+
+<!-- ################################################################################################################# -->
+
       <!-- Vista  tipo lista respuestas whoqolbref y Scl90r-->
 
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
@@ -41,9 +56,13 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
-              <menuitem name="EVALUACIONES" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="10"/>
-              <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="20"/>
+              <menuitem name="Hospitalización" parent="menu_psychiatry" id="menu_view_psychiatry_hospitalization" sequence="10"/>
+              <menuitem id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" action="base.action_partner_form" sequence="20"/>
+              <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
+              <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30"/>
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
+
+<!-- ################################################################################################################# -->
 
       <!-- Vista  tipo lista preguntas whoqolbref-->
 
@@ -84,6 +103,8 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
+
+<!-- ################################################################################################################# -->
 
       <!-- Vista  tipo lista evaluaciones whoqolbref -->
 
@@ -187,6 +208,8 @@
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_scl90r_question" id="psychiatry_scl90r_question" parent="menu_view_psychiatry_settings"/>
 
+<!-- ################################################################################################################# -->
+
       <!-- Vista  tipo lista evaluaciones Scl90r -->
 
               <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_tree">
@@ -288,6 +311,8 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_moca_question" id="psychiatry_moca_question" parent="menu_view_psychiatry_settings"/>
+
+<!-- ################################################################################################################# -->
 
       <!-- Vista  tipo lista evaluaciones MoCa -->
 
