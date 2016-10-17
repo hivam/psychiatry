@@ -23,8 +23,8 @@
                   <field name="model">res.partner</field>
                   <field name="arch" type="xml">
 
-                    <field name="customer" position="after">
-                        <field name="patient"/>
+                    <field name="email" position="after">
+                      <field name="patient" string="Es paciente?"/>
                     </field>
 
                   </field>
