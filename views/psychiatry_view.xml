@@ -23,7 +23,7 @@
                   <field name="model">res.partner</field>
                   <field name="arch" type="xml">
 
-                    <field name="parent_id" position="after">
+                    <field name="street" position="before">
                         <field name="patient"/>
                     </field>
 
