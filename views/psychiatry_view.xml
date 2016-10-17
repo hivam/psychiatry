@@ -426,18 +426,36 @@
                                   <field name="evolutions_ids" nolabel="1" >
                                       <tree string="Evoluciones" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
-                                          <field name="date_evolution"/>
+                                          <field name="date_evolution" string="Fecha"/>
                                           <field name="comment"/>
                                       </tree>
                                       <form string="Evoluciones">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
-                                            <field name="date_evolution"/>
+                                            <field name="date_evolution" string="Fecha"/>
                                             <field name="comment"/>
                                           </group>
                                       </form>
                                   </field>
                               </page>
+
+                              <page string="Revista">
+                                  <field name="review_ids" nolabel="1" >
+                                      <tree string="Revista" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="date_review" string="Fecha"/>
+                                          <field name="comment"/>
+                                      </tree>
+                                      <form string="Revista">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="date_review" string="Fecha"/>
+                                            <field name="comment"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+
                           </notebook>
 
                       </form>
@@ -453,7 +471,7 @@
               </record>
 
       <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="20"/>
+              <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
 
       <!-- ################################################################################################################# -->
 

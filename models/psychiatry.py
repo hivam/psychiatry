@@ -153,10 +153,18 @@ class PsychiatryHospitalization(models.Model):
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
+    review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
 
 class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
 
-    hospitalization_id= fields.Many2one('psychiatry.evolutions', ondelete='cascade')
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
     date_evolution= fields.Date()
+    comment= fields.Char(string=u'Observaciones')
+
+class PsychiatryReview(models.Model):
+    _name = "psychiatry.review"
+
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
+    date_review= fields.Date()
     comment= fields.Char(string=u'Observaciones')
