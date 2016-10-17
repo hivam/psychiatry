@@ -49,6 +49,15 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     date_evaluation= fields.Date()
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
+    # @api.multi
+    # @api.depends('name', 'bic')
+    # def name_get(self):
+    #     result = []
+    #     for bank in self:
+    #         name = bank.name + (bank.bic and (' - ' + bank.bic) or '')
+    #         result.append((bank.id, name))
+    #     return result
+
     @api.onchange('date')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.whoqolbref.question']
@@ -154,6 +163,7 @@ class PsychiatryHospitalization(models.Model):
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
+    compromise_patient_in= fields.Selection([('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
 
 class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
