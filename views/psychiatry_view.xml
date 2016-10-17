@@ -420,9 +420,25 @@
                             <field name = "patient_id"/>
                             <field name = "insurer_id"/>
                             <field name = "compromise_patient_in" widget="priority"/>
+                            <field name = "compromise_clinic_in" widget="priority"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
+                              <page string="SPA">
+                                  <field name="spa_ids" nolabel="1" >
+                                      <tree string="SPA" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="spa_id"/>
+                                      </tree>
+                                      <form string="Evoluciones">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="spa_id"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+
                               <page string="Evoluciones">
                                   <field name="evolutions_ids" nolabel="1" >
                                       <tree string="Evoluciones" editable="bottom">
