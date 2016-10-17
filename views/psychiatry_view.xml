@@ -23,11 +23,9 @@
                   <field name="model">res.partner</field>
                   <field name="arch" type="xml">
 
-                    <xpath expr="(//field[@name='name'])[4]" position="before">
-                    <!-- <field name="street" position="before"> -->
+                    <field name="customer" position="after">
                         <field name="patient"/>
-                    <!-- </field> -->
-                    </xpath>
+                    </field>
 
                   </field>
               </record>
