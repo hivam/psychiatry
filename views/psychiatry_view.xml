@@ -24,7 +24,7 @@
                   <field name="arch" type="xml">
 
                     <field name="street" position="before">
-                        <field name="patient"/>
+                        <field name="patient" string="Paciente "/>
                     </field>
 
                   </field>
