@@ -163,7 +163,7 @@ class PsychiatryHospitalization(models.Model):
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
-    compromise_patient_in= fields.Selection([('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
+    compromise_patient_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
 
 class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
