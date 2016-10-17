@@ -4,14 +4,14 @@
 
 <!-- ################################################################################################################# -->
 
-      <!-- Vista  tipo formulario Paciente -->
+      <!-- Vista  tipo lista Paciente -->
               <record id="view_psychiatry_patient_tree" model="ir.ui.view">
                  <field name="inherit_id" ref="base.view_partner_tree" />
                   <field name="model">res.partner</field>
                   <field name="arch" type="xml">
 
                     <field name="parent_id" position="after">
-                        <field name="patient" invisible="1"/>
+                        <field name="patient"/>
                     </field>
 
                   </field>
