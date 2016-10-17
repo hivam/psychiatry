@@ -19,6 +19,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     patient= fields.Boolean(string=u'Paciente')
+    insurer= fields.Boolean(string=u'EPS')
 
 #################################################################################################################
 
@@ -45,7 +46,7 @@ class PsychiatryWhoqolbrefQuestion(models.Model):
 class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
-    date= fields.Date()
+    date_evaluation= fields.Date()
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
     @api.onchange('date')
@@ -85,7 +86,7 @@ class PsychiatryScl90rQuestion(models.Model):
 class PsychiatryScl90rEvaluation(models.Model):
     _name = 'psychiatry.scl90r.evaluation'
 
-    date= fields.Date()
+    date_evaluation= fields.Date()
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.onchange('date')
@@ -123,7 +124,7 @@ class PsychiatryMocaQuestion(models.Model):
 class PsychiatryMocaEvaluation(models.Model):
     _name = 'psychiatry.moca.evaluation'
 
-    date= fields.Date()
+    date_evaluation= fields.Date()
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
 
     @api.onchange('date')
@@ -144,3 +145,18 @@ class PsychiatryMocaQuestions(models.Model):
     answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'Valor')
 
 #################################################################################################################
+
+class PsychiatryHospitalization(models.Model):
+    _name = "psychiatry.hospitalization"
+
+    date_in= fields.Date()
+    patient_id= fields.Many2one('res.partner', string=u'Paciente')
+    insurer_id= fields.Many2one('res.partner', string=u'EPS')
+    evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
+
+class PsychiatryEvolutions(models.Model):
+    _name = "psychiatry.evolutions"
+
+    hospitalization_id= fields.Many2one('psychiatry.evolutions', ondelete='cascade')
+    date_evolution= fields.Date()
+    comment= fields.Char(string=u'Observaciones')

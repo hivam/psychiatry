@@ -12,6 +12,7 @@
 
                     <field name="parent_id" position="after">
                         <field name="patient" invisible="1"/>
+                        <field name="insurer" invisible="1"/>
                     </field>
 
                   </field>
@@ -24,7 +25,8 @@
                   <field name="arch" type="xml">
 
                     <field name="email" position="after">
-                      <field name="patient" string="Es paciente?"/>
+                      <field name="patient" string="Paciente"/>
+                      <field name="insurer" string="EPS"/>
                     </field>
 
                   </field>
@@ -135,7 +137,7 @@
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string = "Evaluaciones WHOQOL-BREF" >
-                          <field name = "date"/>
+                          <field name = "date_evaluation"/>
                       </tree>
                   </field>
               </record>
@@ -147,7 +149,7 @@
                   <field name="arch" type="xml">
                       <form string = "Evaluaciones WHOQOL-BREF">
                           <group>
-                            <field name = "date"/>
+                            <field name = "date_evaluation"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -237,7 +239,7 @@
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string = "Evaluaciones SCL-90-R" >
-                          <field name = "date"/>
+                          <field name = "date_evaluation"/>
                       </tree>
                   </field>
               </record>
@@ -249,7 +251,7 @@
                   <field name="arch" type="xml">
                       <form string = "Evaluaciones SCL-90-R">
                           <group>
-                            <field name = "date"/>
+                            <field name = "date_evaluation"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -339,7 +341,7 @@
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string = "Evaluaciones MoCa" >
-                          <field name = "date"/>
+                          <field name = "date_evaluation"/>
                       </tree>
                   </field>
               </record>
@@ -351,7 +353,7 @@
                   <field name="arch" type="xml">
                       <form string = "Evaluaciones MoCa">
                           <group>
-                            <field name = "date"/>
+                            <field name = "date_evaluation"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -391,6 +393,67 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_moca_evaluation" id="psychiatry_moca_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
+      <!-- Vista  tipo lista Hospitalizaciones -->
+              <record model="ir.ui.view" id="view_psychiatry_hospitalization_tree">
+                  <field name="name">Hospitalizaciones</field>
+                  <field name="model">psychiatry.hospitalization</field>
+                  <field name="arch" type="xml">
+                      <tree string = "Hospitalizaciones" >
+                          <field name = "date_in" string="Fecha de ingreso"/>
+                          <field name = "patient_id"/>
+                          <field name = "insurer_id"/>
+                      </tree>
+                  </field>
+              </record>
+
+      <!-- Vista tipo formulario Hospitalizaciones -->
+              <record model="ir.ui.view" id="view_psychiatry_hospitalization_form">
+                  <field name="name">Hospitalizaciones</field>
+                  <field name="model">psychiatry.hospitalization</field>
+                  <field name="arch" type="xml">
+                      <form string = "Hospitalizaciones">
+                          <group>
+                            <field name = "date_in" string="Fecha de ingreso"/>
+                            <field name = "patient_id"/>
+                            <field name = "insurer_id"/>
+                          </group>
+
+                          <notebook colspan="2" col='2'>
+                              <page string="Evoluciones">
+                                  <field name="evolutions_ids" nolabel="1" >
+                                      <tree string="Evoluciones" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="date_evolution"/>
+                                          <field name="comment"/>
+                                      </tree>
+                                      <form string="Evoluciones">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="date_evolution"/>
+                                            <field name="comment"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+                          </notebook>
+
+                      </form>
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_hospitalization">
+                  <field name="name">Hospitalizaciones</field>
+                  <field name="res_model">psychiatry.hospitalization</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion del menu -->
+              <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="20"/>
 
       <!-- ################################################################################################################# -->
 
