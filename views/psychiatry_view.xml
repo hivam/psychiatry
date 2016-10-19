@@ -446,7 +446,20 @@
                               </page>
 
                               <page string="Medicamentos">
-                                  <field name="drug_ids" nolabel="1" >
+                                  <field name="drug_ids_in" nolabel="1" >
+                                      <tree string="Medicamentos" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="drug_id"/>
+                                      </tree>
+                                      <form string="Medicamentos">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="drug_id"/>
+                                          </group>
+                                      </form>
+                                  </field>
+
+                                  <field name="drug_ids_out" nolabel="1" >
                                       <tree string="Medicamentos" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
