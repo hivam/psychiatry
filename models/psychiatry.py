@@ -196,7 +196,7 @@ class PsychiatryHospitalization(models.Model):
     type_out= fields.Selection([('1', 'Planificado'), ('2', 'Alta Voluntaria'), ('3', 'Evasión'),
                                 ('4', 'Recaída'), ('5', 'Otro imprevisto')], string=u'Tipo de egreso')
     place_out= fields.Selection([('1', 'Ninguno'), ('2', 'Comunidad Terapéutica'), ('3', 'Ambulatorio'),
-                                ('4', 'Hospital Día'), ('5', 'Otro')], string=u'Direccionado a')    
+                                ('4', 'Hospital Día'), ('5', 'Otro')], string=u'Direccionado a')
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
     drug_ids_in= fields.One2many('psychiatry.drugs.in', 'hospitalization_id')
     drug_ids_out= fields.One2many('psychiatry.drugs.out', 'hospitalization_id')
@@ -207,6 +207,7 @@ class PsychiatryHospitalization(models.Model):
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
     compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
     compromise_clinic_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Clínico')
+    leave_ids= fields.One2many('psychiatry.leaves', 'hospitalization_id')
 
 class PsychiatrySpaConsume(models.Model):
     _name = "psychiatry.spa.consume"
@@ -253,3 +254,10 @@ class PsychiatryReview(models.Model):
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
     date_review= fields.Date()
     comment= fields.Char(string=u'Observaciones')
+
+class PsychiatryLeaves(models.Model):
+    _name = "psychiatry.leaves"
+
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
+    date_leave= fields.Date()
+    leave_type= fields.Selection([('1', 'Ninguno'), ('2', 'Día Completo'), ('3', 'Medio día'), ('4', 'Salida - Visita')], string=u'Tipo')

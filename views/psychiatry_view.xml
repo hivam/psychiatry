@@ -552,6 +552,23 @@
                                   </field>
                               </page>
 
+                              <page string="Permisos">
+                                  <field name="leave_ids" nolabel="1" >
+                                      <tree string="Permisos" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="date_leave" string="Fecha"/>
+                                          <field name="leave_type"/>
+                                      </tree>
+                                      <form string="Permisos">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="date_leave" string="Fecha"/>
+                                            <field name="leave_type"/>
+                                          </group>
+                                      </form>
+                                  </field>
+                              </page>
+
                           </notebook>
 
                       </form>
