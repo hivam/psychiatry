@@ -446,7 +446,9 @@
                               </page>
 
                               <page string="Medicamentos">
-                                  <field name="drug_ids_in" >
+
+                                <separator string="Medicamentos al ingreso" colspan="4"/>
+                                  <field name="drug_ids_in" nolabel="1">
                                       <tree string="Medicamentos al ingreso" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
@@ -459,7 +461,8 @@
                                       </form>
                                   </field>
 
-                                  <field name="drug_ids_out" >
+                                <separator string="Medicamentos al egreso" colspan="4"/>
+                                  <field name="drug_ids_out" nolabel="1">
                                       <tree string="Medicamentos al egreso" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
@@ -471,6 +474,7 @@
                                           </group>
                                       </form>
                                   </field>
+                                  
                               </page>
 
                               <page string="Evoluciones">
