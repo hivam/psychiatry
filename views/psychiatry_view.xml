@@ -446,7 +446,6 @@
                               </page>
 
                               <page string="Medicamentos">
-
                                 <separator string="Medicamentos al ingreso" colspan="4"/>
                                   <field name="drug_ids_in" nolabel="1">
                                       <tree string="Medicamentos al ingreso" editable="bottom">
@@ -474,7 +473,40 @@
                                           </group>
                                       </form>
                                   </field>
-                                  
+                              </page>
+
+                              <page string="Patología">
+                                <separator string="Dx Psiquiatría" colspan="4"/>
+                                  <field name="diseases_psychiatry_ids" nolabel="1">
+                                      <tree string="Dx Psiquiatría" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="diseases_id"/>
+                                          <field name="diseases_type"/>
+                                      </tree>
+                                      <form string="Dx Psiquiatría">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="diseases_id"/>
+                                            <field name="diseases_type"/>
+                                          </group>
+                                      </form>
+                                  </field>
+
+                                <separator string="Dx Otros" colspan="4"/>
+                                  <field name="diseases_others_ids" nolabel="1">
+                                      <tree string="Dx Otros" editable="bottom">
+                                          <field name="hospitalization_id" invisible="True"/>
+                                          <field name="diseases_id"/>
+                                          <field name="diseases_type"/>
+                                      </tree>
+                                      <form string="Dx Otros">
+                                          <group>
+                                            <field name="hospitalization_id" invisible="True"/>
+                                            <field name="diseases_id"/>
+                                            <field name="diseases_type"/>
+                                          </group>
+                                      </form>
+                                  </field>
                               </page>
 
                               <page string="Evoluciones">

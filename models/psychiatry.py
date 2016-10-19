@@ -176,6 +176,13 @@ class PsychiatryDrug(models.Model):
 
     name= fields.Char(string=u'Medicamento', size=150)
 
+class PsychiatryDiseases(models.Model):
+    _name = 'psychiatry.diseases'
+
+    code_dx= fields.Char(string=u'Medicamento', size=4)
+    name= fields.Char(string=u'Medicamento', size=256)
+    psychiatry= fields.Boolean('Dx Psiquiatría')
+
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
 
@@ -187,6 +194,8 @@ class PsychiatryHospitalization(models.Model):
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
     drug_ids_in= fields.One2many('psychiatry.drugs.in', 'hospitalization_id')
     drug_ids_out= fields.One2many('psychiatry.drugs.out', 'hospitalization_id')
+    diseases_psychiatry_ids= fields.One2many('psychiatry.diseases.psychiatry', 'hospitalization_id')
+    diseases_others_ids= fields.One2many('psychiatry.diseases.others', 'hospitalization_id')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
     compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
@@ -209,6 +218,20 @@ class PsychiatryDrugsOut(models.Model):
 
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
     drug_id= fields.Many2one('psychiatry.drug', string=u'Medicamento')
+
+class PsychiatryDiseasesPsychiatry(models.Model):
+    _name = "psychiatry.diseases.psychiatry"
+
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
+    diseases_id= fields.Many2one('psychiatry.diseases', string=u'Patología')
+    diseases_type= fields.Selection([('1', 'Nuevo'), ('2', 'Antiguo')], string=u'Tipo')
+
+class PsychiatryDiseasesOthers(models.Model):
+    _name = "psychiatry.diseases.others"
+
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
+    diseases_id= fields.Many2one('psychiatry.diseases', string=u'Patología')
+    diseases_type= fields.Selection([('1', 'Nuevo'), ('2', 'Antiguo')], string=u'Tipo')
 
 class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
