@@ -420,11 +420,11 @@
                             <field name = "patient_id"/>
                             <field name = "insurer_id"/>
                           </group>
-                          <group>
+                          <group col="1" colspan="2">
                             <field name = "compromise_patient_in" widget="priority"/>
                             <field name = "compromise_clinic_in" widget="priority"/>
                           </group>
-                          <group>
+                          <group col="1" colspan="2">
                             <field name = "compromise_patient_out" widget="priority"/>
                             <field name = "compromise_clinic_out" widget="priority"/>
                           </group>
