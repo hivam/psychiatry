@@ -192,6 +192,11 @@ class PsychiatryHospitalization(models.Model):
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     compromise_patient_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
     compromise_clinic_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Clínico')
+    date_out= fields.Date()
+    type_out= fields.Selection([('1', 'Planificado'), ('2', 'Alta Voluntaria'), ('3', 'Evasión'),
+                                ('4', 'Recaída'), ('5', 'Otro imprevisto')], string=u'Tipo de egreso')
+    place_out= fields.Selection([('1', 'Ninguno'), ('2', 'Comunidad Terapéutica'), ('3', 'Ambulatorio'),
+                                ('4', 'Hospital Día'), ('5', 'Otro')], string=u'Direccionado a')    
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
     drug_ids_in= fields.One2many('psychiatry.drugs.in', 'hospitalization_id')
     drug_ids_out= fields.One2many('psychiatry.drugs.out', 'hospitalization_id')

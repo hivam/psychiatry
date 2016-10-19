@@ -428,6 +428,12 @@
                             <field name = "compromise_clinic_in" widget="priority"/>
                             <field name = "compromise_clinic_out" widget="priority"/>
                           </group>
+                          <separator string="Egreso" colspan="4"/>
+                          <group>
+                            <field name = "date_out" string="Fecha de egreso"/>
+                            <field name = "type_out"/>
+                            <field name = "place_out"/>
+                          </group>
 
                           <notebook colspan="2" col='2'>
                               <page string="SPA">
