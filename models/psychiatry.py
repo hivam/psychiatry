@@ -182,6 +182,7 @@ class PsychiatryDiseases(models.Model):
     code_dx= fields.Char(string=u'Código', size=4)
     name= fields.Char(string=u'Diagnóstico', size=256)
     psychiatry= fields.Boolean('Dx Psiquiatría')
+    vts= fields.Boolean('Dx Virus de Transmisión Sanguínea - VTS')
 
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
@@ -194,6 +195,7 @@ class PsychiatryHospitalization(models.Model):
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
     drug_ids_in= fields.One2many('psychiatry.drugs.in', 'hospitalization_id')
     drug_ids_out= fields.One2many('psychiatry.drugs.out', 'hospitalization_id')
+    vts_id= fields.Many2one('psychiatry.diseases', string=u'Virus de Transmisión Sanguínea - VTS')
     diseases_psychiatry_ids= fields.One2many('psychiatry.diseases.psychiatry', 'hospitalization_id')
     diseases_others_ids= fields.One2many('psychiatry.diseases.others', 'hospitalization_id')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')

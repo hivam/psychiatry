@@ -476,6 +476,7 @@
                               </page>
 
                               <page string="Patología">
+                                <field name="vts_id"/>
                                 <separator string="Dx Psiquiatría" colspan="4"/>
                                   <field name="diseases_psychiatry_ids" nolabel="1">
                                       <tree string="Dx Psiquiatría" editable="bottom">
