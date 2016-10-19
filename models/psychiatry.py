@@ -58,6 +58,17 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     #         result.append((bank.id, name))
     #     return result
 
+    # @api.model
+    # def name_search(self, name, args=None, operator='ilike', limit=100):
+    #     args = args or []
+    #     domain = []
+    #     if name:
+    #         domain = ['|', ('bic', '=ilike', name + '%'), ('name', operator, name)]
+    #         if operator in expression.NEGATIVE_TERM_OPERATORS:
+    #             domain = ['&'] + domain
+    #     banks = self.search(domain + args, limit=limit)
+    #     return banks.name_get()
+
     @api.onchange('date')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.whoqolbref.question']
@@ -171,6 +182,8 @@ class PsychiatryHospitalization(models.Model):
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
+    compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
+    compromise_clinic_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Clínico')
 
 class PsychiatrySpaConsume(models.Model):
     _name = "psychiatry.spa.consume"

@@ -419,8 +419,14 @@
                             <field name = "date_in" string="Fecha de ingreso"/>
                             <field name = "patient_id"/>
                             <field name = "insurer_id"/>
+                          </group>
+                          <group>
                             <field name = "compromise_patient_in" widget="priority"/>
                             <field name = "compromise_clinic_in" widget="priority"/>
+                          </group>
+                          <group>
+                            <field name = "compromise_patient_out" widget="priority"/>
+                            <field name = "compromise_clinic_out" widget="priority"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
