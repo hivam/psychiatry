@@ -171,6 +171,11 @@ class PsychiatrySpa(models.Model):
 
     name= fields.Char(string=u'Sustancia psicoactiva', size=150)
 
+class PsychiatryDrug(models.Model):
+    _name = 'psychiatry.drug'
+
+    name= fields.Char(string=u'Medicamento', size=150)
+
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
 
@@ -180,6 +185,7 @@ class PsychiatryHospitalization(models.Model):
     compromise_patient_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
     compromise_clinic_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Clínico')
     spa_ids= fields.One2many('psychiatry.spa.consume', 'hospitalization_id')
+    drug_ids= fields.One2many('psychiatry.drugs', 'hospitalization_id')
     evolutions_ids= fields.One2many('psychiatry.evolutions', 'hospitalization_id')
     review_ids= fields.One2many('psychiatry.review', 'hospitalization_id')
     compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
@@ -190,6 +196,12 @@ class PsychiatrySpaConsume(models.Model):
 
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
     spa_id= fields.Many2one('psychiatry.spa', string=u'SPA')
+
+class PsychiatryDrugs(models.Model):
+    _name = "psychiatry.drugs"
+
+    hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
+    drug_id= fields.Many2one('psychiatry.drug', string=u'Medicamento')
 
 class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
