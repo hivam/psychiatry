@@ -429,7 +429,7 @@
                             <field name = "compromise_clinic_out" widget="priority"/>
                           </group>
                           <separator string="Egreso" colspan="4"/>
-                          <group col="4" colspan="6">
+                          <group col="6" colspan="4">
                             <field name = "date_out" string="Fecha de egreso"/>
                             <field name = "type_out"/>
                             <field name = "place_out"/>
