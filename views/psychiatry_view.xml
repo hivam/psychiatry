@@ -446,8 +446,8 @@
                               </page>
 
                               <page string="Medicamentos">
-                                  <field name="drug_ids_in" nolabel="1" >
-                                      <tree string="Medicamentos" editable="bottom">
+                                  <field name="drug_ids_in" >
+                                      <tree string="Medicamentos al ingreso" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
                                       </tree>
@@ -459,8 +459,8 @@
                                       </form>
                                   </field>
 
-                                  <field name="drug_ids_out" nolabel="1" >
-                                      <tree string="Medicamentos" editable="bottom">
+                                  <field name="drug_ids_out" >
+                                      <tree string="Medicamentos al egreso" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
                                       </tree>
