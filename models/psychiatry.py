@@ -179,8 +179,8 @@ class PsychiatryDrug(models.Model):
 class PsychiatryDiseases(models.Model):
     _name = 'psychiatry.diseases'
 
-    code_dx= fields.Char(string=u'Medicamento', size=4)
-    name= fields.Char(string=u'Medicamento', size=256)
+    code_dx= fields.Char(string=u'Código', size=4)
+    name= fields.Char(string=u'Diagnóstico', size=256)
     psychiatry= fields.Boolean('Dx Psiquiatría')
 
 class PsychiatryHospitalization(models.Model):
