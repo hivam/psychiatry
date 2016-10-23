@@ -46,7 +46,7 @@ class PsychiatryWhoqolbrefQuestion(models.Model):
 class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
-    date_evaluation= fields.Date()
+    date_evaluation= fields.Date.today()
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
