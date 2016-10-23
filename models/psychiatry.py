@@ -70,7 +70,7 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     #     banks = self.search(domain + args, limit=limit)
     #     return banks.name_get()
 
-    @api.onchange('date')
+    @api.onchange('date_evaluation')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.whoqolbref.question']
         question_fill=[]
@@ -111,7 +111,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
-    @api.onchange('date')
+    @api.onchange('date_evaluation')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.scl90r.question']
         question_fill=[]
@@ -150,7 +150,7 @@ class PsychiatryMocaEvaluation(models.Model):
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
 
-    @api.onchange('date')
+    @api.onchange('date_evaluation')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.moca.question']
         question_fill=[]
