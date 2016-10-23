@@ -47,6 +47,7 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
     date_evaluation= fields.Date()
+    patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
     # @api.multi
@@ -107,6 +108,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     _name = 'psychiatry.scl90r.evaluation'
 
     date_evaluation= fields.Date()
+    patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.onchange('date')
@@ -145,6 +147,7 @@ class PsychiatryMocaEvaluation(models.Model):
     _name = 'psychiatry.moca.evaluation'
 
     date_evaluation= fields.Date()
+    patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
 
     @api.onchange('date')

@@ -54,10 +54,10 @@
                   <field name="name">Respuestas</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
                   <field name="arch" type="xml">
-                      <tree string = "Respuestas" >
-                          <field name = "name"/>
-                          <field name = "answer_scale"/>
-                          <field name = "measure"/>
+                      <tree string="Respuestas" >
+                          <field name="name"/>
+                          <field name="answer_scale"/>
+                          <field name="measure"/>
                       </tree>
                   </field>
               </record>
@@ -67,11 +67,11 @@
                   <field name="name">Respuestas</field>
                   <field name="model">psychiatry.whoqolbref.answer</field>
                   <field name="arch" type="xml">
-                      <form string = "Respuestas">
+                      <form string="Respuestas">
                           <group>
-                            <field name = "name"/>
-                            <field name = "answer_scale"/>
-                            <field name = "measure"/>
+                            <field name="name"/>
+                            <field name="answer_scale"/>
+                            <field name="measure"/>
                           </group>
                       </form>
                   </field>
@@ -95,10 +95,10 @@
                   <field name="name">Preguntas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.question</field>
                   <field name="arch" type="xml">
-                      <tree string = "Preguntas WHOQOL-BREF" >
-                          <field name = "name"/>
-                          <field name = "category"/>
-                          <field name = "answer_scale"/>
+                      <tree string="Preguntas WHOQOL-BREF" >
+                          <field name="name"/>
+                          <field name="category"/>
+                          <field name="answer_scale"/>
                       </tree>
                   </field>
               </record>
@@ -108,11 +108,11 @@
                   <field name="name">Preguntas WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.question</field>
                   <field name="arch" type="xml">
-                      <form string = "Preguntas WHOQOL-BREF">
+                      <form string="Preguntas WHOQOL-BREF">
                           <group>
-                            <field name = "name"/>
-                            <field name = "category"/>
-                            <field name = "answer_scale"/> -->
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="answer_scale"/> -->
                           </group>
                       </form>
                   </field>
@@ -136,8 +136,9 @@
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
-                      <tree string = "Evaluaciones WHOQOL-BREF" >
-                          <field name = "date_evaluation"/>
+                      <tree string="Evaluaciones WHOQOL-BREF" >
+                          <field name="date_evaluation"/>
+                          <field name="patient_id"/>
                       </tree>
                   </field>
               </record>
@@ -147,9 +148,10 @@
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
-                      <form string = "Evaluaciones WHOQOL-BREF">
+                      <form string="Evaluaciones WHOQOL-BREF">
                           <group>
-                            <field name = "date_evaluation"/>
+                            <field name="date_evaluation"/>
+                            <field name="patient_id"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -197,10 +199,10 @@
                   <field name="name">Preguntas SCL-90-R</field>
                   <field name="model">psychiatry.scl90r.question</field>
                   <field name="arch" type="xml">
-                      <tree string = "Preguntas SCL-90-R" >
-                          <field name = "name"/>
-                          <field name = "category"/>
-                          <field name = "answer_scale"/>
+                      <tree string="Preguntas SCL-90-R" >
+                          <field name="name"/>
+                          <field name="category"/>
+                          <field name="answer_scale"/>
                       </tree>
                   </field>
               </record>
@@ -210,11 +212,11 @@
                   <field name="name">Preguntas SCL-90-R</field>
                   <field name="model">psychiatry.scl90r.question</field>
                   <field name="arch" type="xml">
-                      <form string = "Preguntas SCL-90-R">
+                      <form string="Preguntas SCL-90-R">
                           <group>
-                            <field name = "name"/>
-                            <field name = "category"/>
-                            <field name = "answer_scale"/> -->
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="answer_scale"/> -->
                           </group>
                       </form>
                   </field>
@@ -238,8 +240,9 @@
                   <field name="name">Evaluaciones SCL-90-R</field>
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
-                      <tree string = "Evaluaciones SCL-90-R" >
-                          <field name = "date_evaluation"/>
+                      <tree string="Evaluaciones SCL-90-R" >
+                          <field name="date_evaluation"/>
+                          <field name="patient_id"/>
                       </tree>
                   </field>
               </record>
@@ -249,9 +252,10 @@
                   <field name="name">Evaluaciones SCL-90-R</field>
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
-                      <form string = "Evaluaciones SCL-90-R">
+                      <form string="Evaluaciones SCL-90-R">
                           <group>
-                            <field name = "date_evaluation"/>
+                            <field name="date_evaluation"/>
+                            <field name="patient_id"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -299,10 +303,10 @@
                   <field name="name">Preguntas MoCa</field>
                   <field name="model">psychiatry.moca.question</field>
                   <field name="arch" type="xml">
-                      <tree string = "Preguntas MoCa" >
-                          <field name = "name"/>
-                          <field name = "category"/>
-                          <field name = "answer_scale"/>
+                      <tree string="Preguntas MoCa" >
+                          <field name="name"/>
+                          <field name="category"/>
+                          <field name="answer_scale"/>
                       </tree>
                   </field>
               </record>
@@ -312,11 +316,11 @@
                   <field name="name">Preguntas MoCa</field>
                   <field name="model">psychiatry.moca.question</field>
                   <field name="arch" type="xml">
-                      <form string = "Preguntas MoCa">
+                      <form string="Preguntas MoCa">
                           <group>
-                            <field name = "name"/>
-                            <field name = "category"/>
-                            <field name = "answer_scale"/> -->
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="answer_scale"/> -->
                           </group>
                       </form>
                   </field>
@@ -340,8 +344,9 @@
                   <field name="name">Evaluaciones MoCa</field>
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
-                      <tree string = "Evaluaciones MoCa" >
-                          <field name = "date_evaluation"/>
+                      <tree string="Evaluaciones MoCa" >
+                          <field name="date_evaluation"/>
+                          <field name="patient_id"/>
                       </tree>
                   </field>
               </record>
@@ -351,9 +356,10 @@
                   <field name="name">Evaluaciones MoCa</field>
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
-                      <form string = "Evaluaciones MoCa">
+                      <form string="Evaluaciones MoCa">
                           <group>
-                            <field name = "date_evaluation"/>
+                            <field name="date_evaluation"/>
+                            <field name="patient_id"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -401,10 +407,10 @@
                   <field name="name">Hospitalizaciones</field>
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
-                      <tree string = "Hospitalizaciones" >
-                          <field name = "date_in" string="Fecha de ingreso"/>
-                          <field name = "patient_id"/>
-                          <field name = "insurer_id"/>
+                      <tree string="Hospitalizaciones" >
+                          <field name="date_in" string="Fecha de ingreso"/>
+                          <field name="patient_id"/>
+                          <field name="insurer_id"/>
                       </tree>
                   </field>
               </record>
@@ -414,25 +420,25 @@
                   <field name="name">Hospitalizaciones</field>
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
-                      <form string = "Hospitalizaciones">
+                      <form string="Hospitalizaciones">
                           <group>
-                            <field name = "date_in" string="Fecha de ingreso"/>
-                            <field name = "patient_id"/>
-                            <field name = "insurer_id"/>
+                            <field name="date_in" string="Fecha de ingreso"/>
+                            <field name="patient_id"/>
+                            <field name="insurer_id"/>
                           </group>
                           <group col="4" colspan="2">
-                            <field name = "compromise_patient_in" widget="priority"/>
-                            <field name = "compromise_patient_out" widget="priority"/>
+                            <field name="compromise_patient_in" widget="priority"/>
+                            <field name="compromise_patient_out" widget="priority"/>
                           </group>
                           <group col="4" colspan="2">
-                            <field name = "compromise_clinic_in" widget="priority"/>
-                            <field name = "compromise_clinic_out" widget="priority"/>
+                            <field name="compromise_clinic_in" widget="priority"/>
+                            <field name="compromise_clinic_out" widget="priority"/>
                           </group>
                           <separator string="Egreso" colspan="4"/>
                           <group col="6" colspan="4">
-                            <field name = "date_out" string="Fecha de egreso"/>
-                            <field name = "type_out"/>
-                            <field name = "place_out"/>
+                            <field name="date_out" string="Fecha de egreso"/>
+                            <field name="type_out"/>
+                            <field name="place_out"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
