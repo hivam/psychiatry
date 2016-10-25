@@ -46,7 +46,7 @@ class PsychiatryWhoqolbrefQuestion(models.Model):
 class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
-    date_evaluation= fields.Date()
+    date_evaluation= fields.Date(default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
@@ -107,7 +107,7 @@ class PsychiatryScl90rQuestion(models.Model):
 class PsychiatryScl90rEvaluation(models.Model):
     _name = 'psychiatry.scl90r.evaluation'
 
-    date_evaluation= fields.Date()
+    date_evaluation= fields.Date(default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
@@ -146,7 +146,7 @@ class PsychiatryMocaQuestion(models.Model):
 class PsychiatryMocaEvaluation(models.Model):
     _name = 'psychiatry.moca.evaluation'
 
-    date_evaluation= fields.Date()
+    date_evaluation= fields.Date(default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
 
@@ -190,7 +190,7 @@ class PsychiatryDiseases(models.Model):
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
 
-    date_in= fields.Date()
+    date_in= fields.Date(default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     compromise_patient_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
@@ -248,19 +248,19 @@ class PsychiatryEvolutions(models.Model):
     _name = "psychiatry.evolutions"
 
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
-    date_evolution= fields.Date()
+    date_evolution= fields.Date(default=fields.Date.today())
     comment= fields.Char(string=u'Observaciones')
 
 class PsychiatryReview(models.Model):
     _name = "psychiatry.review"
 
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
-    date_review= fields.Date()
+    date_review= fields.Date(default=fields.Date.today())
     comment= fields.Char(string=u'Observaciones')
 
 class PsychiatryLeaves(models.Model):
     _name = "psychiatry.leaves"
 
     hospitalization_id= fields.Many2one('psychiatry.hospitalization', ondelete='cascade')
-    date_leave= fields.Date()
+    date_leave= fields.Date(default=fields.Date.today())
     leave_type= fields.Selection([('1', 'Ninguno'), ('2', 'Día Completo'), ('3', 'Medio día'), ('4', 'Salida - Visita')], string=u'Tipo')
