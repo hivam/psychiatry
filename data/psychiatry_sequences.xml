@@ -2,7 +2,7 @@
 <openerp>
   <data noupdate="1">
 
-    <record id="psychiatry.whoqolbref.sequence" model="ir.sequence">
+    <record id="psychiatry_whoqolbref_sequence" model="ir.sequence">
         <field name="name">WHOQOL-BREF N°</field>
         <field name="code">whoqolbref.sequence</field>
         <field name="padding" eval="4"/>
