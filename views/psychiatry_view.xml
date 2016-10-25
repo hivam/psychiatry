@@ -137,6 +137,7 @@
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string="Evaluaciones WHOQOL-BREF" >
+                          <field name="sequence"/>
                           <field name="date_evaluation"/>
                           <field name="patient_id"/>
                       </tree>
@@ -150,6 +151,7 @@
                   <field name="arch" type="xml">
                       <form string="Evaluaciones WHOQOL-BREF">
                           <group>
+                            <field name="sequence"/>
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
                           </group>
