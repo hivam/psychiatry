@@ -6,7 +6,34 @@
         <field name="name">WHOQOL-BREF N°</field>
         <field name="code">whoqolbref.sequence</field>
         <field name="padding" eval="4"/>
-        <field name="prefix">WHOQOL-BREF N°</field>
+        <field name="prefix">WHOQOL-BREF N° </field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+
+    <record id="psychiatry_scl90r_sequence" model="ir.sequence">
+        <field name="name">SCL-90-R N°</field>
+        <field name="code">scl90r.sequence</field>
+        <field name="padding" eval="4"/>
+        <field name="prefix">SCL-90-R N° </field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+
+    <record id="psychiatry_moca_sequence" model="ir.sequence">
+        <field name="name">MoCa N°</field>
+        <field name="code">moca.sequence</field>
+        <field name="padding" eval="4"/>
+        <field name="prefix">MoCa N° </field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+
+    <record id="psychiatry_hospitalization_sequence" model="ir.sequence">
+        <field name="name">Hosp N°</field>
+        <field name="code">hospitalization.sequence</field>
+        <field name="padding" eval="4"/>
+        <field name="prefix">Hosp N° </field>
         <field eval="1" name="number_next"/>
         <field eval="1" name="number_increment"/>
     </record>

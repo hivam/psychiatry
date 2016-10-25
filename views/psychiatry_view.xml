@@ -243,6 +243,7 @@
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string="Evaluaciones SCL-90-R" >
+                          <field name="name" readonly="True"/>
                           <field name="date_evaluation"/>
                           <field name="patient_id"/>
                       </tree>
@@ -256,6 +257,7 @@
                   <field name="arch" type="xml">
                       <form string="Evaluaciones SCL-90-R">
                           <group>
+                            <field name="name" readonly="True"/>
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
                           </group>
@@ -347,6 +349,7 @@
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
                       <tree string="Evaluaciones MoCa" >
+                          <field name="name" readonly="True"/>
                           <field name="date_evaluation"/>
                           <field name="patient_id"/>
                       </tree>
@@ -360,6 +363,7 @@
                   <field name="arch" type="xml">
                       <form string="Evaluaciones MoCa">
                           <group>
+                            <field name="name" readonly="True"/>
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
                           </group>
@@ -410,6 +414,7 @@
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
                       <tree string="Hospitalizaciones" >
+                          <field name="name" readonly="True"/>
                           <field name="date_in" string="Fecha de ingreso"/>
                           <field name="patient_id"/>
                           <field name="insurer_id"/>
@@ -424,6 +429,7 @@
                   <field name="arch" type="xml">
                       <form string="Hospitalizaciones">
                           <group>
+                            <field name="name" readonly="True"/>
                             <field name="date_in" string="Fecha de ingreso"/>
                             <field name="patient_id"/>
                             <field name="insurer_id"/>

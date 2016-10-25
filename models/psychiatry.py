@@ -47,7 +47,7 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
     name = fields.Char(string=u'Número')
-    date_evaluation= fields.Date(default=fields.Date.today())
+    date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
@@ -116,9 +116,18 @@ class PsychiatryScl90rQuestion(models.Model):
 class PsychiatryScl90rEvaluation(models.Model):
     _name = 'psychiatry.scl90r.evaluation'
 
-    date_evaluation= fields.Date(default=fields.Date.today())
+    name = fields.Char(string=u'Número')
+    date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
+
+    @api.model
+    def create(self, vals):
+        if vals:
+            vals.update({
+                'name': self.env['ir.sequence'].get('scl90r.sequence')
+            })
+        return super(PsychiatryScl90rEvaluation, self).create(vals)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):
@@ -155,9 +164,18 @@ class PsychiatryMocaQuestion(models.Model):
 class PsychiatryMocaEvaluation(models.Model):
     _name = 'psychiatry.moca.evaluation'
 
-    date_evaluation= fields.Date(default=fields.Date.today())
+    name = fields.Char(string=u'Número')
+    date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
+
+    @api.model
+    def create(self, vals):
+        if vals:
+            vals.update({
+                'name': self.env['ir.sequence'].get('moca.sequence')
+            })
+        return super(PsychiatryMocaEvaluation, self).create(vals)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):
@@ -199,12 +217,13 @@ class PsychiatryDiseases(models.Model):
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
 
-    date_in= fields.Date(default=fields.Date.today())
+    name = fields.Char(string=u'Número')
+    date_in= fields.Date(string=u'Fecha de ingreso', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     insurer_id= fields.Many2one('res.partner', string=u'EPS')
     compromise_patient_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Paciente')
     compromise_clinic_in= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al ingreso - Clínico')
-    date_out= fields.Date()
+    date_out= fields.Date(string=u'Fecha de egreso')
     type_out= fields.Selection([('1', 'Planificado'), ('2', 'Alta Voluntaria'), ('3', 'Evasión'),
                                 ('4', 'Recaída'), ('5', 'Otro imprevisto')], string=u'Tipo de egreso')
     place_out= fields.Selection([('1', 'Ninguno'), ('2', 'Comunidad Terapéutica'), ('3', 'Ambulatorio'),
@@ -220,6 +239,14 @@ class PsychiatryHospitalization(models.Model):
     compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
     compromise_clinic_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Clínico')
     leave_ids= fields.One2many('psychiatry.leaves', 'hospitalization_id')
+
+    @api.model
+    def create(self, vals):
+        if vals:
+            vals.update({
+                'name': self.env['ir.sequence'].get('hospitalization.sequence')
+            })
+        return super(PsychiatryHospitalization, self).create(vals)
 
 class PsychiatrySpaConsume(models.Model):
     _name = "psychiatry.spa.consume"
