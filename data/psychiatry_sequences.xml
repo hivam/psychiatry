@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+  <data noupdate="1">
+
+    <record id="psychiatry.whoqolbref.sequence" model="ir.sequence">
+        <field name="name">WHOQOL-BREF N°</field>
+        <field name="code">whoqolbref.sequence</field>
+        <field name="padding" eval="4"/>
+        <field name="prefix">WHOQOL-BREF N°</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+
+  </data>
+</openerp>

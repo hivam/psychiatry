@@ -17,6 +17,7 @@ This module allows
     'depends' : [],
     'data' : [
                 'views/psychiatry_view.xml',
+                'data/psychiatry_sequences.xml'
               ],
     'installable': True,
     'auto_install': False,

@@ -46,10 +46,18 @@ class PsychiatryWhoqolbrefQuestion(models.Model):
 class PsychiatryWhoqolbrefEvaluation(models.Model):
     _name = 'psychiatry.whoqolbref.evaluation'
 
-    sequence = fields.Integer(string=u'Número')
+    name = fields.Integer(string=u'Número')
     date_evaluation= fields.Date(default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
+
+    @api.model
+    def create(self, vals):
+        if vals:
+            vals.update({
+                'name': self.env['ir.sequence'].get('whoqolbref.sequence')
+            })
+        return super(PsychiatryWhoqolbrefEvaluation, self).create(vals)
 
     # @api.multi
     # @api.depends('name', 'bic')
