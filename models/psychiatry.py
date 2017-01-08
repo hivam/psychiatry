@@ -153,6 +153,16 @@ class PsychiatryScl90rEvaluation(models.Model):
     name = fields.Char(string=u'Número')
     date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
+    score_somatizaciones= fields.Integer(compute='_score_scl90r', string=u'Somatizaciones')
+    score_obsesiones_compulsiones= fields.Integer(compute='_score_scl90r', string=u'Obsesiones y compulsiones')
+    score_sensitividad_interpersonal= fields.Integer(compute='_score_scl90r', string=u'Sensitividad interpersonal')
+    score_depresion= fields.Integer(compute='_score_scl90r', string=u'Depresión')
+    score_ansiedad= fields.Integer(compute='_score_scl90r', string=u'Ansiedad')
+    score_hostilidad= fields.Integer(compute='_score_scl90r', string=u'Hostilidad')
+    score_ansiedad_fobica= fields.Integer(compute='_score_scl90r', string=u'Ansiedad fóbica')
+    score_ideacion_paranoide= fields.Integer(compute='_score_scl90r', string=u'Ideación paranoide')
+    score_psicoticismo= fields.Integer(compute='_score_scl90r', string=u'Psicoticismo')
+    score_items_adicionales= fields.Integer(compute='_score_scl90r', string=u'Ítems adicionales')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.model
@@ -162,6 +172,55 @@ class PsychiatryScl90rEvaluation(models.Model):
                 'name': self.env['ir.sequence'].get('scl90r.sequence')
             })
         return super(PsychiatryScl90rEvaluation, self).create(vals)
+
+    @api.depends('question_ids.answer_measure')
+    def _score_whoqolbref(self):
+        for record in self:
+            score_som = 0
+            score_obs = 0
+            score_si = 0
+            score_dep = 0
+            score_ans = 0
+            score_hos = 0
+            score_fob = 0
+            score_par = 0
+            score_psic = 0
+            score_ia = 0
+            for line in record.question_ids:
+                question_category = line.question_id.category
+                if question_category == 'SOM':
+                    score_som += line.answer_measure
+                if question_category == 'OBS':
+                    score_obs += line.answer_measure
+                if question_category == 'SI':
+                    score_si += line.answer_measure
+                if question_category == 'DEP':
+                    score_dep += line.answer_measure
+                if question_category == 'ANS':
+                    score_ans += line.answer_measure
+                if question_category == 'HOS':
+                    score_hos += line.answer_measure
+                if question_category == 'FOB':
+                    score_fob += line.answer_measure
+                if question_category == 'PAR':
+                    score_par += line.answer_measure
+                if question_category == 'PSIC':
+                    score_psic += line.answer_measure
+                if question_category == 'IA':
+                    score_ia += line.answer_measure
+                    # logger.info('##########################################')
+                    # logger.info(score_general)
+                    # logger.info('##########################################')
+        record.score_somatizaciones = score_som
+        record.score_obsesiones_compulsiones = score_obs
+        record.score_sensitividad_interpersonal = score_si
+        record.score_depresion = score_dep
+        record.score_ansiedad = score_ans
+        record.score_hostilidad = score_hos
+        record.score_ansiedad_fobica = score_fob
+        record.score_ideacion_paranoide = score_par
+        record.score_psicoticismo = score_psic
+        record.score_items_adicionales = score_ia
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):

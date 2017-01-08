@@ -151,8 +151,8 @@
                   <field name="arch" type="xml">
                       <form string="Evaluaciones WHOQOL-BREF">
                           <group col="4" colspan="2">
-                            <field name="name" readonly="True"/>
                             <field name="date_evaluation"/>
+                            <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                           </group>
                           <separator string="Resultados"/>
@@ -264,10 +264,22 @@
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones SCL-90-R">
-                          <group>
-                            <field name="name" readonly="True"/>
+                          <group col="4" colspan="2">
                             <field name="date_evaluation"/>
+                            <field name="name" readonly="True"/>
                             <field name="patient_id"/>
+                          </group>
+                          <group col="4" colspan="2">
+                            <field name="score_somatizaciones"/>
+                            <field name="score_obsesiones_compulsiones"/>
+                            <field name="score_sensitividad_interpersonal"/>
+                            <field name="score_depresion"/>
+                            <field name="score_ansiedad"/>
+                            <field name="score_hostilidad"/>
+                            <field name="score_ansiedad_fobica"/>
+                            <field name="score_ideacion_paranoide"/>
+                            <field name="score_psicoticismo"/>
+                            <field name="score_items_adicionales"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -370,9 +382,9 @@
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones MoCa">
-                          <group>
-                            <field name="name" readonly="True"/>
+                          <group col="4" colspan="2">
                             <field name="date_evaluation"/>
+                            <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                           </group>
 
@@ -436,9 +448,9 @@
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
                       <form string="Hospitalizaciones">
-                          <group>
-                            <field name="name" readonly="True"/>
+                          <group col="4" colspan="2">
                             <field name="date_in" string="Fecha de ingreso"/>
+                            <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                             <field name="insurer_id"/>
                           </group>
