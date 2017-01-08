@@ -64,10 +64,11 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     def _score_whoqolbref(self):
         for record in self:
             for line in record.question_ids:
-                question_category = line.question_id.category
+                question_category = line.category
+                line_score = 0
                 if question_category == 'G':
-                    line_score_general = sum(line.answer_measure)
-        record.score_general = line_score_general
+                    line_score += line.answer_measure
+        record.score_general = line_score
 
     # @api.multi
     # @api.depends('name', 'bic')
