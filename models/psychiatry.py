@@ -50,6 +50,10 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
     score_general= fields.Integer(compute='_score_whoqolbref', string=u'General')
+    score_fisica= fields.Integer(compute='_score_whoqolbref', string=u'Salud física')
+    score_psicologica= fields.Integer(compute='_score_whoqolbref', string=u'Psicológica')
+    score_relaciones= fields.Integer(compute='_score_whoqolbref', string=u'Relaciones interpersonales')
+    score_entorno= fields.Integer(compute='_score_whoqolbref', string=u'Entorno')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
     @api.model
@@ -63,15 +67,31 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_whoqolbref(self):
         for record in self:
-            score_general = 0
+            score = 0
+            # score_f = 0
+            # score_p = 0
+            # score_r = 0
+            # score_e = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
                 if question_category == 'G':
-                    score_general += line.answer_measure
-                    logger.info('##########################################')
-                    logger.info(score_general)
-                    logger.info('##########################################')
-        record.score_general = score_general
+                    score_g = score += line.answer_measure
+                elif question_category == 'F':
+                    score_f = score += line.answer_measure
+                elif question_category == 'P':
+                    score_p = score += line.answer_measure
+                elif question_category == 'R':
+                    score_r = score += line.answer_measure
+                else question_category == 'E':
+                    score_e = score += line.answer_measure
+                    # logger.info('##########################################')
+                    # logger.info(score_general)
+                    # logger.info('##########################################')
+        record.score_general = score_g
+        record.score_fisica = score_f
+        record.score_psicologica = score_p
+        record.score_relaciones = score_r
+        record.score_entorno = score_e
 
     # @api.multi
     # @api.depends('name', 'bic')

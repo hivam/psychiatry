@@ -155,8 +155,13 @@
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
                           </group>
-                          <group>
+                          <separator string="Resultados"/>
+                          <group col="4" colspan="2">
                             <field name="score_general"/>
+                            <field name="score_fisica"/>
+                            <field name="score_psicologica"/>
+                            <field name="score_relaciones"/>
+                            <field name="score_entorno"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
