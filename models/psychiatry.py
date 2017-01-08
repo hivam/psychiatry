@@ -67,23 +67,23 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_whoqolbref(self):
         for record in self:
-            score = 0
-            # score_f = 0
-            # score_p = 0
-            # score_r = 0
-            # score_e = 0
+            score_g = 0
+            score_f = 0
+            score_p = 0
+            score_r = 0
+            score_e = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
                 if question_category == 'G':
-                    score_g = score += line.answer_measure
+                    score_g += line.answer_measure
                 elif question_category == 'F':
-                    score_f = score += line.answer_measure
+                    score_f += line.answer_measure
                 elif question_category == 'P':
-                    score_p = score += line.answer_measure
+                    score_p += line.answer_measure
                 elif question_category == 'R':
-                    score_r = score += line.answer_measure
+                    score_r += line.answer_measure
                 else question_category == 'E':
-                    score_e = score += line.answer_measure
+                    score_e += line.answer_measure
                     # logger.info('##########################################')
                     # logger.info(score_general)
                     # logger.info('##########################################')
