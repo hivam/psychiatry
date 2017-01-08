@@ -150,11 +150,13 @@
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones WHOQOL-BREF">
-                          <group>
+                          <group col="4" colspan="2">
                             <field name="name" readonly="True"/>
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
-                            <field name="score"/>
+                          </group>
+                          <group col="4" colspan="2">
+                            <field name="score_general"/>
                           </group>
 
                           <notebook colspan="2" col='2'>

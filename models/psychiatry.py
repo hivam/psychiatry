@@ -49,7 +49,7 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     name = fields.Char(string=u'Número')
     date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
-    score= fields.Integer(compute='_score_whoqolbref')
+    score_general= fields.Integer(compute='_score_whoqolbref', string=u'General')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
 
     @api.model
@@ -60,10 +60,11 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
             })
         return super(PsychiatryWhoqolbrefEvaluation, self).create(vals)
 
-    @api.depends('question_ids.answer_measure')
+    @api.depends('question_ids.answer_measure', 'question_ids.question_id.category')
     def _score_whoqolbref(self):
         for record in self:
-            record.score = sum(line.answer_measure for line in record.question_ids)
+            if question_ids.question_id.category == "G":
+                record.score_general = sum(line.answer_measure for line in record.question_ids)
 
     # @api.multi
     # @api.depends('name', 'bic')
