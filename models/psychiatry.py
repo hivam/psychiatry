@@ -68,6 +68,9 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
                 line_score = 0
                 if question_category == 'G':
                     line_score += line.answer_measure
+                    logger.info('##########################################')
+                    logger.info(line_score)
+                    logger.info('##########################################')
         record.score_general = line_score
 
     # @api.multi
