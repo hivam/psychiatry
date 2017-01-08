@@ -63,15 +63,15 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_whoqolbref(self):
         for record in self:
+            score_general = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
-                line_score = 0
                 if question_category == 'G':
-                    line_score += line.answer_measure
+                    score_general += line.answer_measure
                     logger.info('##########################################')
-                    logger.info(line_score)
+                    logger.info(score_general)
                     logger.info('##########################################')
-        record.score_general = line_score
+        record.score_general = score_general
 
     # @api.multi
     # @api.depends('name', 'bic')
