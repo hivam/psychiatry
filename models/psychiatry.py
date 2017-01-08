@@ -76,13 +76,13 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
                 question_category = line.question_id.category
                 if question_category == 'G':
                     score_g += line.answer_measure
-                elif question_category == 'F':
+                if question_category == 'F':
                     score_f += line.answer_measure
-                elif question_category == 'P':
+                if question_category == 'P':
                     score_p += line.answer_measure
-                elif question_category == 'R':
+                if question_category == 'R':
                     score_r += line.answer_measure
-                else question_category == 'E':
+                if question_category == 'E':
                     score_e += line.answer_measure
                     # logger.info('##########################################')
                     # logger.info(score_general)
