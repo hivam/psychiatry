@@ -154,6 +154,7 @@
                             <field name="name" readonly="True"/>
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
+                            <field name="score"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
