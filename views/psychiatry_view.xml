@@ -155,7 +155,7 @@
                             <field name="date_evaluation"/>
                             <field name="patient_id"/>
                           </group>
-                          <group col="4" colspan="2">
+                          <group>
                             <field name="score_general"/>
                           </group>
 
