@@ -174,7 +174,7 @@ class PsychiatryScl90rEvaluation(models.Model):
         return super(PsychiatryScl90rEvaluation, self).create(vals)
 
     @api.depends('question_ids.answer_measure')
-    def _score_whoqolbref(self):
+    def _score_scl90r(self):
         for record in self:
             score_som = 0
             score_obs = 0
