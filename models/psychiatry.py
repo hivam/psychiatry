@@ -176,8 +176,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_scl90r(self):
         for record in self:
-            num_lineas = 0
-            # score = 0
+            num_lineas_som = 0
             score_som = 0
             score_obs = 0
             score_si = 0
@@ -193,13 +192,7 @@ class PsychiatryScl90rEvaluation(models.Model):
                 answer_exist = line.answer_measure
                 if question_category == 'SOM' and answer_exist != False:
                     score_som += line.answer_measure
-                    # num_lineas += 1
-                #     score += line.answer_measure
-                # if num_lineas > 0:
-                    # score_som = score/num_lineas
-                    # logger.info('##########################################')
-                    # logger.info(score_som)
-                    # logger.info('##########################################')
+                    num_lineas_som += 1
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
                 if question_category == 'SI':
@@ -218,7 +211,13 @@ class PsychiatryScl90rEvaluation(models.Model):
                     score_psic += line.answer_measure
                 if question_category == 'IA':
                     score_ia += line.answer_measure
-        record.score_somatizaciones = score_som
+                    # logger.info('##########################################')
+                    # logger.info(num_lineas)
+                    # logger.info('##########################################')
+        if num_lineas_som == 0:
+            num_lineas_som = 1
+
+        record.score_somatizaciones = score_som / num_lineas_som
         record.score_obsesiones_compulsiones = score_obs
         record.score_sensitividad_interpersonal = score_si
         record.score_depresion = score_dep
