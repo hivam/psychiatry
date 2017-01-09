@@ -269,6 +269,7 @@
                             <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                           </group>
+                          <separator string="Resultados"/>
                           <group col="4" colspan="2">
                             <field name="score_somatizaciones"/>
                             <field name="score_obsesiones_compulsiones"/>
