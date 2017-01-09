@@ -269,19 +269,6 @@
                             <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                           </group>
-                          <separator string="Resultados"/>
-                          <group col="4" colspan="2">
-                            <field name="score_somatizaciones"/>
-                            <field name="score_obsesiones_compulsiones"/>
-                            <field name="score_sensitividad_interpersonal"/>
-                            <field name="score_depresion"/>
-                            <field name="score_ansiedad"/>
-                            <field name="score_hostilidad"/>
-                            <field name="score_ansiedad_fobica"/>
-                            <field name="score_ideacion_paranoide"/>
-                            <field name="score_psicoticismo"/>
-                            <field name="score_items_adicionales"/>
-                          </group>
 
                           <notebook colspan="2" col='2'>
                               <page string="SCL-90-R">
@@ -304,8 +291,22 @@
                                       </form>
                                   </field>
                               </page>
+                              <page string="Resultados">
+                                <separator string="Dimensiones primarias"/>
+                                    <group col="6" colspan="2">
+                                        <field name="score_somatizaciones"/>
+                                        <field name="score_obsesiones_compulsiones"/>
+                                        <field name="score_sensitividad_interpersonal"/>
+                                        <field name="score_depresion"/>
+                                        <field name="score_ansiedad"/>
+                                        <field name="score_hostilidad"/>
+                                        <field name="score_ansiedad_fobica"/>
+                                        <field name="score_ideacion_paranoide"/>
+                                        <field name="score_psicoticismo"/>
+                                        <field name="score_items_adicionales"/>
+                                    </group>
+                              </page>
                           </notebook>
-
                       </form>
                   </field>
               </record>
