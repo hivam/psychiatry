@@ -211,12 +211,12 @@ class PsychiatryScl90rEvaluation(models.Model):
                     score_psic += line.answer_measure
                 if question_category == 'IA':
                     score_ia += line.answer_measure
-                    # logger.info('##########################################')
-                    # logger.info(num_lineas)
-                    # logger.info('##########################################')
-        if num_lineas_som == 0:
-            num_lineas_som = 1
-
+        logger.info('##########################################')
+        logger.info(score_som)
+        logger.info(num_lineas_som)
+        logger.info('##########################################')
+        # if num_lineas_som == 0:
+        #     num_lineas_som = 1
         record.score_somatizaciones = score_som / num_lineas_som
         record.score_obsesiones_compulsiones = score_obs
         record.score_sensitividad_interpersonal = score_si
