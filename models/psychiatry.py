@@ -176,16 +176,24 @@ class PsychiatryScl90rEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_scl90r(self):
         for record in self:
-            num_lineas_som = 0
             score_som = 0
+            num_lineas_som = 0
             score_obs = 0
+            num_lineas_obs = 0
             score_si = 0
+            num_lineas_si = 0
             score_dep = 0
+            num_lineas_dep = 0
             score_ans = 0
+            num_lineas_ans = 0
             score_hos = 0
+            num_lineas_hos = 0
             score_fob = 0
+            num_lineas_fob = 0
             score_par = 0
+            num_lineas_par = 0
             score_psic = 0
+            num_lineas_psic = 0
             score_ia = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
@@ -193,43 +201,67 @@ class PsychiatryScl90rEvaluation(models.Model):
                 if question_category == 'SOM' and answer_exist != False:
                     score_som += float(line.answer_measure)
                     num_lineas_som += 1
-                if question_category == 'OBS':
-                    score_obs += line.answer_measure
-                if question_category == 'SI':
-                    score_si += line.answer_measure
-                if question_category == 'DEP':
-                    score_dep += line.answer_measure
-                if question_category == 'ANS':
-                    score_ans += line.answer_measure
-                if question_category == 'HOS':
-                    score_hos += line.answer_measure
-                if question_category == 'FOB':
-                    score_fob += line.answer_measure
-                if question_category == 'PAR':
-                    score_par += line.answer_measure
-                if question_category == 'PSIC':
-                    score_psic += line.answer_measure
+                if question_category == 'OBS' and answer_exist != False:
+                    score_obs += float(line.answer_measure)
+                    num_lineas_obs += 1
+                if question_category == 'SI' and answer_exist != False:
+                    score_si += float(line.answer_measure)
+                    num_lineas_si += 1
+                if question_category == 'DEP' and answer_exist != False:
+                    score_dep += float(line.answer_measure)
+                    num_lineas_dep += 1
+                if question_category == 'ANS' and answer_exist != False:
+                    score_ans += float(line.answer_measure)
+                    num_lineas_ans += 1
+                if question_category == 'HOS' and answer_exist != False:
+                    score_hos += float(line.answer_measure)
+                    num_lineas_hos += 1
+                if question_category == 'FOB' and answer_exist != False:
+                    score_fob += float(line.answer_measure)
+                    num_lineas_fob += 1
+                if question_category == 'PAR' and answer_exist != False:
+                    score_par += float(line.answer_measure)
+                    num_lineas_par += 1
+                if question_category == 'PSIC' and answer_exist != False:
+                    score_psic += float(line.answer_measure)
+                    num_lineas_psic += 1
                 if question_category == 'IA':
-                    score_ia += line.answer_measure
+                    score_ia += float(line.answer_measure)
 
         if num_lineas_som == 0:
             num_lineas_som = 1
+        if num_lineas_obs == 0:
+            num_lineas_obs = 1
+        if num_lineas_si == 0:
+            num_lineas_si = 1
+        if num_lineas_dep == 0:
+            num_lineas_dep = 1
+        if num_lineas_ans == 0:
+            num_lineas_ans = 1
+        if num_lineas_hos == 0:
+            num_lineas_hos = 1
+        if num_lineas_fob == 0:
+            num_lineas_fob = 1
+        if num_lineas_par == 0:
+            num_lineas_par = 1
+        if num_lineas_psic == 0:
+            num_lineas_psic = 1
 
-        logger.info('##########################################')
-        logger.info(score_som)
-        logger.info(num_lineas_som)
-        logger.info('##########################################')
+        # logger.info('##########################################')
+        # logger.info(score_som)
+        # logger.info(num_lineas_som)
+        # logger.info('##########################################')
 
         record.score_somatizaciones = float(score_som/num_lineas_som)
-        record.score_obsesiones_compulsiones = score_obs
-        record.score_sensitividad_interpersonal = score_si
-        record.score_depresion = score_dep
-        record.score_ansiedad = score_ans
-        record.score_hostilidad = score_hos
-        record.score_ansiedad_fobica = score_fob
-        record.score_ideacion_paranoide = score_par
-        record.score_psicoticismo = score_psic
-        record.score_items_adicionales = score_ia
+        record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
+        record.score_sensitividad_interpersonal = float(score_si/num_lineas_si)
+        record.score_depresion = float(score_dep/num_lineas_dep)
+        record.score_ansiedad = float(score_ans/num_lineas_ans)
+        record.score_hostilidad = float(score_hos/num_lineas_hos)
+        record.score_ansiedad_fobica = float(score_fob/num_lineas_fob)
+        record.score_ideacion_paranoide = float(score_par/num_lineas_par)
+        record.score_psicoticismo = float(score_psic/num_lineas_psic)
+        record.score_items_adicionales = float(score_ia)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):
