@@ -193,11 +193,11 @@ class PsychiatryScl90rEvaluation(models.Model):
                 if question_category == 'SOM' and line.answer_measure != False:
                     num_lineas += 1
                     score += line.answer_measure
-                    if num_lineas > 0:
-                        score_som = float(score/num_lineas)
-                        logger.info('##########################################')
-                        logger.info(score_som)
-                        logger.info('##########################################')
+                if num_lineas > 0:
+                    score_som = score/num_lineas
+                    logger.info('##########################################')
+                    logger.info(score_som)
+                    logger.info('##########################################')
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
                 if question_category == 'SI':
