@@ -194,7 +194,10 @@ class PsychiatryScl90rEvaluation(models.Model):
                     num_lineas += 1
                     score += line.answer_measure
                     if num_lineas > 0:
-                        score_som = score/num_lineas
+                        score_som = float(score/num_lineas)
+                        logger.info('##########################################')
+                        logger.info(score_som)
+                        logger.info('##########################################')
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
                 if question_category == 'SI':
@@ -213,9 +216,6 @@ class PsychiatryScl90rEvaluation(models.Model):
                     score_psic += line.answer_measure
                 if question_category == 'IA':
                     score_ia += line.answer_measure
-                    # logger.info('##########################################')
-                    # logger.info(score_general)
-                    # logger.info('##########################################')
         record.score_somatizaciones = score_som
         record.score_obsesiones_compulsiones = score_obs
         record.score_sensitividad_interpersonal = score_si
