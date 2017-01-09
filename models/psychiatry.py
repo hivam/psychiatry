@@ -201,7 +201,7 @@ class PsychiatryScl90rEvaluation(models.Model):
             for line in record.question_ids:
                 question_category = line.question_id.category
                 answer_exist = line.answer_measure
-                if question_category == 'SOM' and (answer_exist not in range(5)):
+                if question_category == 'SOM' and len(answer_exist) != 0:
                     score_som += float(line.answer_measure)
                     num_lineas_som += 1
                 if question_category == 'OBS' and answer_exist != False:
