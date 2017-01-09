@@ -232,11 +232,6 @@ class PsychiatryScl90rEvaluation(models.Model):
                     score_ia += float(line.answer_measure)
                     num_lineas_ia += 1
 
-        score_total = float(score_som + score_obs + score_si + score_dep + score_ans +
-                            score_hos + score_fob + score_par + score_psic + score_ia)
-        num_lineas_total = float(num_lineas_som + num_lineas_obs + num_lineas_si + num_lineas_dep + num_lineas_ans +
-                                 num_lineas_hos + num_lineas_fob + num_lineas_par + num_lineas_psic + num_lineas_ia)
-
         if num_lineas_som == 0:
             num_lineas_som = 1
         if num_lineas_obs == 0:
@@ -255,11 +250,21 @@ class PsychiatryScl90rEvaluation(models.Model):
             num_lineas_par = 1
         if num_lineas_psic == 0:
             num_lineas_psic = 1
+        if num_lineas_ia == 0:
+            num_lineas_ia = 1
 
-        # logger.info('##########################################')
-        # logger.info(score_som)
-        # logger.info(num_lineas_som)
-        # logger.info('##########################################')
+        score_total = float(score_som + score_obs + score_si + score_dep + score_ans +
+                            score_hos + score_fob + score_par + score_psic + score_ia)
+        num_lineas_total = float(num_lineas_som + num_lineas_obs + num_lineas_si + num_lineas_dep + num_lineas_ans +
+                                 num_lineas_hos + num_lineas_fob + num_lineas_par + num_lineas_psic + num_lineas_ia)
+
+        if num_lineas_total == 0:
+            num_lineas_total = 1
+
+        logger.info('##########################################')
+        logger.info(score_total)
+        logger.info(num_lineas_total)
+        logger.info('##########################################')
 
         record.score_somatizaciones = float(score_som/num_lineas_som)
         record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
