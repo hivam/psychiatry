@@ -163,6 +163,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_ideacion_paranoide= fields.Float(compute='_score_scl90r', string=u'Ideación paranoide')
     score_psicoticismo= fields.Float(compute='_score_scl90r', string=u'Psicoticismo')
     score_items_adicionales= fields.Float(compute='_score_scl90r', string=u'Ítems adicionales')
+    score_severidad= fields.Float(compute='score_scl90r', string=u'Índice global de severidad')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.model
@@ -195,6 +196,8 @@ class PsychiatryScl90rEvaluation(models.Model):
             score_psic = 0
             num_lineas_psic = 0
             score_ia = 0
+            num_lineas_ia = 0
+
             for line in record.question_ids:
                 question_category = line.question_id.category
                 answer_exist = line.answer_measure
@@ -227,6 +230,12 @@ class PsychiatryScl90rEvaluation(models.Model):
                     num_lineas_psic += 1
                 if question_category == 'IA':
                     score_ia += float(line.answer_measure)
+                    num_lineas_ia += 1
+
+        score_total = float(score_som + score_obs + score_si + score_dep + score_ans +
+                            score_hos + score_fob + score_par + score_psic + score_ia)
+        num_lineas_total = float(num_lineas_som + num_lineas_obs + num_lineas_si + num_lineas_dep + num_lineas_ans +
+                                 num_lineas_hos + num_lineas_fob + num_lineas_par + num_lineas_psic + num_lineas_ia)
 
         if num_lineas_som == 0:
             num_lineas_som = 1
@@ -262,6 +271,7 @@ class PsychiatryScl90rEvaluation(models.Model):
         record.score_ideacion_paranoide = float(score_par/num_lineas_par)
         record.score_psicoticismo = float(score_psic/num_lineas_psic)
         record.score_items_adicionales = float(score_ia)
+        record.score_severidad = float(score_total/num_lineas_total)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):

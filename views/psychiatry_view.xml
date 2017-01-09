@@ -305,8 +305,13 @@
                                         <field name="score_psicoticismo"/>
                                         <field name="score_items_adicionales"/>
                                     </group>
+                                <separator string="Índices globales de malestar psicológico"/>
+                                    <group col="6" colspan="2">
+                                        <field name="score_severidad"/>
+                                    </group>
                               </page>
                           </notebook>
+
                       </form>
                   </field>
               </record>
