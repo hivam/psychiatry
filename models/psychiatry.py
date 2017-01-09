@@ -176,7 +176,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     @api.depends('question_ids.answer_measure')
     def _score_scl90r(self):
         for record in self:
-            # num_lineas = 0
+            num_lineas = 0
             # score = 0
             score_som = 0
             score_obs = 0
@@ -190,9 +190,9 @@ class PsychiatryScl90rEvaluation(models.Model):
             score_ia = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
-                if question_category == 'SOM':
+                answer_exist = line.answer_measure
+                if question_category == 'SOM' and answer_exist != False:
                     score_som += line.answer_measure
-                # and line.answer_measure != False:
                     # num_lineas += 1
                 #     score += line.answer_measure
                 # if num_lineas > 0:
