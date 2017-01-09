@@ -191,7 +191,7 @@ class PsychiatryScl90rEvaluation(models.Model):
                 question_category = line.question_id.category
                 answer_exist = line.answer_measure
                 if question_category == 'SOM' and answer_exist != False:
-                    score_som += line.answer_measure
+                    score_som += float(line.answer_measure)
                     num_lineas_som += 1
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
@@ -212,8 +212,8 @@ class PsychiatryScl90rEvaluation(models.Model):
                 if question_category == 'IA':
                     score_ia += line.answer_measure
 
-		if num_lineas_som == 0:
-			num_lineas_som = 1
+        if num_lineas_som == 0:
+            num_lineas_som = 1
 
         logger.info('##########################################')
         logger.info(score_som)
