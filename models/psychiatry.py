@@ -178,6 +178,7 @@ class PsychiatryScl90rEvaluation(models.Model):
         for record in self:
             num_lineas = 0
             score = 0
+            score_som = 0
             score_obs = 0
             score_si = 0
             score_dep = 0
@@ -193,9 +194,7 @@ class PsychiatryScl90rEvaluation(models.Model):
                     num_lineas += 1
                     score += line.answer_measure
                     if num_lineas > 0:
-                        score_som = score / num_lineas
-                    else:
-                        score_som = 0
+                        score_som = float(score / num_lineas)
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
                 if question_category == 'SI':
