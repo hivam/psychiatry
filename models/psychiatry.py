@@ -153,7 +153,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     name = fields.Char(string=u'Número')
     date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
-    score_somatizaciones= fields.Integer(compute='_score_scl90r', string=u'Somatizaciones')
+    score_somatizaciones= fields.Float(compute='_score_scl90r', string=u'Somatizaciones')
     score_obsesiones_compulsiones= fields.Float(compute='_score_scl90r', string=u'Obsesiones y compulsiones')
     score_sensitividad_interpersonal= fields.Float(compute='_score_scl90r', string=u'Sensitividad interpersonal')
     score_depresion= fields.Float(compute='_score_scl90r', string=u'Depresión')
@@ -177,24 +177,24 @@ class PsychiatryScl90rEvaluation(models.Model):
     def _score_scl90r(self):
         for record in self:
             num_lineas = 0
-            score = 0.00
-            score_som = 0.00
-            score_obs = 0.00
-            score_si = 0.00
-            score_dep = 0.00
-            score_ans = 0.00
-            score_hos = 0.00
-            score_fob = 0.00
-            score_par = 0.00
-            score_psic = 0.00
-            score_ia = 0.00
+            score = 0
+            score_som = 0
+            score_obs = 0
+            score_si = 0
+            score_dep = 0
+            score_ans = 0
+            score_hos = 0
+            score_fob = 0
+            score_par = 0
+            score_psic = 0
+            score_ia = 0
             for line in record.question_ids:
                 question_category = line.question_id.category
                 if question_category == 'SOM' and line.answer_measure != False:
                     num_lineas += 1
-                    score += float(line.answer_measure)
+                    score += line.answer_measure
                     if num_lineas > 0:
-                        score_som = float(score/num_lineas)
+                        score_som = score/num_lineas
                 if question_category == 'OBS':
                     score_obs += line.answer_measure
                 if question_category == 'SI':
@@ -216,7 +216,7 @@ class PsychiatryScl90rEvaluation(models.Model):
                     # logger.info('##########################################')
                     # logger.info(score_general)
                     # logger.info('##########################################')
-        record.score_somatizaciones = float(score_som)
+        record.score_somatizaciones = score_som
         record.score_obsesiones_compulsiones = score_obs
         record.score_sensitividad_interpersonal = score_si
         record.score_depresion = score_dep
