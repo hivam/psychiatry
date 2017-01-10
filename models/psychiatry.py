@@ -314,7 +314,8 @@ class PsychiatryMocaQuestion(models.Model):
 
     name= fields.Char(string=u'Pregunta', size=150)
     category= fields.Selection([('1', 'Alternancia conceptual'), ('2', 'Capacidades visuoconstructivas - Cubo'),
-                                ('3', 'Capacidades visuoconstructivas - Reloj'), ('4', 'Denominación'),
+                                ('3A', 'Capacidades visuoconstructivas - Reloj - Contorno'), ('3B', 'Capacidades visuoconstructivas - Reloj - Números'),
+                                ('3C', 'Capacidades visuoconstructivas - Reloj - Agujas'), ('4', 'Denominación'),
                                 ('5', 'Memoria'), ('6', 'Atención'),
                                 ('7', 'Repetición de frases'), ('8', 'Fluidez verbal'),
                                 ('9', 'Similitudes'), ('10', 'Recuerdo diferido'),
