@@ -375,11 +375,11 @@ class PsychiatryMocaEvaluation(models.Model):
                 # answer_score = line.answer_measure
                 if question_category == '2':
                     score_cubo += float(line.answer_measure)
-                if question_category == '3B':
+                elif question_category == '3B':
                     score_numeros += float(line.answer_measure)
-                if question_category == '3C':
+                elif question_category == '3C':
                     score_agujas += float(line.answer_measure)
-                if question_category != ('2' and '3B' and '3C'):
+                else:
                     score_resto += float(line.answer_measure)
 
                     # num_lineas_som += 1
