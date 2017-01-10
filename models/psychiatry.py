@@ -200,6 +200,7 @@ class PsychiatryScl90rEvaluation(models.Model):
             score_ia = 0
             num_lineas_ia = 0
             num_lineas_sp = 0
+            malestar_sintomatico_positivo = 0
 
             for line in record.question_ids:
                 question_category = line.question_id.category
