@@ -164,6 +164,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_psicoticismo= fields.Float(compute='_score_scl90r', string=u'Psicoticismo')
     score_items_adicionales= fields.Float(compute='_score_scl90r', string=u'Ítems adicionales')
     score_severidad= fields.Float(compute='score_scl90r', string=u'Índice global de severidad')
+    score_sintomas_positivos= fields.Float(compute='score_scl90r', string=u'Total síntomas positivos')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.model
@@ -197,10 +198,12 @@ class PsychiatryScl90rEvaluation(models.Model):
             num_lineas_psic = 0
             score_ia = 0
             num_lineas_ia = 0
+            num_lineas_sp = 0
 
             for line in record.question_ids:
                 question_category = line.question_id.category
                 answer_exist = line.answer_id
+                answer_score = line.answer_measure
                 if question_category == 'SOM' and answer_exist:
                     score_som += float(line.answer_measure)
                     num_lineas_som += 1
@@ -231,6 +234,8 @@ class PsychiatryScl90rEvaluation(models.Model):
                 if question_category == 'IA' and answer_exist:
                     score_ia += float(line.answer_measure)
                     num_lineas_ia += 1
+                if answer_exist and (answer_score > 0):
+                    num_lineas_sp += 1
 
         if num_lineas_som == 0:
             num_lineas_som = 1
@@ -277,6 +282,7 @@ class PsychiatryScl90rEvaluation(models.Model):
         record.score_psicoticismo = float(score_psic/num_lineas_psic)
         record.score_items_adicionales = float(score_ia)
         record.score_severidad = float(score_total/num_lineas_total)
+        record.score_sintomas_positivos = float(num_lineas_sp)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):

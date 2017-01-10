@@ -308,6 +308,7 @@
                                 <separator string="Índices globales de malestar psicológico"/>
                                     <group col="6" colspan="2">
                                         <field name="score_severidad"/>
+                                        <field name="score_sintomas_positivos"/>
                                     </group>
                               </page>
                           </notebook>
