@@ -204,31 +204,31 @@ class PsychiatryScl90rEvaluation(models.Model):
                 if question_category == 'SOM' and answer_exist:
                     score_som += float(line.answer_measure)
                     num_lineas_som += 1
-                if question_category == 'OBS' and answer_exist != False:
+                if question_category == 'OBS' and answer_exist:
                     score_obs += float(line.answer_measure)
                     num_lineas_obs += 1
-                if question_category == 'SI' and answer_exist != False:
+                if question_category == 'SI' and answer_exist:
                     score_si += float(line.answer_measure)
                     num_lineas_si += 1
-                if question_category == 'DEP' and answer_exist != False:
+                if question_category == 'DEP' and answer_exist:
                     score_dep += float(line.answer_measure)
                     num_lineas_dep += 1
-                if question_category == 'ANS' and answer_exist != False:
+                if question_category == 'ANS' and answer_exist:
                     score_ans += float(line.answer_measure)
                     num_lineas_ans += 1
-                if question_category == 'HOS' and answer_exist != False:
+                if question_category == 'HOS' and answer_exist:
                     score_hos += float(line.answer_measure)
                     num_lineas_hos += 1
-                if question_category == 'FOB' and answer_exist != False:
+                if question_category == 'FOB' and answer_exist:
                     score_fob += float(line.answer_measure)
                     num_lineas_fob += 1
-                if question_category == 'PAR' and answer_exist != False:
+                if question_category == 'PAR' and answer_exist:
                     score_par += float(line.answer_measure)
                     num_lineas_par += 1
-                if question_category == 'PSIC' and answer_exist != False:
+                if question_category == 'PSIC' and answer_exist:
                     score_psic += float(line.answer_measure)
                     num_lineas_psic += 1
-                if question_category == 'IA':
+                if question_category == 'IA' and answer_exist:
                     score_ia += float(line.answer_measure)
                     num_lineas_ia += 1
 
