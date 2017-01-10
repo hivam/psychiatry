@@ -163,9 +163,9 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_ideacion_paranoide= fields.Float(compute='_score_scl90r', string=u'Ideación paranoide')
     score_psicoticismo= fields.Float(compute='_score_scl90r', string=u'Psicoticismo')
     score_items_adicionales= fields.Float(compute='_score_scl90r', string=u'Ítems adicionales')
-    score_severidad= fields.Float(compute='score_scl90r', string=u'Índice global de severidad')
-    score_sintomas_positivos= fields.Float(compute='score_scl90r', string=u'Total síntomas positivos')
-    score_malestar_positivo= fields.Float(compute='score_scl90r', string=u'Indice de Malestar Sintomático Positivo')
+    score_severidad= fields.Float(compute='_score_scl90r', string=u'Índice global de severidad')
+    score_sintomas_positivos= fields.Float(compute='_score_scl90r', string=u'Total síntomas positivos')
+    score_malestar_positivo= fields.Float(compute='_score_scl90r', string=u'Indice de Malestar Sintomático Positivo')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.model
@@ -328,6 +328,7 @@ class PsychiatryMocaEvaluation(models.Model):
     name = fields.Char(string=u'Número')
     date_evaluation= fields.Date(string=u'Fecha', default=fields.Date.today())
     patient_id= fields.Many2one('res.partner', string=u'Paciente')
+    score_moca= fields.Float(compute='_score_moca', string=u'Puntuación final')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
 
     @api.model
@@ -337,6 +338,124 @@ class PsychiatryMocaEvaluation(models.Model):
                 'name': self.env['ir.sequence'].get('moca.sequence')
             })
         return super(PsychiatryMocaEvaluation, self).create(vals)
+
+    @api.depends('question_ids.answer_measure')
+    def _score_moca(self):
+        for record in self:
+            score_cubo = 0
+            # num_lineas_som = 0
+            # score_obs = 0
+            # num_lineas_obs = 0
+            # score_si = 0
+            # num_lineas_si = 0
+            # score_dep = 0
+            # num_lineas_dep = 0
+            # score_ans = 0
+            # num_lineas_ans = 0
+            # score_hos = 0
+            # num_lineas_hos = 0
+            # score_fob = 0
+            # num_lineas_fob = 0
+            # score_par = 0
+            # num_lineas_par = 0
+            # score_psic = 0
+            # num_lineas_psic = 0
+            # score_ia = 0
+            # num_lineas_ia = 0
+            # num_lineas_sp = 0
+            # malestar_sintomatico_positivo = 0
+
+            for line in record.question_ids:
+                question_category = line.question_id.category
+                # answer_exist = line.answer_id
+                # answer_score = line.answer_measure
+                if question_category == '2':
+                    score_cubo += float(line.answer_measure)
+                    # num_lineas_som += 1
+                # if question_category == 'OBS' and answer_exist:
+                #     score_obs += float(line.answer_measure)
+                #     num_lineas_obs += 1
+                # if question_category == 'SI' and answer_exist:
+                #     score_si += float(line.answer_measure)
+                #     num_lineas_si += 1
+                # if question_category == 'DEP' and answer_exist:
+                #     score_dep += float(line.answer_measure)
+                #     num_lineas_dep += 1
+                # if question_category == 'ANS' and answer_exist:
+                #     score_ans += float(line.answer_measure)
+                #     num_lineas_ans += 1
+                # if question_category == 'HOS' and answer_exist:
+                #     score_hos += float(line.answer_measure)
+                #     num_lineas_hos += 1
+                # if question_category == 'FOB' and answer_exist:
+                #     score_fob += float(line.answer_measure)
+                #     num_lineas_fob += 1
+                # if question_category == 'PAR' and answer_exist:
+                #     score_par += float(line.answer_measure)
+                #     num_lineas_par += 1
+                # if question_category == 'PSIC' and answer_exist:
+                #     score_psic += float(line.answer_measure)
+                #     num_lineas_psic += 1
+                # if question_category == 'IA' and answer_exist:
+                #     score_ia += float(line.answer_measure)
+                #     num_lineas_ia += 1
+                # if answer_exist and (answer_score > 0):
+                #     num_lineas_sp += 1
+
+        # if num_lineas_som == 0:
+        #     num_lineas_som = 1
+        # if num_lineas_obs == 0:
+        #     num_lineas_obs = 1
+        # if num_lineas_si == 0:
+        #     num_lineas_si = 1
+        # if num_lineas_dep == 0:
+        #     num_lineas_dep = 1
+        # if num_lineas_ans == 0:
+        #     num_lineas_ans = 1
+        # if num_lineas_hos == 0:
+        #     num_lineas_hos = 1
+        # if num_lineas_fob == 0:
+        #     num_lineas_fob = 1
+        # if num_lineas_par == 0:
+        #     num_lineas_par = 1
+        # if num_lineas_psic == 0:
+        #     num_lineas_psic = 1
+        # if num_lineas_ia == 0:
+        #     num_lineas_ia = 1
+        #
+        # score_total = float(score_som + score_obs + score_si + score_dep + score_ans +
+        #                     score_hos + score_fob + score_par + score_psic + score_ia)
+        # num_lineas_total = float(num_lineas_som + num_lineas_obs + num_lineas_si + num_lineas_dep + num_lineas_ans +
+        #                          num_lineas_hos + num_lineas_fob + num_lineas_par + num_lineas_psic + num_lineas_ia)
+        #
+        # if num_lineas_total == 0:
+        #     num_lineas_total = 1
+        #
+        # if num_lineas_sp > 0:
+        #     malestar_sintomatico_positivo = float(score_total/num_lineas_sp)
+
+        # logger.info('##########################################')
+        # logger.info(score_total)
+        # logger.info(num_lineas_total)
+        # logger.info('##########################################')
+
+        if score_cubo = 6:
+            score_cubo = 1
+        else:
+            score_cubo = 0
+        record.score_moca = float(score_cubo)
+        # record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
+        # record.score_sensitividad_interpersonal = float(score_si/num_lineas_si)
+        # record.score_depresion = float(score_dep/num_lineas_dep)
+        # record.score_ansiedad = float(score_ans/num_lineas_ans)
+        # record.score_hostilidad = float(score_hos/num_lineas_hos)
+        # record.score_ansiedad_fobica = float(score_fob/num_lineas_fob)
+        # record.score_ideacion_paranoide = float(score_par/num_lineas_par)
+        # record.score_psicoticismo = float(score_psic/num_lineas_psic)
+        # record.score_items_adicionales = float(score_ia)
+        # record.score_severidad = float(score_total/num_lineas_total)
+        # record.score_sintomas_positivos = float(num_lineas_sp)
+        # record.score_malestar_positivo = float(malestar_sintomatico_positivo)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):

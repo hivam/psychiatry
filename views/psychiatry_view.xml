@@ -396,6 +396,10 @@
                             <field name="name" readonly="True"/>
                             <field name="patient_id"/>
                           </group>
+                          <separator string="Resultados"/>
+                          <group>
+                            <field name="score_moca"/>
+                          </group>
 
                           <notebook colspan="2" col='2'>
                               <page string="MoCa">
