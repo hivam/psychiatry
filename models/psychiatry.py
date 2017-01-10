@@ -439,7 +439,7 @@ class PsychiatryMocaEvaluation(models.Model):
         # logger.info(num_lineas_total)
         # logger.info('##########################################')
 
-        if score_cubo = 6:
+        if score_cubo == 6:
             score_cubo = 1
         else:
             score_cubo = 0
