@@ -165,6 +165,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_items_adicionales= fields.Float(compute='_score_scl90r', string=u'Ítems adicionales')
     score_severidad= fields.Float(compute='score_scl90r', string=u'Índice global de severidad')
     score_sintomas_positivos= fields.Float(compute='score_scl90r', string=u'Total síntomas positivos')
+    score_malestar_positivo= fields.Float(compute='score_scl90r', string=u'Indice de Malestar Sintomático Positivo')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
 
     @api.model
@@ -266,6 +267,9 @@ class PsychiatryScl90rEvaluation(models.Model):
         if num_lineas_total == 0:
             num_lineas_total = 1
 
+        if num_lineas_sp > 0:
+            malestar_sintomatico_positivo = float(score_total/num_lineas_sp)
+
         logger.info('##########################################')
         logger.info(score_total)
         logger.info(num_lineas_total)
@@ -283,6 +287,7 @@ class PsychiatryScl90rEvaluation(models.Model):
         record.score_items_adicionales = float(score_ia)
         record.score_severidad = float(score_total/num_lineas_total)
         record.score_sintomas_positivos = float(num_lineas_sp)
+        record.score_malestar_positivo = float(malestar_sintomatico_positivo)
 
     @api.onchange('date_evaluation')
     def _onchange_date(self):

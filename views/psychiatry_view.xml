@@ -309,6 +309,7 @@
                                     <group col="6" colspan="2">
                                         <field name="score_severidad"/>
                                         <field name="score_sintomas_positivos"/>
+                                        <field name="score_malestar_positivo"/>
                                     </group>
                               </page>
                           </notebook>
