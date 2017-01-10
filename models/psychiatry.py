@@ -29,7 +29,7 @@ class PsychiatryWhoqolbrefAnswer(models.Model):
     name= fields.Char(string=u'Respuesta', size=25)
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'),
                                     ('E', 'E'), ('F', 'F'), ('G', 'G'), ('H', 'H'),
-                                    ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
+                                    ('I', 'I'), ('J', 'J'), ('K', 'K'), ('L', 'L')], string=u'Escala')
     measure= fields.Integer(string=u'Valor', size=1)
 
 class PsychiatryWhoqolbrefQuestion(models.Model):
