@@ -346,6 +346,7 @@ class PsychiatryMocaEvaluation(models.Model):
             score_cubo = 0
             score_numeros = 0
             score_agujas = 0
+            score_resto = 0
             # num_lineas_som = 0
             # score_obs = 0
             # num_lineas_obs = 0
@@ -378,6 +379,10 @@ class PsychiatryMocaEvaluation(models.Model):
                     score_numeros += float(line.answer_measure)
                 if question_category == '3C':
                     score_agujas += float(line.answer_measure)
+                if question_category != ('2' and '3B' and '3C':
+                    score_agujas += float(line.answer_measure)
+                else:
+                    score_resto += float(line.answer_measure)
 
                     # num_lineas_som += 1
                 # if question_category == 'OBS' and answer_exist:
@@ -462,8 +467,7 @@ class PsychiatryMocaEvaluation(models.Model):
         else:
             score_agujas = 0
 
-
-        record.score_moca = float(score_cubo + score_numeros + score_agujas)
+        record.score_moca = float(score_cubo + score_numeros + score_agujas + score_resto)
         # record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
         # record.score_sensitividad_interpersonal = float(score_si/num_lineas_si)
         # record.score_depresion = float(score_dep/num_lineas_dep)
