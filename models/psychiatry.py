@@ -379,7 +379,7 @@ class PsychiatryMocaEvaluation(models.Model):
                     score_numeros += float(line.answer_measure)
                 if question_category == '3C':
                     score_agujas += float(line.answer_measure)
-                else:
+                if question_category != ('2' and '3B' and '3C'):
                     score_resto += float(line.answer_measure)
 
                     # num_lineas_som += 1
