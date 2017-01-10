@@ -320,7 +320,7 @@ class PsychiatryMocaQuestion(models.Model):
                                 ('7', 'Repetición de frases'), ('8', 'Fluidez verbal'),
                                 ('9', 'Similitudes'), ('10', 'Recuerdo diferido'),
                                 ('11', 'Orientación')], string=u'Dimensión')
-    answer_scale= fields.Selection([('H', 'H'), ('I', 'I'), ('J', 'J'), ('K', 'K')], string=u'Escala')
+    answer_scale= fields.Selection([('H', 'H'), ('I', 'I'), ('J', 'J'), ('K', 'K'), ('L', 'L')], string=u'Escala')
     active= fields.Boolean('Active', default=True)
 
 class PsychiatryMocaEvaluation(models.Model):
@@ -344,6 +344,8 @@ class PsychiatryMocaEvaluation(models.Model):
     def _score_moca(self):
         for record in self:
             score_cubo = 0
+            score_numeros = 0
+            score_agujas = 0
             # num_lineas_som = 0
             # score_obs = 0
             # num_lineas_obs = 0
@@ -372,6 +374,11 @@ class PsychiatryMocaEvaluation(models.Model):
                 # answer_score = line.answer_measure
                 if question_category == '2':
                     score_cubo += float(line.answer_measure)
+                if question_category == '3B':
+                    score_numeros += float(line.answer_measure)
+                if question_category == '3C':
+                    score_agujas += float(line.answer_measure)
+
                     # num_lineas_som += 1
                 # if question_category == 'OBS' and answer_exist:
                 #     score_obs += float(line.answer_measure)
@@ -444,7 +451,19 @@ class PsychiatryMocaEvaluation(models.Model):
             score_cubo = 1
         else:
             score_cubo = 0
-        record.score_moca = float(score_cubo)
+
+        if score_numeros == 4:
+            score_numeros = 1
+        else:
+            score_numeros = 0
+
+        if score_agujas == 3:
+            score_agujas = 1
+        else:
+            score_agujas = 0
+
+
+        record.score_moca = float(score_cubo + score_numeros + score_agujas)
         # record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
         # record.score_sensitividad_interpersonal = float(score_si/num_lineas_si)
         # record.score_depresion = float(score_dep/num_lineas_dep)
