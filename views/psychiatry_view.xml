@@ -211,12 +211,43 @@
                   </field>
               </record>
 
+      <!-- Vista  tipo búsqueda evaluaciones whoqolbref -->
+              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_search">
+                  <field name="name">Evaluaciones WHOQOL-BREF</field>
+                  <field name="model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="arch" type="xml">
+                      <search string="Search Invoice">
+                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                          <separator/>
+                          <field name="patient_id" string="Paciente"/>
+                          <field name="date_evaluation" string="Fecha"/>
+                          <group expand="0" string="Group By">
+                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                            <separator/>
+                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                            </group>
+                       </search>
+                    </field>
+                </record>
+
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="res_model">psychiatry.whoqolbref.evaluation</field>
                   <field name="view_type">form</field>
                   <field name="view_mode">tree,form</field>
+              </record>
+
+      <!-- Definimos la accion para que abra la lista de evaluaciones desde formulario Paciente -->
+              <record model="ir.actions.act_window" id="action_psychiatry_patient_to_whoqolbref">
+                  <field name="name">Evaluaciones WHOQOL-BREF</field>
+                  <field name="res_model">psychiatry.whoqolbref.evaluation</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+                  <field name="view_id" ref="view_psychiatry_whoqolbref_evaluation_tree"/>
+                  <!-- <field name="domain">[('type','in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel'])]</field>
+                  <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field> -->
+                  <field name="search_view_id" ref="view_psychiatry_whoqolbref_evaluation_search"/>
               </record>
 
       <!-- Definimos la accion del menu -->
