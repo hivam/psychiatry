@@ -21,7 +21,7 @@ class ResPartner(models.Model):
     patient= fields.Boolean(string=u'Paciente')
     insurer= fields.Boolean(string=u'EPS')
     whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
-    whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
+    whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id')
 
     @api.depends('whoqolbref_ids')
     def _count_whoqolbref(self):
