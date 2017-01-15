@@ -68,11 +68,13 @@
                   <field name="model">psychiatry.whoqolbref.answer</field>
                   <field name="arch" type="xml">
                       <form string="Respuestas">
+                        <sheet>
                           <group>
                             <field name="name"/>
                             <field name="answer_scale"/>
                             <field name="measure"/>
                           </group>
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -109,11 +111,13 @@
                   <field name="model">psychiatry.whoqolbref.question</field>
                   <field name="arch" type="xml">
                       <form string="Preguntas WHOQOL-BREF">
+                        <sheet>
                           <group>
                             <field name="name"/>
                             <field name="category"/>
                             <field name="answer_scale"/> -->
                           </group>
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -150,6 +154,7 @@
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones WHOQOL-BREF">
+                        <sheet>
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
@@ -186,7 +191,7 @@
                                   </field>
                               </page>
                           </notebook>
-
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -223,11 +228,13 @@
                   <field name="model">psychiatry.scl90r.question</field>
                   <field name="arch" type="xml">
                       <form string="Preguntas SCL-90-R">
+                        <sheet>
                           <group>
                             <field name="name"/>
                             <field name="category"/>
                             <field name="answer_scale"/> -->
                           </group>
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -264,6 +271,7 @@
                   <field name="model">psychiatry.scl90r.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones SCL-90-R">
+                        <sheet>
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
@@ -313,7 +321,7 @@
                                     </group>
                               </page>
                           </notebook>
-
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -350,11 +358,13 @@
                   <field name="model">psychiatry.moca.question</field>
                   <field name="arch" type="xml">
                       <form string="Preguntas MoCa">
+                        <sheet>
                           <group>
                             <field name="name"/>
                             <field name="category"/>
                             <field name="answer_scale"/> -->
                           </group>
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -391,6 +401,7 @@
                   <field name="model">psychiatry.moca.evaluation</field>
                   <field name="arch" type="xml">
                       <form string="Evaluaciones MoCa">
+                        <sheet>
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
@@ -423,7 +434,7 @@
                                   </field>
                               </page>
                           </notebook>
-
+                        </sheet>
                       </form>
                   </field>
               </record>
@@ -461,6 +472,7 @@
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
                       <form string="Hospitalizaciones">
+                        <sheet>
                           <group col="4" colspan="2">
                             <field name="date_in" string="Fecha de ingreso"/>
                             <field name="name" readonly="True"/>
@@ -615,9 +627,8 @@
                                       </form>
                                   </field>
                               </page>
-
                           </notebook>
-
+                        </sheet>
                       </form>
                   </field>
               </record>
