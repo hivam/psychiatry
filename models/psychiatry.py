@@ -20,6 +20,19 @@ class ResPartner(models.Model):
 
     patient= fields.Boolean(string=u'Paciente')
     insurer= fields.Boolean(string=u'EPS')
+    whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
+    whoqolbref_ids: fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
+
+    @api.depends('whoqolbref_ids')
+    def _count_whoqolbref(self):
+        res = dict(map(lambda x: (x,0), ids))
+        # The current user may not have access rights for sale orders
+        try:
+            for record in self:
+                res[record.id] = len(record.whoqolbref_ids)
+        except:
+            pass
+        return res
 
 #################################################################################################################
 
