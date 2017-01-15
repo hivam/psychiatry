@@ -25,14 +25,8 @@ class ResPartner(models.Model):
 
     @api.depends('whoqolbref_ids')
     def _count_whoqolbref(self):
-        res = dict(map(lambda x: (x,0), whoqolbref_ids))
-        # The current user may not have access rights
-        try:
-            for record in self:
-                res[record.id] = len(record.whoqolbref_ids)
-        except:
-            pass
-        return res
+        for record in self:
+            record.whoqolbref_count = len(record.whoqolbref_ids)
 
 #################################################################################################################
 
