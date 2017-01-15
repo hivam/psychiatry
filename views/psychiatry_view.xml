@@ -33,7 +33,7 @@
                             attrs="{'invisible': [('patient', '=', False)]}"
                             context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <div class="o_form_field o_stat_info">
-                                <span class="o_stat_value"><field name="whoqolbref_count" widget="statinfo"/></span>
+                                <!-- <span class="o_stat_value"><field name="whoqolbref_count" widget="statinfo"/></span> -->
                                 <span class="o_stat_text">WHOQOL-BREF</span>
                             </div>
                         </button>
