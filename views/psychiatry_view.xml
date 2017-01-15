@@ -238,18 +238,6 @@
                   <field name="view_mode">tree,form</field>
               </record>
 
-      <!-- Definimos la accion para que abra la lista de evaluaciones desde formulario Paciente -->
-              <record model="ir.actions.act_window" id="action_psychiatry_patient_to_whoqolbref">
-                  <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="res_model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-                  <field name="view_id" ref="view_psychiatry_whoqolbref_evaluation_tree"/>
-                  <!-- <field name="domain">[('type','in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel'])]</field>
-                  <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field> -->
-                  <field name="search_view_id" ref="view_psychiatry_whoqolbref_evaluation_search"/>
-              </record>
-
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_evaluations"/>
 
