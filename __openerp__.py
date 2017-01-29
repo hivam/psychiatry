@@ -15,7 +15,7 @@
     'depends' : [],
     'data' : [
                 'views/psychiatry_view.xml',
-                'data/psychiatry_sequences.xml'
+                'data/psychiatry_sequences.xml',
                 'data/psychiatry_diseases.csv'
               ],
     'installable': True,
