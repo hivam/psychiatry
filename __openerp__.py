@@ -16,7 +16,7 @@
     'data' : [
                 'views/psychiatry_view.xml',
                 'data/psychiatry_sequences.xml',
-                'data/psychiatry_diseases.csv'
+                'data/psychiatry.diseases.csv'
               ],
     'installable': True,
     'auto_install': False,
