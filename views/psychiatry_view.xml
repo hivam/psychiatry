@@ -69,6 +69,21 @@
                         </button>
                     </div>
 
+                    <div name="button_box" position="inside">
+                        <button type="action"
+                            class="oe_stat_button"
+                            id="hospitalization_button"
+                            icon="fa-pencil-square-o"
+                            name="%(action_psychiatry_hospitalization)d"
+                            attrs="{'invisible': [('patient', '=', False)]}"
+                            context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"><field name="hospitalization_count" widget="statinfo"/></span>
+                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                            </div>
+                        </button>
+                    </div>
+
                     <field name="email" position="after">
                       <field name="patient" string="Paciente"/>
                       <field name="insurer" string="EPS"/>
@@ -734,6 +749,25 @@
                       </form>
                   </field>
               </record>
+
+      <!-- Vista tipo búsqueda evaluaciones MoCa -->
+              <record model="ir.ui.view" id="view_psychiatry_hospitalization_search">
+                  <field name="name">Hospitalizaciones</field>
+                  <field name="model">psychiatry.hospitalization</field>
+                  <field name="arch" type="xml">
+                      <search string="Search Hospitalizaciones">
+                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                          <separator/>
+                          <field name="patient_id" string="Paciente"/>
+                          <field name="date_in" string="Fecha ingreso"/>
+                          <group expand="0" string="Group By">
+                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                            <separator/>
+                            <filter string="Fecha ingreso" context="{'group_by':'date_in'}"/>
+                            </group>
+                       </search>
+                    </field>
+                </record>
 
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_hospitalization">
