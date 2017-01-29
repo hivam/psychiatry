@@ -6,9 +6,7 @@
     'version' : '1.0',
     'summary': 'Psychiatric evaluation',
     'description': """
-This module allows
 =================================================================
-
 """,
     'category' : 'Health',
     'author' : 'Hector Ivan Valencia Muñoz',
@@ -18,6 +16,7 @@ This module allows
     'data' : [
                 'views/psychiatry_view.xml',
                 'data/psychiatry_sequences.xml'
+                'data/psychiatry_diseases.csv'
               ],
     'installable': True,
     'auto_install': False,
