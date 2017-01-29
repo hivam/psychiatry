@@ -22,11 +22,18 @@ class ResPartner(models.Model):
     insurer= fields.Boolean(string=u'EPS')
     whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
     whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
+    scl90r_count= fields.Integer(compute='_count_scl90r', string=u'SCL-90-R')
+    scl90r_ids= fields.One2many('psychiatry.scl90r.evaluation','patient_id','SCL-90-R')
 
     @api.depends('whoqolbref_ids')
     def _count_whoqolbref(self):
         for record in self:
             record.whoqolbref_count = len(record.whoqolbref_ids)
+
+    @api.depends('scl90r_ids')
+    def _count_scl90r(self):
+        for record in self:
+            record.scl90r_count = len(record.scl90r_ids)
 
 #################################################################################################################
 

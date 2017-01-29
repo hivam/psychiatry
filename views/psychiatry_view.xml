@@ -39,6 +39,21 @@
                         </button>
                     </div>
 
+                    <div name="button_box" position="inside">
+                        <button type="action"
+                            class="oe_stat_button"
+                            id="scl90r_button"
+                            icon="fa-pencil-square-o"
+                            name="%(action_psychiatry_scl90r_evaluation)d"
+                            attrs="{'invisible': [('patient', '=', False)]}"
+                            context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"><field name="scl90r_count" widget="statinfo"/></span>
+                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                            </div>
+                        </button>
+                    </div>
+
                     <field name="email" position="after">
                       <field name="patient" string="Paciente"/>
                       <field name="insurer" string="EPS"/>
@@ -56,11 +71,11 @@
               </record>
 
       <!-- Definimos la accion del menu -->
-              <menuitem name="Psychiatry" id="menu_psychiatry"  sequence="20"/>
+              <menuitem name="Psychiatry" id="menu_psychiatry" sequence="20"/>
               <menuitem name="Hospitalización" parent="menu_psychiatry" id="menu_view_psychiatry_hospitalization" sequence="10"/>
-              <menuitem action="psychiatry.action_psychiatry_patient" id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" sequence="20"/>
+              <menuitem action="psychiatry.action_psychiatry_patient" id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
               <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
-              <menuitem name="Settings" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30"/>
+              <menuitem name="Configuración" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30"/>
 
 <!-- ################################################################################################################# -->
 
@@ -216,7 +231,7 @@
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
                   <field name="arch" type="xml">
-                      <search string="Search Invoice">
+                      <search string="Search WHOQOL-BREF">
                           <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
                           <separator/>
                           <field name="patient_id" string="Paciente"/>
@@ -359,6 +374,25 @@
                       </form>
                   </field>
               </record>
+
+      <!-- Vista  tipo búsqueda evaluaciones scl90r -->
+              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_search">
+                  <field name="name">Evaluaciones SCL-90-R</field>
+                  <field name="model">psychiatry.scl90r.evaluation</field>
+                  <field name="arch" type="xml">
+                      <search string="Search SCL-90-R">
+                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                          <separator/>
+                          <field name="patient_id" string="Paciente"/>
+                          <field name="date_evaluation" string="Fecha"/>
+                          <group expand="0" string="Group By">
+                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                            <separator/>
+                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                            </group>
+                       </search>
+                    </field>
+                </record>
 
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_scl90r_evaluation">
@@ -676,7 +710,7 @@
               </record>
 
       <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
+              <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="20"/>
 
       <!-- ################################################################################################################# -->
 
