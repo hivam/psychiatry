@@ -54,6 +54,21 @@
                         </button>
                     </div>
 
+                    <div name="button_box" position="inside">
+                        <button type="action"
+                            class="oe_stat_button"
+                            id="moca_button"
+                            icon="fa-pencil-square-o"
+                            name="%(action_psychiatry_moca_evaluation)d"
+                            attrs="{'invisible': [('patient', '=', False)]}"
+                            context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"><field name="moca_count" widget="statinfo"/></span>
+                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                            </div>
+                        </button>
+                    </div>
+
                     <field name="email" position="after">
                       <field name="patient" string="Paciente"/>
                       <field name="insurer" string="EPS"/>
@@ -506,6 +521,25 @@
                       </form>
                   </field>
               </record>
+
+      <!-- Vista tipo búsqueda evaluaciones MoCa -->
+              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_search">
+                  <field name="name">Evaluaciones MoCa</field>
+                  <field name="model">psychiatry.moca.evaluation</field>
+                  <field name="arch" type="xml">
+                      <search string="Search MoCa">
+                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                          <separator/>
+                          <field name="patient_id" string="Paciente"/>
+                          <field name="date_evaluation" string="Fecha"/>
+                          <group expand="0" string="Group By">
+                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                            <separator/>
+                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                            </group>
+                       </search>
+                    </field>
+                </record>
 
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_moca_evaluation">

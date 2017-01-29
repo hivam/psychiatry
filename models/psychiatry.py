@@ -24,6 +24,8 @@ class ResPartner(models.Model):
     whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
     scl90r_count= fields.Integer(compute='_count_scl90r', string=u'SCL-90-R')
     scl90r_ids= fields.One2many('psychiatry.scl90r.evaluation','patient_id','SCL-90-R')
+    moca_count= fields.Integer(compute='_count_moca', string=u'MoCa')
+    moca_ids= fields.One2many('psychiatry.moca.evaluation','patient_id','MoCa')
 
     @api.depends('whoqolbref_ids')
     def _count_whoqolbref(self):
@@ -34,6 +36,11 @@ class ResPartner(models.Model):
     def _count_scl90r(self):
         for record in self:
             record.scl90r_count = len(record.scl90r_ids)
+
+    @api.depends('moca_ids')
+    def _count_moca(self):
+        for record in self:
+            record.moca_count = len(record.moca_ids)
 
 #################################################################################################################
 
