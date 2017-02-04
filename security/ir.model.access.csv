@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_whoqolbref_evaluation,psychiatry.whoqolbref.evaluation,model_psychiatry_whoqolbref_evaluation,group_psychiatry,1,1,1,0
 access_whoqolbref_questions,psychiatry.whoqolbref.questions,model_psychiatry_whoqolbref_questions,group_psychiatry,1,1,1,0
 access_whoqolbref_question,psychiatry.whoqolbref.question,model_psychiatry_whoqolbref_question,group_psychiatry,1,0,0,0
-access_whoqolbref_answer,psychiatry.whoqolbref.answer,model_psychiatry_whoqolbref_answer,group_psychiatry,1,0,0,0
+access_whoqolbref_answer,psychiatry.whoqolbref.answer,model_psychiatry_whoqolbref_answer,group_psychiatry,1,1,0,0
 access_scl90r_evaluation,psychiatry.scl90r.evaluation,model_psychiatry_scl90r_evaluation,group_psychiatry,1,1,1,0
 access_scl90r_questions,psychiatry.scl90r.questions,model_psychiatry_scl90r_questions,group_psychiatry,1,1,1,0
 access_scl90r_question,psychiatry.scl90r.question,model_psychiatry_scl90r_question,group_psychiatry,1,0,0,0
