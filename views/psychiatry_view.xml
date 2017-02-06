@@ -27,12 +27,13 @@
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" name="%(action_psychiatry_whoqolbref_evaluation)d"
                                 type="action" attrs="{'invisible': [('patient', '=', False)]}"
-                                icon="fa-pencil-square-o" help="WHOQOL-BREF">
+                                icon="fa-pencil-square-o" help="WHOQOL-BREF"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <field string="WHOQOL-BREF" name="whoqolbref_count" widget="statinfo"/>
                         </button>
                     </div>
 
-                    <div name="button_box" position="inside">
+                    <!-- <div name="button_box" position="inside">
                         <button type="action"
                             class="oe_stat_button"
                             id="whoqolbref_button"
@@ -42,12 +43,21 @@
                             context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <div class="o_form_field o_stat_info">
                                 <span class="o_stat_value"><field name="whoqolbref_count" widget="statinfo"/></span>
-                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                                <span class="o_stat_text">WHOQOL-BREF</span>
                             </div>
+                        </button>
+                    </div> -->
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_scl90r_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="SCL-90-R"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="SCL-90-R" name="scl90r_count" widget="statinfo"/>
                         </button>
                     </div>
 
-                    <div name="button_box" position="inside">
+                    <!-- <div name="button_box" position="inside">
                         <button type="action"
                             class="oe_stat_button"
                             id="scl90r_button"
@@ -57,12 +67,21 @@
                             context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <div class="o_form_field o_stat_info">
                                 <span class="o_stat_value"><field name="scl90r_count" widget="statinfo"/></span>
-                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                                <span class="o_stat_text">WHOQOL-BREF</span>
                             </div>
+                        </button>
+                    </div> -->
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_moca_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="MoCa"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="MoCa" name="moca_count" widget="statinfo"/>
                         </button>
                     </div>
 
-                    <div name="button_box" position="inside">
+                    <!-- <div name="button_box" position="inside">
                         <button type="action"
                             class="oe_stat_button"
                             id="moca_button"
@@ -72,12 +91,21 @@
                             context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <div class="o_form_field o_stat_info">
                                 <span class="o_stat_value"><field name="moca_count" widget="statinfo"/></span>
-                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                                <span class="o_stat_text">WHOQOL-BREF</span>
                             </div>
+                        </button>
+                    </div> -->
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="Ingresos"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="Ingresos" name="hospitalization_count" widget="statinfo"/>
                         </button>
                     </div>
 
-                    <div name="button_box" position="inside">
+                    <!-- <div name="button_box" position="inside">
                         <button type="action"
                             class="oe_stat_button"
                             id="hospitalization_button"
@@ -87,12 +115,12 @@
                             context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
                             <div class="o_form_field o_stat_info">
                                 <span class="o_stat_value"><field name="hospitalization_count" widget="statinfo"/></span>
-                                <!-- <span class="o_stat_text">WHOQOL-BREF</span> -->
+                                <span class="o_stat_text">WHOQOL-BREF</span>
                             </div>
                         </button>
-                    </div>
+                    </div> -->
 
-                    <field name="email" position="after">
+                    <field name="website" position="after">
                       <field name="patient" string="Paciente"/>
                       <field name="insurer" string="EPS"/>
                     </field>
