@@ -166,7 +166,7 @@
                   <field name="view_mode">tree,form</field>
               </record>
 
-              <!-- Definimos la accion del menu -->
+      <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
 
 <!-- ################################################################################################################# -->
@@ -214,7 +214,7 @@
 
 <!-- ################################################################################################################# -->
 
-      <!-- Vista  tipo lista evaluaciones whoqolbref -->
+      <!-- Vista tipo lista evaluaciones whoqolbref -->
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
@@ -237,7 +237,7 @@
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
-                            <field name="patient_id"/>
+                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
                           </group>
                           <separator string="Resultados"/>
                           <group col="4" colspan="2">
