@@ -637,7 +637,7 @@
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="spa_id"/>
                                       </tree>
-                                      <form string="Evoluciones">
+                                      <form string="SPA">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
                                             <field name="spa_id"/>
@@ -653,7 +653,7 @@
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
                                       </tree>
-                                      <form string="Medicamentos">
+                                      <form string="Medicamentos al ingreso">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
                                             <field name="drug_id"/>
@@ -667,7 +667,7 @@
                                           <field name="hospitalization_id" invisible="True"/>
                                           <field name="drug_id"/>
                                       </tree>
-                                      <form string="Medicamentos">
+                                      <form string="Medicamentos al egreso">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
                                             <field name="drug_id"/>
@@ -678,19 +678,19 @@
 
                               <page string="Patología">
                                 <group>
-                                  <field name="vts_id" string="VTS"/>
+                                  <field name="vts_id" string="VTS" domain="[('vts', '=', 1)]"/>
                                 </group>
                                 <separator string="Dx Psiquiatría" colspan="4"/>
                                   <field name="diseases_psychiatry_ids" nolabel="1">
                                       <tree string="Dx Psiquiatría" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
-                                          <field name="diseases_id"/>
+                                          <field name="diseases_id" domain="[('psychiatry', '=', 1)]"/>
                                           <field name="diseases_type"/>
                                       </tree>
                                       <form string="Dx Psiquiatría">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
-                                            <field name="diseases_id"/>
+                                            <field name="diseases_id" domain="[('psychiatry', '=', 1)]"/>
                                             <field name="diseases_type"/>
                                           </group>
                                       </form>
@@ -700,13 +700,13 @@
                                   <field name="diseases_others_ids" nolabel="1">
                                       <tree string="Dx Otros" editable="bottom">
                                           <field name="hospitalization_id" invisible="True"/>
-                                          <field name="diseases_id"/>
+                                          <field name="diseases_id" domain="[('others', '=', 1)]"/>
                                           <field name="diseases_type"/>
                                       </tree>
                                       <form string="Dx Otros">
                                           <group>
                                             <field name="hospitalization_id" invisible="True"/>
-                                            <field name="diseases_id"/>
+                                            <field name="diseases_id" domain="[('others', '=', 1)]"/>
                                             <field name="diseases_type"/>
                                           </group>
                                       </form>

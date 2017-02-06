@@ -543,6 +543,7 @@ class PsychiatryDiseases(models.Model):
     name= fields.Char(string=u'Diagnóstico', size=256)
     psychiatry= fields.Boolean('Dx Psiquiatría')
     vts= fields.Boolean('Dx Virus de Transmisión Sanguínea - VTS')
+    others= fields.Boolean('Dx - Otros')
 
 class PsychiatryHospitalization(models.Model):
     _name = "psychiatry.hospitalization"
