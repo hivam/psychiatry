@@ -124,7 +124,7 @@
               <menuitem name="Hospitalización" parent="menu_psychiatry" id="menu_view_psychiatry_hospitalization" sequence="10"/>
               <menuitem action="psychiatry.action_psychiatry_patient" id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
               <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
-              <menuitem name="Configuración" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30"/>
+              <menuitem name="Configuración" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30" groups="base.group_configuration"/>
 
 <!-- ################################################################################################################# -->
 
