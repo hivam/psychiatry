@@ -373,7 +373,7 @@
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
-                            <field name="patient_id"/>
+                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
@@ -522,7 +522,7 @@
                           <group col="4" colspan="2">
                             <field name="date_evaluation"/>
                             <field name="name" readonly="True"/>
-                            <field name="patient_id"/>
+                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
                           </group>
                           <separator string="Resultados"/>
                           <group>
@@ -612,8 +612,8 @@
                           <group col="4" colspan="2">
                             <field name="date_in" string="Fecha de ingreso"/>
                             <field name="name" readonly="True"/>
-                            <field name="patient_id"/>
-                            <field name="insurer_id"/>
+                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                            <field name="insurer_id" domain="[('insurer', '=', 1)]"/>
                           </group>
                           <group col="4" colspan="2">
                             <field name="compromise_patient_in" widget="priority"/>
@@ -769,7 +769,7 @@
                   </field>
               </record>
 
-      <!-- Vista tipo búsqueda evaluaciones MoCa -->
+      <!-- Vista tipo búsqueda Hospitalizaciones -->
               <record model="ir.ui.view" id="view_psychiatry_hospitalization_search">
                   <field name="name">Hospitalizaciones</field>
                   <field name="model">psychiatry.hospitalization</field>
