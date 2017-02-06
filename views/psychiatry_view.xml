@@ -25,6 +25,14 @@
                   <field name="arch" type="xml">
 
                     <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_whoqolbref_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="WHOQOL-BREF">
+                            <field string="WHOQOL-BREF" name="whoqolbref_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div name="button_box" position="inside">
                         <button type="action"
                             class="oe_stat_button"
                             id="whoqolbref_button"
