@@ -98,13 +98,13 @@
                   <field name="model">res.partner</field>
                   <field name="arch" type="xml">
 
-                    <field name="user_id" position="after">
+                    <field name="name" position="after">
                         <field name="patient"/>
                         <field name="insurer"/>
-                    </field>
 
-                    <!-- <filter string="Pacientes" name="patient" domain="[('patient','=',1)]"/> -->
-                    <!-- <filter string="Aseguradora" name="insurer" domain="[('insurer','=',1)]"/> -->
+                        <filter string="Pacientes" name="patient" domain="[('patient','=',1)]"/>
+                        <filter string="Aseguradora" name="insurer" domain="[('insurer','=',1)]"/>
+                    </field>
 
                   </field>
               </record>

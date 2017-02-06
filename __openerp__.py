@@ -18,7 +18,7 @@
                 'security/ir.model.access.csv',
                 'views/psychiatry_view.xml',
                 'data/psychiatry_sequences.xml',
-                # 'data/psychiatry.diseases.csv'
+                'data/psychiatry.diseases.csv'
               ],
     'installable': True,
     'auto_install': False,
