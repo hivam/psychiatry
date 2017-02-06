@@ -4,7 +4,7 @@
 
 <!-- ################################################################################################################# -->
 
-      <!-- Vista  tipo lista Paciente -->
+      <!-- Vista tipo lista Paciente -->
               <record id="view_psychiatry_patient_tree" model="ir.ui.view">
                  <field name="inherit_id" ref="base.view_partner_tree" />
                   <field name="model">res.partner</field>
@@ -18,7 +18,7 @@
                   </field>
               </record>
 
-      <!-- Vista  tipo formulario Paciente -->
+      <!-- Vista tipo formulario Paciente -->
               <record id="view_psychiatry_patient_form" model="ir.ui.view">
                  <field name="inherit_id" ref="base.view_partner_form" />
                   <field name="model">res.partner</field>
@@ -92,12 +92,31 @@
                   </field>
               </record>
 
+      <!-- Vista tipo búsqueda Paciente -->
+              <record id="view_psychiatry_patient_search" model="ir.ui.view">
+                 <field name="inherit_id" ref="base.view_res_partner_filter" />
+                  <field name="model">res.partner</field>
+                  <field name="arch" type="xml">
+
+                    <field name="user_id" position="after">
+                        <field name="patient"/>
+                        <field name="insurer"/>
+                    </field>
+
+                    <filter string="Pacientes" name="patient" domain="[('patient','=',1)]"/>
+                    <filter string="Aseguradora" name="insurer" domain="[('insurer','=',1)]"/>
+
+                  </field>
+              </record>
+
       <!-- Definimos la accion para que abra el formulario -->
               <record model="ir.actions.act_window" id="action_psychiatry_patient">
                   <field name="name">Pacientes</field>
                   <field name="res_model">res.partner</field>
                   <field name="view_type">form</field>
                   <field name="view_mode">tree,form</field>
+                  <field name="context">{"search_default_patient":1}</field>
+                  <field name="search_view_id" ref="view_psychiatry_patient_search"/>
               </record>
 
       <!-- Definimos la accion del menu -->
@@ -256,7 +275,7 @@
                   </field>
               </record>
 
-      <!-- Vista  tipo búsqueda evaluaciones whoqolbref -->
+      <!-- Vista tipo búsqueda evaluaciones whoqolbref -->
               <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_search">
                   <field name="name">Evaluaciones WHOQOL-BREF</field>
                   <field name="model">psychiatry.whoqolbref.evaluation</field>
