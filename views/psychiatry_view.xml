@@ -2,565 +2,471 @@
 <openerp>
     <data>
 
-<!-- ################################################################################################################# -->
+      <!-- ################################################################################################################# -->
 
-      <!-- Vista tipo lista Paciente -->
-              <record id="view_psychiatry_patient_tree" model="ir.ui.view">
-                 <field name="inherit_id" ref="base.view_partner_tree" />
-                  <field name="model">res.partner</field>
-                  <field name="arch" type="xml">
-
-                    <field name="parent_id" position="after">
-                        <field name="patient" invisible="1"/>
-                        <field name="insurer" invisible="1"/>
-                    </field>
-
-                  </field>
-              </record>
-
-      <!-- Vista tipo formulario Paciente -->
-              <record id="view_psychiatry_patient_form" model="ir.ui.view">
-                 <field name="inherit_id" ref="base.view_partner_form" />
-                  <field name="model">res.partner</field>
-                  <field name="arch" type="xml">
-
-                    <div name="button_box" position="inside">
-                        <button class="oe_stat_button" name="%(action_psychiatry_whoqolbref_evaluation)d"
-                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
-                                icon="fa-pencil-square-o" help="WHOQOL-BREF"
-                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
-                            <field string="WHOQOL-BREF" name="whoqolbref_count" widget="statinfo"/>
-                        </button>
-                    </div>
-
-                    <div name="button_box" position="inside">
-                        <button class="oe_stat_button" name="%(action_psychiatry_scl90r_evaluation)d"
-                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
-                                icon="fa-pencil-square-o" help="SCL-90-R"
-                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
-                            <field string="SCL-90-R" name="scl90r_count" widget="statinfo"/>
-                        </button>
-                    </div>
-
-                    <div name="button_box" position="inside">
-                        <button class="oe_stat_button" name="%(action_psychiatry_moca_evaluation)d"
-                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
-                                icon="fa-pencil-square-o" help="MoCa"
-                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
-                            <field string="MoCa" name="moca_count" widget="statinfo"/>
-                        </button>
-                    </div>
-
-                    <div name="button_box" position="inside">
-                        <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"
-                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
-                                icon="fa-pencil-square-o" help="Ingresos"
-                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
-                            <field string="Ingresos" name="hospitalization_count" widget="statinfo"/>
-                        </button>
-                    </div>
-
-                    <field name="website" position="after">
-                      <field name="patient" string="Paciente"/>
-                      <field name="insurer" string="EPS"/>
-                    </field>
-
-                  </field>
-              </record>
-
-      <!-- Vista tipo búsqueda Paciente -->
-              <record id="view_psychiatry_patient_search" model="ir.ui.view">
-                 <field name="inherit_id" ref="base.view_res_partner_filter" />
-                  <field name="model">res.partner</field>
-                  <field name="arch" type="xml">
-
-                    <field name="name" position="after">
-                        <field name="patient"/>
-                        <field name="insurer"/>
-
-                        <filter string="Pacientes" name="patient" domain="[('patient','=',1)]"/>
-                        <filter string="Aseguradora" name="insurer" domain="[('insurer','=',1)]"/>
-                    </field>
-
-                  </field>
-              </record>
-
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_patient">
-                  <field name="name">Pacientes</field>
-                  <field name="res_model">res.partner</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-                  <field name="context">{'default_patient':1, "search_default_patient":1}</field>
-                  <field name="search_view_id" ref="view_psychiatry_patient_search"/>
-              </record>
-
-      <!-- Definimos la accion del menu -->
+            <!-- Definimos la accion del menu -->
               <menuitem name="Psychiatry" id="menu_psychiatry" sequence="20"/>
               <menuitem name="Hospitalización" parent="menu_psychiatry" id="menu_view_psychiatry_hospitalization" sequence="10"/>
-              <menuitem action="psychiatry.action_psychiatry_patient" id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
               <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
               <menuitem name="Configuración" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30" groups="base.group_configuration"/>
 
-<!-- ################################################################################################################# -->
+            <!-- Vista  tipo lista respuestas whoqolbref y Scl90r-->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
+                        <field name="name">Respuestas</field>
+                        <field name="model">psychiatry.whoqolbref.answer</field>
+                        <field name="arch" type="xml">
+                            <tree string="Respuestas" >
+                                <field name="name"/>
+                                <field name="answer_scale"/>
+                                <field name="measure"/>
+                            </tree>
+                        </field>
+                    </record>
 
-      <!-- Vista  tipo lista respuestas whoqolbref y Scl90r-->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
-                  <field name="name">Respuestas</field>
-                  <field name="model">psychiatry.whoqolbref.answer</field>
-                  <field name="arch" type="xml">
-                      <tree string="Respuestas" >
-                          <field name="name"/>
-                          <field name="answer_scale"/>
-                          <field name="measure"/>
-                      </tree>
-                  </field>
-              </record>
+            <!-- Vista  tipo formulario respuestas whoqolbref y Scl90r-->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_form">
+                        <field name="name">Respuestas</field>
+                        <field name="model">psychiatry.whoqolbref.answer</field>
+                        <field name="arch" type="xml">
+                            <form string="Respuestas">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="answer_scale"/>
+                                  <field name="measure"/>
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
 
-      <!-- Vista  tipo formulario respuestas whoqolbref y Scl90r-->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_form">
-                  <field name="name">Respuestas</field>
-                  <field name="model">psychiatry.whoqolbref.answer</field>
-                  <field name="arch" type="xml">
-                      <form string="Respuestas">
-                        <sheet>
-                          <group>
-                            <field name="name"/>
-                            <field name="answer_scale"/>
-                            <field name="measure"/>
-                          </group>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_answer">
+                        <field name="name">Respuestas</field>
+                        <field name="res_model">psychiatry.whoqolbref.answer</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
 
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_answer">
-                  <field name="name">Respuestas</field>
-                  <field name="res_model">psychiatry.whoqolbref.answer</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
-
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
-
-<!-- ################################################################################################################# -->
-
-      <!-- Vista  tipo lista preguntas whoqolbref-->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_tree">
-                  <field name="name">Preguntas WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.question</field>
-                  <field name="arch" type="xml">
-                      <tree string="Preguntas WHOQOL-BREF" >
-                          <field name="name"/>
-                          <field name="category"/>
-                          <field name="answer_scale"/>
-                      </tree>
-                  </field>
-              </record>
-
-      <!-- Vista  tipo formulario preguntas whoqolbref-->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_form">
-                  <field name="name">Preguntas WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.question</field>
-                  <field name="arch" type="xml">
-                      <form string="Preguntas WHOQOL-BREF">
-                        <sheet>
-                          <group>
-                            <field name="name"/>
-                            <field name="category"/>
-                            <field name="answer_scale"/> -->
-                          </group>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
-
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_question">
-                  <field name="name">Preguntas WHOQOL-BREF</field>
-                  <field name="res_model">psychiatry.whoqolbref.question</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
-
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
-
-<!-- ################################################################################################################# -->
-
-      <!-- Vista tipo lista evaluaciones whoqolbref -->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
-                  <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="arch" type="xml">
-                      <tree string="Evaluaciones WHOQOL-BREF" >
-                          <field name="name" readonly="True"/>
-                          <field name="date_evaluation"/>
-                          <field name="patient_id"/>
-                      </tree>
-                  </field>
-              </record>
-
-      <!-- Vista  tipo formulario evaluaciones whoqolbref -->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
-                  <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="arch" type="xml">
-                      <form string="Evaluaciones WHOQOL-BREF">
-                        <sheet>
-                          <group col="4" colspan="2">
-                            <field name="date_evaluation"/>
-                            <field name="name" readonly="True"/>
-                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
-                          </group>
-                          <separator string="Resultados"/>
-                          <group col="4" colspan="2">
-                            <field name="score_general"/>
-                            <field name="score_fisica"/>
-                            <field name="score_psicologica"/>
-                            <field name="score_relaciones"/>
-                            <field name="score_entorno"/>
-                          </group>
-
-                          <notebook colspan="2" col='2'>
-                              <page string="WHOQOL-BREF">
-                                  <field name="question_ids" nolabel="1" >
-                                      <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false">
-                                          <field name="evaluation_id" invisible="True"/>
-                                          <field name="question_id" readonly="True"/>
-                                          <field name="answer_scale" invisible="True"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                          <field name="answer_measure" invisible="True"/>
-                                      </tree>
-                                      <form string="Preguntas">
-                                          <group>
-                                              <field name="evaluation_id" invisible="True"/>
-                                              <field name="question_id" readonly="True"/>
-                                              <field name="answer_scale" invisible="True"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                              <field name="answer_measure" invisible="True"/>
-                                          </group>
-                                      </form>
-                                  </field>
-                              </page>
-                          </notebook>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
-
-      <!-- Vista tipo búsqueda evaluaciones whoqolbref -->
-              <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_search">
-                  <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="arch" type="xml">
-                      <search string="Search WHOQOL-BREF">
-                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
-                          <separator/>
-                          <field name="patient_id" string="Paciente"/>
-                          <field name="date_evaluation" string="Fecha"/>
-                          <group expand="0" string="Group By">
-                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
-                            <separator/>
-                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
-                            </group>
-                       </search>
-                    </field>
-                </record>
-
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
-                  <field name="name">Evaluaciones WHOQOL-BREF</field>
-                  <field name="res_model">psychiatry.whoqolbref.evaluation</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
-
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_evaluations"/>
-
-<!-- ################################################################################################################# -->
-
-      <!-- Vista  tipo lista preguntas Scl90r-->
-              <record model="ir.ui.view" id="view_psychiatry_scl90r_question_tree">
-                  <field name="name">Preguntas SCL-90-R</field>
-                  <field name="model">psychiatry.scl90r.question</field>
-                  <field name="arch" type="xml">
-                      <tree string="Preguntas SCL-90-R" >
-                          <field name="name"/>
-                          <field name="category"/>
-                          <field name="answer_scale"/>
-                      </tree>
-                  </field>
-              </record>
-
-      <!-- Vista  tipo formulario preguntas Scl90r-->
-              <record model="ir.ui.view" id="view_psychiatry_scl90r_question_form">
-                  <field name="name">Preguntas SCL-90-R</field>
-                  <field name="model">psychiatry.scl90r.question</field>
-                  <field name="arch" type="xml">
-                      <form string="Preguntas SCL-90-R">
-                        <sheet>
-                          <group>
-                            <field name="name"/>
-                            <field name="category"/>
-                            <field name="answer_scale"/> -->
-                          </group>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
-
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_scl90r_question">
-                  <field name="name">Preguntas SCL-90-R</field>
-                  <field name="res_model">psychiatry.scl90r.question</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
-
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_scl90r_question" id="psychiatry_scl90r_question" parent="menu_view_psychiatry_settings"/>
-
-<!-- ################################################################################################################# -->
-
-      <!-- Vista  tipo lista evaluaciones Scl90r -->
-              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_tree">
-                  <field name="name">Evaluaciones SCL-90-R</field>
-                  <field name="model">psychiatry.scl90r.evaluation</field>
-                  <field name="arch" type="xml">
-                      <tree string="Evaluaciones SCL-90-R" >
-                          <field name="name" readonly="True"/>
-                          <field name="date_evaluation"/>
-                          <field name="patient_id"/>
-                      </tree>
-                  </field>
-              </record>
-
-      <!-- Vista  tipo formulario evaluaciones Scl90r -->
-              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_form">
-                  <field name="name">Evaluaciones SCL-90-R</field>
-                  <field name="model">psychiatry.scl90r.evaluation</field>
-                  <field name="arch" type="xml">
-                      <form string="Evaluaciones SCL-90-R">
-                        <sheet>
-                          <group col="4" colspan="2">
-                            <field name="date_evaluation"/>
-                            <field name="name" readonly="True"/>
-                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
-                          </group>
-
-                          <notebook colspan="2" col='2'>
-                              <page string="SCL-90-R">
-                                  <field name="question_ids" nolabel="1" >
-                                      <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false" limit="100">
-                                          <field name="evaluation_id" invisible="True"/>
-                                          <field name="question_id" readonly="True"/>
-                                          <field name="answer_scale" invisible="True"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                          <field name="answer_measure" invisible="True"/>
-                                      </tree>
-                                      <form string="Preguntas">
-                                          <group>
-                                              <field name="evaluation_id" invisible="True"/>
-                                              <field name="question_id" readonly="True"/>
-                                              <field name="answer_scale" invisible="True"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                              <field name="answer_measure" invisible="True"/>
-                                          </group>
-                                      </form>
-                                  </field>
-                              </page>
-                              <page string="Resultados">
-                                <separator string="Dimensiones primarias"/>
-                                    <group col="6" colspan="2">
-                                        <field name="score_somatizaciones"/>
-                                        <field name="score_obsesiones_compulsiones"/>
-                                        <field name="score_sensitividad_interpersonal"/>
-                                        <field name="score_depresion"/>
-                                        <field name="score_ansiedad"/>
-                                        <field name="score_hostilidad"/>
-                                        <field name="score_ansiedad_fobica"/>
-                                        <field name="score_ideacion_paranoide"/>
-                                        <field name="score_psicoticismo"/>
-                                        <field name="score_items_adicionales"/>
-                                    </group>
-                                <separator string="Índices globales de malestar psicológico"/>
-                                    <group col="6" colspan="2">
-                                        <field name="score_severidad"/>
-                                        <field name="score_sintomas_positivos"/>
-                                        <field name="score_malestar_positivo"/>
-                                    </group>
-                              </page>
-                          </notebook>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
-
-      <!-- Vista  tipo búsqueda evaluaciones scl90r -->
-              <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_search">
-                  <field name="name">Evaluaciones SCL-90-R</field>
-                  <field name="model">psychiatry.scl90r.evaluation</field>
-                  <field name="arch" type="xml">
-                      <search string="Search SCL-90-R">
-                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
-                          <separator/>
-                          <field name="patient_id" string="Paciente"/>
-                          <field name="date_evaluation" string="Fecha"/>
-                          <group expand="0" string="Group By">
-                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
-                            <separator/>
-                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
-                            </group>
-                       </search>
-                    </field>
-                </record>
-
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_scl90r_evaluation">
-                  <field name="name">Evaluaciones SCL-90-R</field>
-                  <field name="res_model">psychiatry.scl90r.evaluation</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
-
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_scl90r_evaluation" id="psychiatry_scl90r_evaluation" parent="menu_view_psychiatry_evaluations"/>
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
 
       <!-- ################################################################################################################# -->
 
-      <!-- Vista  tipo lista preguntas MoCa-->
-              <record model="ir.ui.view" id="view_psychiatry_moca_question_tree">
-                  <field name="name">Preguntas MoCa</field>
-                  <field name="model">psychiatry.moca.question</field>
-                  <field name="arch" type="xml">
-                      <tree string="Preguntas MoCa" >
-                          <field name="name"/>
-                          <field name="category"/>
-                          <field name="answer_scale"/>
-                      </tree>
-                  </field>
-              </record>
+            <!-- Vista  tipo lista preguntas whoqolbref-->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_tree">
+                        <field name="name">Preguntas WHOQOL-BREF</field>
+                        <field name="model">psychiatry.whoqolbref.question</field>
+                        <field name="arch" type="xml">
+                            <tree string="Preguntas WHOQOL-BREF" >
+                                <field name="name"/>
+                                <field name="category"/>
+                                <field name="answer_scale"/>
+                            </tree>
+                        </field>
+                    </record>
 
-      <!-- Vista  tipo formulario preguntas MoCa-->
-              <record model="ir.ui.view" id="view_psychiatry_moca_question_form">
-                  <field name="name">Preguntas MoCa</field>
-                  <field name="model">psychiatry.moca.question</field>
-                  <field name="arch" type="xml">
-                      <form string="Preguntas MoCa">
-                        <sheet>
-                          <group>
-                            <field name="name"/>
-                            <field name="category"/>
-                            <field name="answer_scale"/> -->
-                          </group>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
+            <!-- Vista  tipo formulario preguntas whoqolbref-->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_question_form">
+                        <field name="name">Preguntas WHOQOL-BREF</field>
+                        <field name="model">psychiatry.whoqolbref.question</field>
+                        <field name="arch" type="xml">
+                            <form string="Preguntas WHOQOL-BREF">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="category"/>
+                                  <field name="answer_scale"/> -->
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
 
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_moca_question">
-                  <field name="name">Preguntas MoCa</field>
-                  <field name="res_model">psychiatry.moca.question</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_question">
+                        <field name="name">Preguntas WHOQOL-BREF</field>
+                        <field name="res_model">psychiatry.whoqolbref.question</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
 
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_moca_question" id="psychiatry_moca_question" parent="menu_view_psychiatry_settings"/>
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_whoqolbref_question" id="psychiatry_whoqolbref_question" parent="menu_view_psychiatry_settings"/>
 
-<!-- ################################################################################################################# -->
+      <!-- ################################################################################################################# -->
 
-      <!-- Vista  tipo lista evaluaciones MoCa -->
-              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_tree">
-                  <field name="name">Evaluaciones MoCa</field>
-                  <field name="model">psychiatry.moca.evaluation</field>
-                  <field name="arch" type="xml">
-                      <tree string="Evaluaciones MoCa" >
-                          <field name="name" readonly="True"/>
-                          <field name="date_evaluation"/>
-                          <field name="patient_id"/>
-                      </tree>
-                  </field>
-              </record>
+            <!-- Vista tipo lista evaluaciones whoqolbref -->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_tree">
+                        <field name="name">Evaluaciones WHOQOL-BREF</field>
+                        <field name="model">psychiatry.whoqolbref.evaluation</field>
+                        <field name="arch" type="xml">
+                            <tree string="Evaluaciones WHOQOL-BREF" >
+                                <field name="name" readonly="True"/>
+                                <field name="date_evaluation"/>
+                                <field name="patient_id"/>
+                            </tree>
+                        </field>
+                    </record>
 
-      <!-- Vista  tipo formulario evaluaciones MoCa -->
-              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_form">
-                  <field name="name">Evaluaciones MoCa</field>
-                  <field name="model">psychiatry.moca.evaluation</field>
-                  <field name="arch" type="xml">
-                      <form string="Evaluaciones MoCa">
-                        <sheet>
-                          <group col="4" colspan="2">
-                            <field name="date_evaluation"/>
-                            <field name="name" readonly="True"/>
-                            <field name="patient_id" domain="[('patient', '=', 1)]"/>
-                          </group>
-                          <separator string="Resultados"/>
-                          <group>
-                            <field name="score_moca"/>
-                          </group>
+            <!-- Vista  tipo formulario evaluaciones whoqolbref -->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_form">
+                        <field name="name">Evaluaciones WHOQOL-BREF</field>
+                        <field name="model">psychiatry.whoqolbref.evaluation</field>
+                        <field name="arch" type="xml">
+                            <form string="Evaluaciones WHOQOL-BREF">
+                              <sheet>
+                                <group col="4" colspan="2">
+                                  <field name="date_evaluation"/>
+                                  <field name="name" readonly="True"/>
+                                  <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                </group>
+                                <separator string="Resultados"/>
+                                <group col="4" colspan="2">
+                                  <field name="score_general"/>
+                                  <field name="score_fisica"/>
+                                  <field name="score_psicologica"/>
+                                  <field name="score_relaciones"/>
+                                  <field name="score_entorno"/>
+                                </group>
 
-                          <notebook colspan="2" col='2'>
-                              <page string="MoCa">
-                                  <field name="question_ids" nolabel="1" >
-                                      <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false">
-                                          <field name="evaluation_id" invisible="True"/>
-                                          <field name="question_id" readonly="True"/>
-                                          <field name="answer_scale" invisible="True"/>
-                                          <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                          <field name="answer_measure" invisible="True"/>
-                                      </tree>
-                                      <form string="Preguntas">
-                                          <group>
-                                              <field name="evaluation_id" invisible="True"/>
-                                              <field name="question_id" readonly="True"/>
-                                              <field name="answer_scale" invisible="True"/>
-                                              <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
-                                              <field name="answer_measure" invisible="True"/>
+                                <notebook colspan="2" col='2'>
+                                    <page string="WHOQOL-BREF">
+                                        <field name="question_ids" nolabel="1" >
+                                            <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false">
+                                                <field name="evaluation_id" invisible="True"/>
+                                                <field name="question_id" readonly="True"/>
+                                                <field name="answer_scale" invisible="True"/>
+                                                <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                <field name="answer_measure" invisible="True"/>
+                                            </tree>
+                                            <form string="Preguntas">
+                                                <group>
+                                                    <field name="evaluation_id" invisible="True"/>
+                                                    <field name="question_id" readonly="True"/>
+                                                    <field name="answer_scale" invisible="True"/>
+                                                    <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                    <field name="answer_measure" invisible="True"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Vista tipo búsqueda evaluaciones whoqolbref -->
+                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_evaluation_search">
+                        <field name="name">Evaluaciones WHOQOL-BREF</field>
+                        <field name="model">psychiatry.whoqolbref.evaluation</field>
+                        <field name="arch" type="xml">
+                            <search string="Search WHOQOL-BREF">
+                                <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                                <separator/>
+                                <field name="patient_id" string="Paciente"/>
+                                <field name="date_evaluation" string="Fecha"/>
+                                <group expand="0" string="Group By">
+                                  <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                                  <separator/>
+                                  <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                                  </group>
+                             </search>
+                          </field>
+                      </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_evaluation">
+                        <field name="name">Evaluaciones WHOQOL-BREF</field>
+                        <field name="res_model">psychiatry.whoqolbref.evaluation</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_whoqolbref_evaluation" id="psychiatry_whoqolbref_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista preguntas Scl90r-->
+                    <record model="ir.ui.view" id="view_psychiatry_scl90r_question_tree">
+                        <field name="name">Preguntas SCL-90-R</field>
+                        <field name="model">psychiatry.scl90r.question</field>
+                        <field name="arch" type="xml">
+                            <tree string="Preguntas SCL-90-R" >
+                                <field name="name"/>
+                                <field name="category"/>
+                                <field name="answer_scale"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario preguntas Scl90r-->
+                    <record model="ir.ui.view" id="view_psychiatry_scl90r_question_form">
+                        <field name="name">Preguntas SCL-90-R</field>
+                        <field name="model">psychiatry.scl90r.question</field>
+                        <field name="arch" type="xml">
+                            <form string="Preguntas SCL-90-R">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="category"/>
+                                  <field name="answer_scale"/> -->
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_scl90r_question">
+                        <field name="name">Preguntas SCL-90-R</field>
+                        <field name="res_model">psychiatry.scl90r.question</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_scl90r_question" id="psychiatry_scl90r_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista evaluaciones Scl90r -->
+                    <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_tree">
+                        <field name="name">Evaluaciones SCL-90-R</field>
+                        <field name="model">psychiatry.scl90r.evaluation</field>
+                        <field name="arch" type="xml">
+                            <tree string="Evaluaciones SCL-90-R" >
+                                <field name="name" readonly="True"/>
+                                <field name="date_evaluation"/>
+                                <field name="patient_id"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario evaluaciones Scl90r -->
+                    <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_form">
+                        <field name="name">Evaluaciones SCL-90-R</field>
+                        <field name="model">psychiatry.scl90r.evaluation</field>
+                        <field name="arch" type="xml">
+                            <form string="Evaluaciones SCL-90-R">
+                              <sheet>
+                                <group col="4" colspan="2">
+                                  <field name="date_evaluation"/>
+                                  <field name="name" readonly="True"/>
+                                  <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                </group>
+
+                                <notebook colspan="2" col='2'>
+                                    <page string="SCL-90-R">
+                                        <field name="question_ids" nolabel="1" >
+                                            <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false" limit="100">
+                                                <field name="evaluation_id" invisible="True"/>
+                                                <field name="question_id" readonly="True"/>
+                                                <field name="answer_scale" invisible="True"/>
+                                                <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                <field name="answer_measure" invisible="True"/>
+                                            </tree>
+                                            <form string="Preguntas">
+                                                <group>
+                                                    <field name="evaluation_id" invisible="True"/>
+                                                    <field name="question_id" readonly="True"/>
+                                                    <field name="answer_scale" invisible="True"/>
+                                                    <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                    <field name="answer_measure" invisible="True"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Resultados">
+                                      <separator string="Dimensiones primarias"/>
+                                          <group col="6" colspan="2">
+                                              <field name="score_somatizaciones"/>
+                                              <field name="score_obsesiones_compulsiones"/>
+                                              <field name="score_sensitividad_interpersonal"/>
+                                              <field name="score_depresion"/>
+                                              <field name="score_ansiedad"/>
+                                              <field name="score_hostilidad"/>
+                                              <field name="score_ansiedad_fobica"/>
+                                              <field name="score_ideacion_paranoide"/>
+                                              <field name="score_psicoticismo"/>
+                                              <field name="score_items_adicionales"/>
                                           </group>
-                                      </form>
-                                  </field>
-                              </page>
-                          </notebook>
-                        </sheet>
-                      </form>
-                  </field>
-              </record>
+                                      <separator string="Índices globales de malestar psicológico"/>
+                                          <group col="6" colspan="2">
+                                              <field name="score_severidad"/>
+                                              <field name="score_sintomas_positivos"/>
+                                              <field name="score_malestar_positivo"/>
+                                          </group>
+                                    </page>
+                                </notebook>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
 
-      <!-- Vista tipo búsqueda evaluaciones MoCa -->
-              <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_search">
-                  <field name="name">Evaluaciones MoCa</field>
-                  <field name="model">psychiatry.moca.evaluation</field>
-                  <field name="arch" type="xml">
-                      <search string="Search MoCa">
-                          <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
-                          <separator/>
-                          <field name="patient_id" string="Paciente"/>
-                          <field name="date_evaluation" string="Fecha"/>
-                          <group expand="0" string="Group By">
-                            <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
-                            <separator/>
-                            <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
-                            </group>
-                       </search>
-                    </field>
-                </record>
+            <!-- Vista  tipo búsqueda evaluaciones scl90r -->
+                    <record model="ir.ui.view" id="view_psychiatry_scl90r_evaluation_search">
+                        <field name="name">Evaluaciones SCL-90-R</field>
+                        <field name="model">psychiatry.scl90r.evaluation</field>
+                        <field name="arch" type="xml">
+                            <search string="Search SCL-90-R">
+                                <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                                <separator/>
+                                <field name="patient_id" string="Paciente"/>
+                                <field name="date_evaluation" string="Fecha"/>
+                                <group expand="0" string="Group By">
+                                  <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                                  <separator/>
+                                  <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                                  </group>
+                             </search>
+                          </field>
+                      </record>
 
-      <!-- Definimos la accion para que abra el formulario -->
-              <record model="ir.actions.act_window" id="action_psychiatry_moca_evaluation">
-                  <field name="name">Evaluaciones MoCa</field>
-                  <field name="res_model">psychiatry.moca.evaluation</field>
-                  <field name="view_type">form</field>
-                  <field name="view_mode">tree,form</field>
-              </record>
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_scl90r_evaluation">
+                        <field name="name">Evaluaciones SCL-90-R</field>
+                        <field name="res_model">psychiatry.scl90r.evaluation</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
 
-      <!-- Definimos la accion del menu -->
-              <menuitem action="psychiatry.action_psychiatry_moca_evaluation" id="psychiatry_moca_evaluation" parent="menu_view_psychiatry_evaluations"/>
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_scl90r_evaluation" id="psychiatry_scl90r_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista preguntas MoCa-->
+                    <record model="ir.ui.view" id="view_psychiatry_moca_question_tree">
+                        <field name="name">Preguntas MoCa</field>
+                        <field name="model">psychiatry.moca.question</field>
+                        <field name="arch" type="xml">
+                            <tree string="Preguntas MoCa" >
+                                <field name="name"/>
+                                <field name="category"/>
+                                <field name="answer_scale"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario preguntas MoCa-->
+                    <record model="ir.ui.view" id="view_psychiatry_moca_question_form">
+                        <field name="name">Preguntas MoCa</field>
+                        <field name="model">psychiatry.moca.question</field>
+                        <field name="arch" type="xml">
+                            <form string="Preguntas MoCa">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="category"/>
+                                  <field name="answer_scale"/> -->
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_moca_question">
+                        <field name="name">Preguntas MoCa</field>
+                        <field name="res_model">psychiatry.moca.question</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_moca_question" id="psychiatry_moca_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista evaluaciones MoCa -->
+                    <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_tree">
+                        <field name="name">Evaluaciones MoCa</field>
+                        <field name="model">psychiatry.moca.evaluation</field>
+                        <field name="arch" type="xml">
+                            <tree string="Evaluaciones MoCa" >
+                                <field name="name" readonly="True"/>
+                                <field name="date_evaluation"/>
+                                <field name="patient_id"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario evaluaciones MoCa -->
+                    <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_form">
+                        <field name="name">Evaluaciones MoCa</field>
+                        <field name="model">psychiatry.moca.evaluation</field>
+                        <field name="arch" type="xml">
+                            <form string="Evaluaciones MoCa">
+                              <sheet>
+                                <group col="4" colspan="2">
+                                  <field name="date_evaluation"/>
+                                  <field name="name" readonly="True"/>
+                                  <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                </group>
+                                <separator string="Resultados"/>
+                                <group>
+                                  <field name="score_moca"/>
+                                </group>
+
+                                <notebook colspan="2" col='2'>
+                                    <page string="MoCa">
+                                        <field name="question_ids" nolabel="1" >
+                                            <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false">
+                                                <field name="evaluation_id" invisible="True"/>
+                                                <field name="question_id" readonly="True"/>
+                                                <field name="answer_scale" invisible="True"/>
+                                                <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                <field name="answer_measure" invisible="True"/>
+                                            </tree>
+                                            <form string="Preguntas">
+                                                <group>
+                                                    <field name="evaluation_id" invisible="True"/>
+                                                    <field name="question_id" readonly="True"/>
+                                                    <field name="answer_scale" invisible="True"/>
+                                                    <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                    <field name="answer_measure" invisible="True"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Vista tipo búsqueda evaluaciones MoCa -->
+                    <record model="ir.ui.view" id="view_psychiatry_moca_evaluation_search">
+                        <field name="name">Evaluaciones MoCa</field>
+                        <field name="model">psychiatry.moca.evaluation</field>
+                        <field name="arch" type="xml">
+                            <search string="Search MoCa">
+                                <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                                <separator/>
+                                <field name="patient_id" string="Paciente"/>
+                                <field name="date_evaluation" string="Fecha"/>
+                                <group expand="0" string="Group By">
+                                  <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                                  <separator/>
+                                  <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                                  </group>
+                             </search>
+                          </field>
+                      </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_moca_evaluation">
+                        <field name="name">Evaluaciones MoCa</field>
+                        <field name="res_model">psychiatry.moca.evaluation</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_moca_evaluation" id="psychiatry_moca_evaluation" parent="menu_view_psychiatry_evaluations"/>
 
       <!-- ################################################################################################################# -->
 
@@ -774,6 +680,101 @@
 
       <!-- Definimos la accion del menu -->
               <menuitem action="psychiatry.action_psychiatry_hospitalization" id="psychiatry_hospitalization" parent="menu_view_psychiatry_hospitalization" sequence="20"/>
+
+      <!-- ################################################################################################################# -->
+
+      <!-- Vista tipo lista Paciente -->
+              <record id="view_psychiatry_patient_tree" model="ir.ui.view">
+                 <field name="inherit_id" ref="base.view_partner_tree" />
+                  <field name="model">res.partner</field>
+                  <field name="arch" type="xml">
+
+                    <field name="parent_id" position="after">
+                        <field name="patient" invisible="1"/>
+                        <field name="insurer" invisible="1"/>
+                    </field>
+
+                  </field>
+              </record>
+
+      <!-- Vista tipo formulario Paciente -->
+              <record id="view_psychiatry_patient_form" model="ir.ui.view">
+                 <field name="inherit_id" ref="base.view_partner_form" />
+                  <field name="model">res.partner</field>
+                  <field name="arch" type="xml">
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_whoqolbref_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="WHOQOL-BREF"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="WHOQOL-BREF" name="whoqolbref_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_scl90r_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="SCL-90-R"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="SCL-90-R" name="scl90r_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_moca_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="MoCa"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="MoCa" name="moca_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="Ingresos"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="Ingresos" name="hospitalization_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <field name="website" position="after">
+                      <field name="patient" string="Paciente"/>
+                      <field name="insurer" string="EPS"/>
+                    </field>
+
+                  </field>
+              </record>
+
+      <!-- Vista tipo búsqueda Paciente -->
+              <record id="view_psychiatry_patient_search" model="ir.ui.view">
+                 <field name="inherit_id" ref="base.view_res_partner_filter" />
+                  <field name="model">res.partner</field>
+                  <field name="arch" type="xml">
+
+                    <field name="name" position="after">
+                        <field name="patient"/>
+                        <field name="insurer"/>
+
+                        <filter string="Pacientes" name="patient" domain="[('patient','=',1)]"/>
+                        <filter string="Aseguradora" name="insurer" domain="[('insurer','=',1)]"/>
+                    </field>
+
+                  </field>
+              </record>
+
+      <!-- Definimos la accion para que abra el formulario -->
+              <record model="ir.actions.act_window" id="action_psychiatry_patient">
+                  <field name="name">Pacientes</field>
+                  <field name="res_model">res.partner</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+                  <field name="context">{'default_patient':1, "search_default_patient":1}</field>
+                  <field name="search_view_id" ref="view_psychiatry_patient_search"/>
+              </record>
+
+              <menuitem action="psychiatry.action_psychiatry_patient" id="psychiatry_partner" parent="menu_view_psychiatry_hospitalization" sequence="10"/>
 
       <!-- ################################################################################################################# -->
 
