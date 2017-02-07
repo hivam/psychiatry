@@ -1,0 +1,62 @@
+id,name,answer_scale,measure
+answer_1,Muy mala,A,1
+answer_2,Regular,A,2
+answer_3,Normal,A,3
+answer_4,Bastante buena,A,4
+answer_5,Muy buena,A,5
+answer_6,Muy Insatisfecho,B,1
+answer_7,Un poco insatisfecho,B,2
+answer_8,Lo normal,B,3
+answer_9,Bastante satisfecho,B,4
+answer_10,Muy satisfecho,B,5
+answer_11,Nada,C,1
+answer_12,Un poco,C,2
+answer_13,Lo normal,C,3
+answer_14,Bastante,C,4
+answer_15,Extremadamente,C,5
+answer_16,Nada,D,1
+answer_17,Un poco,D,2
+answer_18,Lo normal,D,3
+answer_19,Bastante,D,4
+answer_20,Totalmente,D,5
+answer_21,Muy Insatisfecho,E,1
+answer_22,Poco,E,2
+answer_23,Lo normal,E,3
+answer_24,Bastante satisfecho,E,4
+answer_25,Muy satisfecho,E,5
+answer_26,Nunca,F,1
+answer_27,Raramente,F,2
+answer_28,Moderadamente,F,3
+answer_29,Frecuentemente,F,4
+answer_30,Siempre,F,5
+answer_31,Nada,G,0
+answer_32,Muy poco,G,1
+answer_33,Poco,G,2
+answer_34,Bastante,G,3
+answer_35,Mucho,G,4
+answer_36,Si,H,1
+answer_37,No,H,0
+answer_38,Errores – 0,I,1
+answer_39,Errores – 1,I,1
+answer_40,Errores – 2,I,0
+answer_41,Errores – 3,I,0
+answer_42,Errores – 4,I,0
+answer_43,Errores – 5,I,0
+answer_44,Errores – 6,I,0
+answer_45,Errores – 7,I,0
+answer_46,Errores – 8,I,0
+answer_47,Errores – 9,I,0
+answer_48,Errores – 10,I,0
+answer_49,Errores – 11,I,0
+answer_50,Buenas – 0,J,0
+answer_51,Buenas – 1,J,1
+answer_52,Buenas – 2,J,2
+answer_53,Buenas – 3,J,2
+answer_54,Buenas – 4,J,3
+answer_55,Buenas – 5,J,3
+answer_56,Pista de categoría,K,0
+answer_57,Pista elección múltiple,K,0
+answer_58,Si,K,1
+answer_59,No,K,0
+answer_60,Si,L,0
+answer_61,No,L,0

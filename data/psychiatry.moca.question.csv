@@ -1,0 +1,50 @@
+id,name,category,answer_scale
+mq_1,Realiza la secuencia esperada,Alternancia conceptual,H
+mq_2,El dibujo realizado es tridimensional,Capacidades visuoconstructivas - Cubo,H
+mq_3,El dibujo tiene todas sus líneas,Capacidades visuoconstructivas - Cubo,H
+mq_4,La copia del cubo tiene líneas adicionales ,Capacidades visuoconstructivas - Cubo,H
+mq_5,Las líneas son relativamente paralelas,Capacidades visuoconstructivas - Cubo,H
+mq_6,Las líneas del cubo son aproximadamente de la misma longitud,Capacidades visuoconstructivas - Cubo,H
+mq_7,Los prismas rectangulares son aceptables,Capacidades visuoconstructivas - Cubo,H
+mq_8,El contorno del reloj tiene poca deformación,Capacidades visuoconstructivas - Reloj - Contorno,H
+mq_9,Todos los números del reloj están presentes,Capacidades visuoconstructivas - Reloj - Números,H
+mq_10,Se añadió un número que no corresponde,Capacidades visuoconstructivas - Reloj - Números,H
+mq_11,Se sigue el orden correcto de los números,Capacidades visuoconstructivas - Reloj - Números,H
+mq_12,Los números están bien colocados,Capacidades visuoconstructivas - Reloj - Números,H
+mq_13,Las agujas indican la hora solicitada,Capacidades visuoconstructivas - Reloj - Agujas,H
+mq_14,La aguja de las horas es más pequeña que la aguja de los minutos,Capacidades visuoconstructivas - Reloj - Agujas,H
+mq_15,El punto de unión de las agujas esta en la zona central del reloj,Capacidades visuoconstructivas - Reloj - Agujas,H
+mq_16,Camello o Dromedario,Denominación,H
+mq_17,León,Denominación,H
+mq_18,Rinoceronte,Denominación,H
+mq_19,Rostro,Memoria,L
+mq_20,Seda,Memoria,L
+mq_21,Iglesia,Memoria,L
+mq_22,Clavel,Memoria,L
+mq_23,Rojo,Memoria,L
+mq_24,2° Intento – Rostro,Memoria,L
+mq_25,2° Intento – Seda,Memoria,L
+mq_26,2° Intento – Iglesia,Memoria,L
+mq_27,2° Intento – Clavel,Memoria,L
+mq_28,2° Intento – Rojo,Memoria,L
+mq_29,Secuencia numérica,Atención,H
+mq_30,Secuencia numérica inversa,Atención,H
+mq_31,Concentración,Atención,I
+mq_32,Substracción en secuencia de 7,Atención,J
+mq_33,Repite correctamente la frase 1,Repetición de frases,H
+mq_34,Repite correctamente la frase 2,Repetición de frases,H
+mq_35,Dice 11 o más palabras con la condición establecida en un minuto,Fluidez verbal,H
+mq_36,Manzana/Naranja,Similitudes,L
+mq_37,Tren/Bicicleta,Similitudes,H
+mq_38,Regla/Reloj,Similitudes,H
+mq_39,Rostro,Recuerdo diferido,K
+mq_40,Seda,Recuerdo diferido,K
+mq_41,Iglesia,Recuerdo diferido,K
+mq_42,Clavel,Recuerdo diferido,K
+mq_43,Rojo,Recuerdo diferido,K
+mq_44,Día del mes,Orientación,H
+mq_45,Mes,Orientación,H
+mq_46,Año,Orientación,H
+mq_47,Día de la semana,Orientación,H
+mq_48,Lugar,Orientación,H
+mq_49,Localidad,Orientación,H
