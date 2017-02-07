@@ -19,10 +19,10 @@
                 'views/psychiatry_view.xml',
                 'data/psychiatry_sequences.xml',
                 'data/psychiatry.diseases.csv',
-                'psychiatry.whoqolbref.answer.csv',
-                'psychiatry.whoqolbref.question.csv',
-                'psychiatry.scl90r.question.csv',
-                'psychiatry.moca.question.csv'
+                'data/psychiatry.whoqolbref.answer.csv',
+                'data/psychiatry.whoqolbref.question.csv',
+                'data/psychiatry.scl90r.question.csv',
+                'data/psychiatry.moca.question.csv'
               ],
     'installable': True,
     'auto_install': False,
