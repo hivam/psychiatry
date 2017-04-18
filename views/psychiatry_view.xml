@@ -937,7 +937,7 @@
 -->
 
                     <field name="website" position="after">
-                      <field name="document_type" string="Tipo de documento"/>
+                      <!-- <field name="document_type" string="Tipo de documento"/> -->
                       <!-- <field name="num_doc" string="Número de documento"/> -->
                       <field name="sex" string="Sexo"/>
                     </field>
