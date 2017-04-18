@@ -910,13 +910,13 @@
                         </button>
                     </div>
 <!--
-					ocultando campos
--->                 
+          ocultando campos
+-->
 <!--
                     <field name="title" position="replace">
                         <attribute name="title" attrs="{'invisible': True}"/>
                     </field>
-                   
+
 
                     <field name="function" position="replace">
                         <attribute name="function" attrs="{'invisible': True}"/>
@@ -925,26 +925,26 @@
 
                     <field name="fax" position="replace">
                         <attribute name="fax" attrs="{'invisible': True}"/>
-                    </field>                    
+                    </field>
 
 
 
                     <field name="lang" position="replace">
                         <attribute name="lang" attrs="{'invisible': True}"/>
-                    </field> 
+                    </field>
 -->
 <!--
---> 
+-->
 
                     <field name="website" position="after">
                       <field name="document_type" string="Tipo de documento"/>
                       <field name="num_doc" string="Número de documento"/>
-                      <field name="sex" string="Sexo"/>                     
+                      <field name="sex" string="Sexo"/>
                     </field>
 
                     <field name="category_id" position="after">
                       <field name="patient" string="Paciente"/>
-                      <field name="insurer" string="EPS"/>                      
+                      <field name="insurer" string="EPS"/>
                     </field>
 
                   </field>

@@ -22,7 +22,6 @@ class ResPartner(models.Model):
 
     patient= fields.Boolean(string=u'Paciente', default=True)
     insurer= fields.Boolean(string=u'EPS')
-    num_doc = fields.Char(string=u'Número de documento')
     document_type= fields.Selection ([('12','Tarjeta de identidad'),
                                   ('13','Cédula de ciudadanía'),
                                   ('21','Tarjeta de extranjería'),
@@ -31,7 +30,8 @@ class ResPartner(models.Model):
                                   ('41','Pasaporte'),
                                   ('42','Documento de identificación extranjero'),
                                   ('43','Sin identificación del exterior o para uso definido por la DIAN')],
-                                  string=u'Tipo de Documento', default=True)
+                                  string=u'Tipo de Documento')
+    num_doc = fields.Char(string=u'Número de documento')
     whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
     whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
     scl90r_count= fields.Integer(compute='_count_scl90r', string=u'SCL-90-R')
@@ -725,5 +725,3 @@ class PsychiatryLeaves(models.Model):
     leave_type= fields.Selection([('1', 'Ninguno'), ('2', 'Día Completo'),
                                   ('3', 'Medio día'), ('4', 'Salida - Visita')],
                                   string=u'Tipo', required=True)
-
-
