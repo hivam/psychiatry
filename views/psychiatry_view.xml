@@ -122,7 +122,7 @@
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
-                                  <field name="sex"/>
+                                  <!-- <field name="sex"/> -->
                                 </group>
                                 <separator string="Resultados"/>
                                 <group col="4" colspan="2">
@@ -261,7 +261,7 @@
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
-                                  <field name="sex"/>
+                                  <!-- <field name="sex"/> -->
                                 </group>
 
                                 <notebook colspan="2" col='2'>
@@ -413,7 +413,7 @@
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
-                                  <field name="sex"/>
+                                  <!-- <field name="sex"/> -->
                                 </group>
                                 <separator string="Resultados"/>
                                 <group>
@@ -549,7 +549,7 @@
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
-                                  <field name="sex"/>
+                                  <!-- <field name="sex"/> -->
                                 </group>
 
                                 <notebook colspan="2" col='2'>
@@ -656,7 +656,7 @@
                             <field name="name" readonly="True"/>
                             <field name="patient_id" domain="[('patient', '=', 1)]"/>
                             <field name="category_id" widget="many2many_tags"/>
-                            <field name="sex"/>
+                            <!-- <field name="sex"/> -->
                             <field name="insurer_id" domain="[('insurer', '=', 1)]"/>
                           </group>
                           <group col="4" colspan="2">
@@ -936,11 +936,11 @@
 <!--
 -->
 
-                    <field name="website" position="after">
-                      <!-- <field name="document_type" string="Tipo de documento"/> -->
-                      <!-- <field name="num_doc" string="Número de documento"/> -->
+                    <!-- <field name="website" position="after">
+                      <field name="document_type" string="Tipo de documento"/>
+                      <field name="num_doc" string="Número de documento"/>
                       <field name="sex" string="Sexo"/>
-                    </field>
+                    </field> -->
 
                     <field name="category_id" position="after">
                       <field name="patient" string="Paciente"/>

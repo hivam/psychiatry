@@ -42,7 +42,7 @@ class ResPartner(models.Model):
     sf36_ids= fields.One2many('psychiatry.sf36.evaluation','patient_id','SF-36')
     hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
     hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
-    sex = fields.Selection([('M','Masculino'), ('F','Femenino')], string=u'Sexo')
+    # sex = fields.Selection([('M','Masculino'), ('F','Femenino')], string=u'Sexo')
 
 
     @api.depends('whoqolbref_ids')
@@ -111,7 +111,7 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     score_entorno= fields.Integer(compute='_score_whoqolbref', string=u'Entorno')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    # sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
 
     @api.model
@@ -201,7 +201,7 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_malestar_positivo= fields.Float(compute='_score_scl90r', string=u'Indice de Malestar Sintomático Positivo')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    # sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -367,7 +367,7 @@ class PsychiatryMocaEvaluation(models.Model):
     score_moca= fields.Float(compute='_score_moca', string=u'Puntuación final')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    # sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -477,7 +477,7 @@ class PsychiatrySf36Evaluation(models.Model):
     score_salud_mental_rs= fields.Float(compute='_score_sf36', string=u'Salud Mental')
     question_ids= fields.One2many('psychiatry.sf36.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    # sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -661,7 +661,7 @@ class PsychiatryHospitalization(models.Model):
     compromise_clinic_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Clínico')
     leave_ids= fields.One2many('psychiatry.leaves', 'hospitalization_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    # sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
