@@ -1,27 +1,27 @@
-id,name,category,answer_scale
-wq_1,¿Cómo puntuaría su calidad de vida?,General,A
-wq_2,¿Cuán satisfecho está con su salud? ,General,B
-wq_3,¿Hasta qué punto piensa que el dolor (físico) le impide hacer lo que necesita? ,Salud física,C
-wq_4,¿Cuánto necesita de cualquier tratamiento médico para funcionar en su vida diaria?,Salud física,C
-wq_5,¿Cuánto disfruta de la vida? ,Psicológica,C
-wq_6,¿Hasta qué punto siente que su vida tiene sentido? ,Psicológica,C
-wq_7,¿Cuál es su capacidad de concentración? ,Psicológica,C
-wq_8,¿Cuánta seguridad siente en su vida diaria? ,Entorno,C
-wq_9,¿Cuán saludable es el ambiente físico a su alrededor? ,Entorno,C
-wq_10,¿Tiene energía suficiente para su vida diaria? ,Salud física,D
-wq_11,¿Es capaz de aceptar su apariencia física? ,Psicológica,D
-wq_12,¿Tiene suficiente dinero para cubrir sus necesidades? ,Entorno,D
-wq_13,¿Qué disponible tiene la información que necesita en su vida diaria? ,Entorno,D
-wq_14,¿Hasta qué punto tiene oportunidad para realizar actividades de ocio? ,Entorno,D
-wq_15,¿Es capaz de desplazarse de un lugar a otro? ,Salud física,D
-wq_16,¿Cuán satisfecho está con su sueño? ,Salud física,E
-wq_17,¿Cuán satisfecho está con su habilidad para realizar sus actividades de la vida diaria? ,Salud física,E
-wq_18,¿Cuán satisfecho está con su capacidad de trabajo? ,Salud física,E
-wq_19,¿Cuán satisfecho está de sí mismo? ,Psicológica,E
-wq_20,¿Cuán satisfecho está con sus relaciones personales? ,Relaciones interpersonales,E
-wq_21,¿Cuán satisfecho está con su vida sexual? ,Relaciones interpersonales,E
-wq_22,¿Cuán satisfecho está con el apoyo que obtiene de sus amigos? ,Relaciones interpersonales,E
-wq_23,¿Cuán satisfecho está de las condiciones del lugar donde vive? ,Entorno,E
-wq_24,¿Cuán satisfecho está con el acceso que tiene a los servicios sanitarios? ,Entorno,E
-wq_25,¿Cuán satisfecho está con su transporte? ,Entorno,E
-wq_26,"¿Con que frecuencia tiene sentimientos negativos, tales como tristeza, desesperanza, ansiedad, depresión? ",Psicológica,F
+id,name,category,answer_scale,active
+wq_1,¿Cómo puntuaría su calidad de vida?,General,A,True
+wq_2,¿Cuán satisfecho está con su salud? ,General,B,True
+wq_3,¿Hasta qué punto piensa que el dolor (físico) le impide hacer lo que necesita? ,Salud física,C,True
+wq_4,¿Cuánto necesita de cualquier tratamiento médico para funcionar en su vida diaria?,Salud física,C,True
+wq_5,¿Cuánto disfruta de la vida? ,Psicológica,C,True
+wq_6,¿Hasta qué punto siente que su vida tiene sentido? ,Psicológica,C,True
+wq_7,¿Cuál es su capacidad de concentración? ,Psicológica,C,True
+wq_8,¿Cuánta seguridad siente en su vida diaria? ,Entorno,C,True
+wq_9,¿Cuán saludable es el ambiente físico a su alrededor? ,Entorno,C,True
+wq_10,¿Tiene energía suficiente para su vida diaria? ,Salud física,D,True
+wq_11,¿Es capaz de aceptar su apariencia física? ,Psicológica,D,True
+wq_12,¿Tiene suficiente dinero para cubrir sus necesidades? ,Entorno,D,True
+wq_13,¿Qué disponible tiene la información que necesita en su vida diaria? ,Entorno,D,True
+wq_14,¿Hasta qué punto tiene oportunidad para realizar actividades de ocio? ,Entorno,D,True
+wq_15,¿Es capaz de desplazarse de un lugar a otro? ,Salud física,D,True
+wq_16,¿Cuán satisfecho está con su sueño? ,Salud física,E,True
+wq_17,¿Cuán satisfecho está con su habilidad para realizar sus actividades de la vida diaria? ,Salud física,E,True
+wq_18,¿Cuán satisfecho está con su capacidad de trabajo? ,Salud física,E,True
+wq_19,¿Cuán satisfecho está de sí mismo? ,Psicológica,E,True
+wq_20,¿Cuán satisfecho está con sus relaciones personales? ,Relaciones interpersonales,E,True
+wq_21,¿Cuán satisfecho está con su vida sexual? ,Relaciones interpersonales,E,True
+wq_22,¿Cuán satisfecho está con el apoyo que obtiene de sus amigos? ,Relaciones interpersonales,E,True
+wq_23,¿Cuán satisfecho está de las condiciones del lugar donde vive? ,Entorno,E,True
+wq_24,¿Cuán satisfecho está con el acceso que tiene a los servicios sanitarios? ,Entorno,E,True
+wq_25,¿Cuán satisfecho está con su transporte? ,Entorno,E,True
+wq_26,"¿Con que frecuencia tiene sentimientos negativos, tales como tristeza, desesperanza, ansiedad, depresión? ",Psicológica,F,True

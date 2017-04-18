@@ -23,7 +23,7 @@
                 'data/psychiatry.whoqolbref.question.csv',
                 'data/psychiatry.scl90r.question.csv',
                 'data/psychiatry.moca.question.csv',
-                'data/psychiatry.sf36.question.csv'
+                'data/psychiatry.sf36.question.CVS'
               ],
     'installable': True,
     'auto_install': False,

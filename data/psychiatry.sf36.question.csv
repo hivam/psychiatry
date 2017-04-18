@@ -1,0 +1,48 @@
+id,name,category,answer_scale,active
+sf_1,En general usted diría que su salud es:,Salud General,M,True
+sf_2,¿Cómo diría que es su salud actual comparada con la de hace un año?,Salud General,N,True
+sf_3,"Su salud actual ¿le limita para hacer esfuerzos intensos tales como correr levantar objetos pesados o participar en
+deportes agotadores?",Función Física,O,True
+sf_4,"Su salud actual ¿le limita para hacer esfuerzos moderados como mover una mesa pasar la aspiradora jugar a los bolos
+o caminar más de una hora?",Función Física,O,True
+sf_5,Su salud actual ¿le limita para coger o llevar la bolsa de la compra?,Función Física,O,True
+sf_6,Su salud actual ¿le limita para subir varios pisos por la escalera?,Función Física,O,True
+sf_7,Su salud actual ¿le limita para subir un solo piso por la escalera?,Función Física,O,True
+sf_8,Su salud actual ¿le limita para agacharse o arrodillarse?,Función Física,O,True
+sf_9,Su salud actual ¿le limita para caminar un kilómetro o más?,Función Física,O,True
+sf_10,Su salud actual ¿le limita para caminar varias manzanas (varios centenares de metros)?,Función Física,O,True
+sf_11,Su salud actual ¿le limita para caminar una sola manzana (unos 100 metros)?,Función Física,O,True
+sf_12,Su salud actual ¿le limita para bañarse o vestirse por sí mismo?,Función Física,O,True
+sf_13,"Durante las 4 últimas semanas ¿tuvo que reducir el tiempo dedicado al trabajo o a sus actividades cotidianas a causa
+de su salud física?",Rol Físico,P,True
+sf_14,Durante las 4 últimas semanas ¿hizo menos de lo que hubiera querido hacer a causa de su salud física?,Rol Físico,P,True
+sf_15,"Durante las 4 últimas semanas ¿tuvo que dejar de hacer algunas tareas en su trabajo o en sus actividades cotidianas a
+causa de su salud física?",Rol Físico,P,True
+sf_16,"Durante las 4 últimas semanas ¿tuvo dificultad para hacer su trabajo o sus actividades cotidianas (por ejemplo le costó
+más de lo normal) a causa de su salud física?",Rol Físico,P,True
+sf_17,"Durante las 4 últimas semanas ¿tuvo que reducir el tiempo dedicado al trabajo o a sus actividades cotidianas a causa
+de algún problema emocional (como estar triste deprimido o nervioso?",Salud Mental,P,True
+sf_18,"Durante las 4 últimas semanas ¿hizo menos de lo que hubiera querido hacer a causa de algún problema emocional
+(como estar triste deprimido o nervioso)?",Salud Mental,P,True
+sf_19,"Durante las 4 últimas semanas ¿no hizo su trabajo o sus actividades cotidianas tan cuidadosamente como de
+costumbre a causa de algún problema emocional (como estar triste deprimido o nervioso)?",Salud Mental,P,True
+sf_20,"Durante las 4 últimas semanas ¿hasta qué punto su salud física o los problemas emocionales han dificultado sus
+actividades sociales habituales con la familia los amigos los vecinos u otras personas?",Función Social,Q,True
+sf_21,¿Tuvo dolor en alguna parte del cuerpo durante las 4 últimas semanas?,Dolor Corporal,Y,True
+sf_22,"Durante las 4 últimas semanas ¿hasta qué punto el dolor le ha dificultado su trabajo habitual (incluido el trabajo fuera
+de casa y las tareas domésticas)?",Dolor Corporal,Q,True
+sf_23,Durante las 4 últimas semanas ¿cuánto tiempo se sintió lleno de vitalidad?,Vitalidad,S,True
+sf_24,Durante las 4 últimas semanas ¿cuánto tiempo estuvo muy nervioso?,Rol Emocional,T,True
+sf_25,Durante las 4 últimas semanas ¿cuánto tiempo se sintió tan bajo de moral que nada podía animarle?,Rol Emocional,T,True
+sf_26,Durante las 4 últimas semanas ¿cuánto tiempo se sintió calmado y tranquilo?,Rol Emocional,S,True
+sf_27,Durante las 4 últimas semanas ¿cuánto tiempo tuvo mucha energía?,Vitalidad,S,True
+sf_28,Durante las 4 últimas semanas ¿cuánto tiempo se sintió desanimado y triste?,Rol Emocional,T,True
+sf_29,Durante las 4 últimas semanas ¿cuánto tiempo se sintió agotado?,Vitalidad,T,True
+sf_30,Durante las 4 últimas semanas ¿cuánto tiempo se sintió feliz?,Rol Emocional,U,True
+sf_31,Durante las 4 últimas semanas ¿cuánto tiempo se sintió cansado?,Vitalidad,V,True
+sf_32,"Durante las 4 últimas semanas ¿con qué frecuencia la salud física o los problemas emocionales le han dificultado sus
+actividades sociales (como visitar a los amigos o familiares)?",Función Social,U,True
+sf_33,Creo que me pongo enfermo más fácilmente que otras personas.,Salud General,W,True
+sf_34,Estoy tan sano como cualquiera.,Salud General,X,True
+sf_35,Creo que mi salud va a empeorar.,Salud General,W,True
+sf_36,Mi salud es excelente.,Salud General,X,True

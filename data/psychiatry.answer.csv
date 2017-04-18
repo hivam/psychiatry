@@ -1,0 +1,125 @@
+id,name,answer_scale,measure
+answer_1,Muy mala,A,1
+answer_2,Regular,A,2
+answer_3,Normal,A,3
+answer_4,Bastante buena,A,4
+answer_5,Muy buena,A,5
+answer_6,Muy Insatisfecho,B,1
+answer_7,Un poco insatisfecho,B,2
+answer_8,Lo normal,B,3
+answer_9,Bastante satisfecho,B,4
+answer_10,Muy satisfecho,B,5
+answer_11,Nada,C,1
+answer_12,Un poco,C,2
+answer_13,Lo normal,C,3
+answer_14,Bastante,C,4
+answer_15,Extremadamente,C,5
+answer_16,Nada,D,1
+answer_17,Un poco,D,2
+answer_18,Lo normal,D,3
+answer_19,Bastante,D,4
+answer_20,Totalmente,D,5
+answer_21,Muy Insatisfecho,E,1
+answer_22,Poco,E,2
+answer_23,Lo normal,E,3
+answer_24,Bastante satisfecho,E,4
+answer_25,Muy satisfecho,E,5
+answer_26,Nunca,F,1
+answer_27,Raramente,F,2
+answer_28,Moderadamente,F,3
+answer_29,Frecuentemente,F,4
+answer_30,Siempre,F,5
+answer_31,Nada,G,0
+answer_32,Muy poco,G,1
+answer_33,Poco,G,2
+answer_34,Bastante,G,3
+answer_35,Mucho,G,4
+answer_36,Si,H,1
+answer_37,No,H,0
+answer_38,Errores – 0,I,1
+answer_39,Errores – 1,I,1
+answer_40,Errores – 2,I,0
+answer_41,Errores – 3,I,0
+answer_42,Errores – 4,I,0
+answer_43,Errores – 5,I,0
+answer_44,Errores – 6,I,0
+answer_45,Errores – 7,I,0
+answer_46,Errores – 8,I,0
+answer_47,Errores – 9,I,0
+answer_48,Errores – 10,I,0
+answer_49,Errores – 11,I,0
+answer_50,Buenas – 0,J,0
+answer_51,Buenas – 1,J,1
+answer_52,Buenas – 2,J,2
+answer_53,Buenas – 3,J,2
+answer_54,Buenas – 4,J,3
+answer_55,Buenas – 5,J,3
+answer_56,Pista de categoría,K,0
+answer_57,Pista elección múltiple,K,0
+answer_58,Si,K,1
+answer_59,No,K,0
+answer_60,Si,L,0
+answer_61,No,L,0
+answer_62,Excelente,M,100
+answer_63,Muy buena,M,75
+answer_64,Buena,M,50
+answer_65,Regular,M,25
+answer_66,Mala,M,0
+answer_67,Mucho mejor ahora que hace un año,N,100
+answer_68,Algo mejor ahora que hace un año,N,75
+answer_69,Más o menos igual que hace un año,N,50
+answer_70,Algo peor ahora que hace un año,N,25
+answer_71,Mucho peor ahora que hace un año,N,0
+answer_72,"Sí, me limita mucho",O,0
+answer_73,"Sí, me limita un poco",O,50
+answer_74,"No, no me limita nada",O,100
+answer_75,Si,P,0
+answer_76,No,P,100
+answer_77,Nada ,Q,100
+answer_78,Un poco,Q,75
+answer_79,Regular,Q,50
+answer_80,Bastante,Q,25
+answer_81,Mucho,Q,0
+answer_82,"No, ninguno",R,100
+answer_83,"Sí, muy poco",R,80
+answer_84,"Sí, un poco",R,60
+answer_85,"Sí, moderado",R,40
+answer_86,"Sí, mucho",R,20
+answer_87,"Sí, muchísimo",R,0
+answer_93,Siempre,S,100
+answer_94,Casi siempre,S,80
+answer_95,Muchas veces ,S,60
+answer_96,Algunas veces ,S,40
+answer_97,Sólo alguna vez,S,20
+answer_98,Nunca,S,0
+answer_99,Siempre,T,0
+answer_100,Casi siempre,T,20
+answer_101,Muchas veces ,T,40
+answer_102,Algunas veces ,T,60
+answer_103,Sólo alguna vez,T,80
+answer_104,Nunca,T,100
+answer_105,Siempre,U,0
+answer_106,Casi siempre,U,25
+answer_107,Algunas veces ,U,50
+answer_108,Sólo alguna vez,U,75
+answer_109,Nunca,U,100
+answer_110,Siempre,V,0
+answer_111,Casi siempre,V,20
+answer_112,Algunas veces ,V,40
+answer_113,Sólo alguna vez,V,60
+answer_119,Totalmente cierta,W,0
+answer_120,Bastante cierta ,W,25
+answer_121,No lo sé,W,50
+answer_122,Bastante falsa,W,75
+answer_123,Totalmente falsa,W,100
+answer_124,Totalmente cierta,X,100
+answer_125,Bastante cierta ,X,75
+answer_126,No lo sé,X,50
+answer_127,Bastante falsa,X,25
+answer_128,Totalmente falsa,X,0
+answer_129,Nada ,Y,100
+answer_130,Un poco,Y,80
+answer_131,Regular,Y,60
+answer_132,Bastante,Y,40
+answer_133,Mucho,Y,20
+answer_134,"Sí, muchísimo",Y,0

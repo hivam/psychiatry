@@ -10,9 +10,7 @@ import logging
 # from openerp.tools import email_split
 # from math import floor
 logger = logging.getLogger(__name__)
-# import time#-*- coding:utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
+# import time
 
 #################################################################################################################
 
@@ -22,28 +20,14 @@ class ResPartner(models.Model):
 
     patient= fields.Boolean(string=u'Paciente', default=True)
     insurer= fields.Boolean(string=u'EPS')
-    num_doc = fields.Char(string=u'Número de documento')
-    document_type= fields.Selection ([('12','Tarjeta de identidad'),
-                                  ('13','Cédula de ciudadanía'),
-                                  ('21','Tarjeta de extranjería'),
-                                  ('22','Cédula de extranjería'),
-                                  ('31','NIT'),
-                                  ('41','Pasaporte'),
-                                  ('42','Documento de identificación extranjero'),
-                                  ('43','Sin identificación del exterior o para uso definido por la DIAN')],
-                                  string=u'Tipo de Documento', default=True)
     whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
     whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
     scl90r_count= fields.Integer(compute='_count_scl90r', string=u'SCL-90-R')
     scl90r_ids= fields.One2many('psychiatry.scl90r.evaluation','patient_id','SCL-90-R')
     moca_count= fields.Integer(compute='_count_moca', string=u'MoCa')
     moca_ids= fields.One2many('psychiatry.moca.evaluation','patient_id','MoCa')
-    sf36_count= fields.Integer(compute='_count_sf36', string=u'SF-36')
-    sf36_ids= fields.One2many('psychiatry.sf36.evaluation','patient_id','SF-36')
     hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
     hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
-    sex = fields.Selection([('M','Masculino'), ('F','Femenino')], string=u'Sexo')
-
 
     @api.depends('whoqolbref_ids')
     def _count_whoqolbref(self):
@@ -65,11 +49,6 @@ class ResPartner(models.Model):
         for record in self:
             record.hospitalization_count = len(record.hospitalization_ids)
 
-    @api.depends('sf36_ids')
-    def _count_sf36(self):
-        for record in self:
-            record.sf36_count = len(record.sf36_ids)
-
 #################################################################################################################
 
 class PsychiatryAnswer(models.Model):
@@ -79,13 +58,11 @@ class PsychiatryAnswer(models.Model):
     answer_scale= fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'),
                                     ('E', 'E'), ('F', 'F'), ('G', 'G'), ('H', 'H'),
                                     ('I', 'I'), ('J', 'J'), ('K', 'K'), ('L', 'L'),
-                                    ('M', 'M'), ('N', 'N'), ('O', 'O'), ('P', 'P'),
-                                    ('Q', 'Q'), ('R', 'R'), ('S', 'S'), ('T', 'T'),
-                                    ('U', 'U'), ('V', 'V'), ('W', 'W'), ('X', 'X'),
+                                    ('M', 'M'), ('N', 'N'), ('O', 'O'), ('P', 'P'), 
+                                    ('Q', 'Q'), ('R', 'R'), ('S', 'S'), ('T', 'T'), 
+                                    ('U', 'U'), ('V', 'V'), ('W', 'W'), ('X', 'X'), 
                                     ('Y', 'Y')], string=u'Escala')
     measure= fields.Integer(string=u'Valor', size=3)
-
-
 
 class PsychiatryWhoqolbrefQuestion(models.Model):
     _name = 'psychiatry.whoqolbref.question'
@@ -110,9 +87,6 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     score_relaciones= fields.Integer(compute='_score_whoqolbref', string=u'Relaciones interpersonales')
     score_entorno= fields.Integer(compute='_score_whoqolbref', string=u'Entorno')
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
-    category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
-
 
     @api.model
     def create(self, vals):
@@ -200,8 +174,6 @@ class PsychiatryScl90rEvaluation(models.Model):
     score_sintomas_positivos= fields.Float(compute='_score_scl90r', string=u'Total síntomas positivos')
     score_malestar_positivo= fields.Float(compute='_score_scl90r', string=u'Indice de Malestar Sintomático Positivo')
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
-    category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -366,8 +338,6 @@ class PsychiatryMocaEvaluation(models.Model):
     patient_id= fields.Many2one('res.partner', string=u'Paciente', required=True)
     score_moca= fields.Float(compute='_score_moca', string=u'Puntuación final')
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
-    category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -414,7 +384,7 @@ class PsychiatryMocaEvaluation(models.Model):
             score_agujas = 0
 
         record.score_moca = float(score_cubo + score_numeros + score_agujas + score_resto)
-
+ 
     @api.onchange('date_evaluation')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.moca.question']
@@ -434,25 +404,14 @@ class PsychiatryMocaQuestions(models.Model):
 
 #################################################################################################################
 #################################################################################################################
-
-#class res_partner_category2(models.Model):
-    #name = 'res.partner.category'
-    #_inherit = 'res.partner.category'
-
-    #category_id= fields.Many2one('res.partner', string = "Etiqueta")
-
-
-
-#################################################################################################################
-#################################################################################################################
 class PsychiatrySf36Question(models.Model):
     _name = 'psychiatry.sf36.question'
 
-    name= fields.Char(string=u'Pregunta', size=200)
+    name= fields.Char(string=u'Pregunta', size=150)
     category= fields.Selection([('FF', 'Función Física'), ('RF', 'Rol Físico'),
                                 ('DC', 'Dolor Corporal'), ('SG', 'Salud General'),
                                 ('VI', 'Vitalidad'), ('FS', 'Función Social'),
-                                ('RE', 'Rol Emocional'), ('SM', 'Salud Mental'),
+                                ('RE', 'Rol Emocional'), ('SM', 'Salud Mental'), 
                                 ('SMR', 'Salud Mental'), ('SFR', 'Salud Física')], string=u'Dimensión')
     answer_scale= fields.Selection([('M', 'M'), ('N', 'N'), ('O', 'O'), ('P', 'P'), ('Q', 'Q'),
                                     ('R', 'R'), ('S', 'S'), ('T', 'T'), ('U', 'U'), ('V', 'V'),
@@ -476,8 +435,6 @@ class PsychiatrySf36Evaluation(models.Model):
     score_salud_fisica_rs= fields.Float(compute='_score_sf36', string=u'Salud Física')
     score_salud_mental_rs= fields.Float(compute='_score_sf36', string=u'Salud Mental')
     question_ids= fields.One2many('psychiatry.sf36.questions', 'evaluation_id')
-    category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -506,13 +463,11 @@ class PsychiatrySf36Evaluation(models.Model):
             num_lineas_re = 0
             score_sm = 0
             num_lineas_sm = 0
-            score_rs = 0
-            num_lineas_rs = 0
             score_sfr = 0
             num_lineas_sfr = 0
             score_smr = 0
             num_lineas_smr = 0
-
+            
             for line in record.question_ids:
                 question_category = line.question_id.category
                 answer_exist = line.answer_id
@@ -541,9 +496,12 @@ class PsychiatrySf36Evaluation(models.Model):
                 if question_category == 'SM' and answer_exist:
                     score_sm += float(line.answer_measure)
                     num_lineas_sm += 1
-                if answer_exist and (answer_score > 0):
-                    num_lineas_rs += 1
-
+                if question_category == 'SFR' and answer_exist:
+                    score_sfr += float(line.answer_measure)
+                    num_lineas_sfr += 1
+                if question_category == 'SMR' and answer_exist:
+                    score_smr += float(line.answer_measure)
+                    num_lineas_smr += 1
         if num_lineas_ff == 0:
             num_lineas_ff = 1
         if num_lineas_rf == 0:
@@ -564,14 +522,12 @@ class PsychiatrySf36Evaluation(models.Model):
             num_lineas_sfr = 1
         if num_lineas_smr == 0:
             num_lineas_smr = 1
-        if num_lineas_rs == 0:
-            num_lineas_rs = 1
 
         score_total = float(score_ff + score_rf + score_dc + score_sg + score_vi +
                             score_fs + score_re + score_sm)
         score_sfr = float(score_ff + score_rf + score_dc + score_sg)
         score_smr = float(score_vi + score_fs + score_re + score_sm)
-
+                                            
         num_lineas_total = float(num_lineas_ff + num_lineas_rf + num_lineas_dc + num_lineas_sg + num_lineas_vi +
                                  num_lineas_fs + num_lineas_re + num_lineas_sm)
 
@@ -592,10 +548,10 @@ class PsychiatrySf36Evaluation(models.Model):
         record.score_funcion_social = float(score_fs/num_lineas_fs)
         record.score_rol_emocional = float(score_re/num_lineas_re)
         record.score_salud_mental = float(score_sm/num_lineas_sm)
-        record.score_salud_fisica_rs = float(score_sfr/num_lineas_rs)
-        record.score_salud_mental_rs = float(score_smr/num_lineas_total)
-
-
+        record.score_salud_fisica_rs = float(score_sfr/num_lineas_sfr)
+        record.score_salud_mental_rs = float(score_smr/num_lineas_smr)
+        
+        
     @api.onchange('date_evaluation')
     def _onchange_date(self):
         questions_pool = self.env['psychiatry.sf36.question']
@@ -607,7 +563,7 @@ class PsychiatrySf36Evaluation(models.Model):
 class PsychiatrySf36Questions(models.Model):
     _name = "psychiatry.sf36.questions"
 
-    evaluation_id= fields.Many2one('psychiatry.sf36.evaluation', ondelete='cascade')
+    evaluation_id= fields.Many2one('psychiatry.sf.evaluation', ondelete='cascade')
     question_id= fields.Many2one('psychiatry.sf36.question', string=u'Pregunta')
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
     answer_id= fields.Many2one('psychiatry.answer', string=u'Respuesta')
@@ -660,8 +616,6 @@ class PsychiatryHospitalization(models.Model):
     compromise_patient_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Paciente')
     compromise_clinic_out= fields.Selection([('0', 'Ninguno'), ('1', 'Poco'), ('2', 'Medio'), ('3', 'Alto')], string=u'Nivel de compromiso al egreso - Clínico')
     leave_ids= fields.One2many('psychiatry.leaves', 'hospitalization_id')
-    category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
-    sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
 
     @api.model
     def create(self, vals):
@@ -725,5 +679,3 @@ class PsychiatryLeaves(models.Model):
     leave_type= fields.Selection([('1', 'Ninguno'), ('2', 'Día Completo'),
                                   ('3', 'Medio día'), ('4', 'Salida - Visita')],
                                   string=u'Tipo', required=True)
-
-

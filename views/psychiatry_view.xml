@@ -10,10 +10,10 @@
               <menuitem name="Evaluaciones" parent="menu_psychiatry" id="menu_view_psychiatry_evaluations" sequence="20"/>
               <menuitem name="Configuración" parent="menu_psychiatry" id="menu_view_psychiatry_settings" sequence="30" groups="base.group_configuration"/>
 
-            <!-- Vista  tipo lista respuestas whoqolbref y Scl90r-->
-                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_tree">
+            <!-- Vista  tipo lista respuestas-->
+                    <record model="ir.ui.view" id="view_psychiatry_answer_tree">
                         <field name="name">Respuestas</field>
-                        <field name="model">psychiatry.whoqolbref.answer</field>
+                        <field name="model">psychiatry.answer</field>
                         <field name="arch" type="xml">
                             <tree string="Respuestas" >
                                 <field name="name"/>
@@ -23,10 +23,10 @@
                         </field>
                     </record>
 
-            <!-- Vista  tipo formulario respuestas whoqolbref y Scl90r-->
-                    <record model="ir.ui.view" id="view_psychiatry_whoqolbref_answer_form">
+            <!-- Vista  tipo formulario respuestas-->
+                    <record model="ir.ui.view" id="view_psychiatry_answer_form">
                         <field name="name">Respuestas</field>
-                        <field name="model">psychiatry.whoqolbref.answer</field>
+                        <field name="model">psychiatry.answer</field>
                         <field name="arch" type="xml">
                             <form string="Respuestas">
                               <sheet>
@@ -41,15 +41,15 @@
                     </record>
 
             <!-- Definimos la accion para que abra el formulario -->
-                    <record model="ir.actions.act_window" id="action_psychiatry_whoqolbref_answer">
+                    <record model="ir.actions.act_window" id="action_psychiatry_answer">
                         <field name="name">Respuestas</field>
-                        <field name="res_model">psychiatry.whoqolbref.answer</field>
+                        <field name="res_model">psychiatry.answer</field>
                         <field name="view_type">form</field>
                         <field name="view_mode">tree,form</field>
                     </record>
 
             <!-- Definimos la accion del menu -->
-                    <menuitem action="psychiatry.action_psychiatry_whoqolbref_answer" id="psychiatry_whoqolbref_answer" parent="menu_view_psychiatry_settings"/>
+                    <menuitem action="psychiatry.action_psychiatry_answer" id="psychiatry_answer" parent="menu_view_psychiatry_settings"/>
 
       <!-- ################################################################################################################# -->
 
@@ -76,7 +76,8 @@
                                 <group>
                                   <field name="name"/>
                                   <field name="category"/>
-                                  <field name="answer_scale"/> -->
+                                  <field name="answer_scale"/>
+                                  <field name="active"/>
                                 </group>
                               </sheet>
                             </form>
@@ -120,6 +121,8 @@
                                   <field name="date_evaluation"/>
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                  <field name="category_id" widget="many2many_tags"/>
+                                  <field name="sex"/>
                                 </group>
                                 <separator string="Resultados"/>
                                 <group col="4" colspan="2">
@@ -212,7 +215,8 @@
                                 <group>
                                   <field name="name"/>
                                   <field name="category"/>
-                                  <field name="answer_scale"/> -->
+                                  <field name="answer_scale"/>
+                                  <field name="active"/>
                                 </group>
                               </sheet>
                             </form>
@@ -256,6 +260,8 @@
                                   <field name="date_evaluation"/>
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                  <field name="category_id" widget="many2many_tags"/>
+                                  <field name="sex"/>
                                 </group>
 
                                 <notebook colspan="2" col='2'>
@@ -361,7 +367,8 @@
                                 <group>
                                   <field name="name"/>
                                   <field name="category"/>
-                                  <field name="answer_scale"/> -->
+                                  <field name="answer_scale"/>
+                                  <field name="active"/>
                                 </group>
                               </sheet>
                             </form>
@@ -405,6 +412,8 @@
                                   <field name="date_evaluation"/>
                                   <field name="name" readonly="True"/>
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                  <field name="category_id" widget="many2many_tags"/>
+                                  <field name="sex"/>
                                 </group>
                                 <separator string="Resultados"/>
                                 <group>
@@ -469,6 +478,157 @@
                     <menuitem action="psychiatry.action_psychiatry_moca_evaluation" id="psychiatry_moca_evaluation" parent="menu_view_psychiatry_evaluations"/>
 
       <!-- ################################################################################################################# -->
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista preguntas Sf36-->
+                    <record model="ir.ui.view" id="view_psychiatry_sf36_question_tree">
+                        <field name="name">Preguntas SF-36</field>
+                        <field name="model">psychiatry.sf36.question</field>
+                        <field name="arch" type="xml">
+                            <tree string="Preguntas SF-36-R" >
+                                <field name="name"/>
+                                <field name="category"/>
+                                <field name="answer_scale"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario preguntas Sf36-->
+                    <record model="ir.ui.view" id="view_psychiatry_sf36_question_form">
+                        <field name="name">Preguntas SF-36</field>
+                        <field name="model">psychiatry.sf36.question</field>
+                        <field name="arch" type="xml">
+                            <form string="Preguntas SF-36">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="category"/>
+                                  <field name="answer_scale"/>
+                                  <field name="active"/>
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_sf36_question">
+                        <field name="name">Preguntas SF-36</field>
+                        <field name="res_model">psychiatry.sf36.question</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_sf36_question" id="psychiatry_sf36_question" parent="menu_view_psychiatry_settings"/>
+
+      <!-- ################################################################################################################# -->
+
+            <!-- Vista  tipo lista evaluaciones Sf36 -->
+                    <record model="ir.ui.view" id="view_psychiatry_sf36_evaluation_tree">
+                        <field name="name">Evaluaciones SF-36</field>
+                        <field name="model">psychiatry.sf36.evaluation</field>
+                        <field name="arch" type="xml">
+                            <tree string="Evaluaciones SF-36" >
+                                <field name="name" readonly="True"/>
+                                <field name="date_evaluation"/>
+                                <field name="patient_id"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario evaluaciones Sf36 -->
+                    <record model="ir.ui.view" id="view_psychiatry_sf36_evaluation_form">
+                        <field name="name">Evaluaciones SF-36</field>
+                        <field name="model">psychiatry.sf36.evaluation</field>
+                        <field name="arch" type="xml">
+                            <form string="Evaluaciones SF-36">
+                              <sheet>
+                                <group col="4" colspan="2">
+                                  <field name="date_evaluation"/>
+                                  <field name="name" readonly="True"/>
+                                  <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                                  <field name="category_id" widget="many2many_tags"/>
+                                  <field name="sex"/>
+                                </group>
+
+                                <notebook colspan="2" col='2'>
+                                    <page string="SF-36">
+                                        <field name="question_ids" nolabel="1" >
+                                            <tree string="Preguntas" colors="blue:answer_id==False" editable="bottom" create="false" delete="false" limit="100">
+                                                <field name="evaluation_id" invisible="True"/>
+                                                <field name="question_id" readonly="True"/>
+                                                <field name="answer_scale" invisible="True"/>
+                                                <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                <field name="answer_measure" invisible="True"/>
+                                            </tree>
+                                            <form string="Preguntas">
+                                                <group>
+                                                    <field name="evaluation_id" invisible="True"/>
+                                                    <field name="question_id" readonly="True"/>
+                                                    <field name="answer_scale" invisible="True"/>
+                                                    <field name="answer_id" domain="[('answer_scale', '=', answer_scale)]" widget="selection" />
+                                                    <field name="answer_measure" invisible="True"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Resultados">
+                                      <separator string="Dimensiones"/>
+                                          <group col="6" colspan="2">
+                                              <field name="score_funcion_fisica"/>
+                                              <field name="score_rol_fisico"/>
+                                              <field name="score_dolor_corporal"/>
+                                              <field name="score_salud_general"/>
+                                              <field name="score_vitalidad"/>
+                                              <field name="score_funcion_social"/>
+                                              <field name="score_rol_emocional"/>
+                                              <field name="score_salud_mental"/>
+                                          </group>
+                                      <separator string="Medidas de resumen"/>
+                                          <group col="6" colspan="2">
+                                              <field name="score_salud_fisica_rs"/>
+                                              <field name="score_salud_mental_rs"/>
+                                          </group>
+                                    </page>
+                                </notebook>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo búsqueda evaluaciones sf36 -->
+                    <record model="ir.ui.view" id="view_psychiatry_sf36_evaluation_search">
+                        <field name="name">Evaluaciones SF-36</field>
+                        <field name="model">psychiatry.sf36.evaluation</field>
+                        <field name="arch" type="xml">
+                            <search string="Search SF-36">
+                                <field name="name" string="Número" filter_domain="['|', ('name','ilike',self), ('patient_id', 'ilike', self)]"/>
+                                <separator/>
+                                <field name="patient_id" string="Paciente"/>
+                                <field name="date_evaluation" string="Fecha"/>
+                                <group expand="0" string="Group By">
+                                  <filter name="group_by_patient_id" string="Paciente" context="{'group_by':'patient_id'}"/>
+                                  <separator/>
+                                  <filter string="Fecha" context="{'group_by':'date_evaluation'}"/>
+                                  </group>
+                             </search>
+                          </field>
+                      </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_sf36_evaluation">
+                        <field name="name">Evaluaciones SF-36</field>
+                        <field name="res_model">psychiatry.sf36.evaluation</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_sf36_evaluation" id="psychiatry_sf36_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
 
       <!-- Vista  tipo lista Hospitalizaciones -->
               <record model="ir.ui.view" id="view_psychiatry_hospitalization_tree">
@@ -495,6 +655,8 @@
                             <field name="date_in" string="Fecha de ingreso"/>
                             <field name="name" readonly="True"/>
                             <field name="patient_id" domain="[('patient', '=', 1)]"/>
+                            <field name="category_id" widget="many2many_tags"/>
+                            <field name="sex"/>
                             <field name="insurer_id" domain="[('insurer', '=', 1)]"/>
                           </group>
                           <group col="4" colspan="2">
@@ -731,6 +893,15 @@
                     </div>
 
                     <div name="button_box" position="inside">
+                        <button class="oe_stat_button" name="%(action_psychiatry_sf36_evaluation)d"
+                                type="action" attrs="{'invisible': [('patient', '=', False)]}"
+                                icon="fa-pencil-square-o" help="SF36"
+                                context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                            <field string="SF36" name="sf36_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div name="button_box" position="inside">
                         <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"
                                 type="action" attrs="{'invisible': [('patient', '=', False)]}"
                                 icon="fa-pencil-square-o" help="Ingresos"
@@ -738,10 +909,42 @@
                             <field string="Ingresos" name="hospitalization_count" widget="statinfo"/>
                         </button>
                     </div>
+<!--
+					ocultando campos
+-->                 
+<!--
+                    <field name="title" position="replace">
+                        <attribute name="title" attrs="{'invisible': True}"/>
+                    </field>
+                   
+
+                    <field name="function" position="replace">
+                        <attribute name="function" attrs="{'invisible': True}"/>
+                    </field>
+
+
+                    <field name="fax" position="replace">
+                        <attribute name="fax" attrs="{'invisible': True}"/>
+                    </field>                    
+
+
+
+                    <field name="lang" position="replace">
+                        <attribute name="lang" attrs="{'invisible': True}"/>
+                    </field> 
+-->
+<!--
+--> 
 
                     <field name="website" position="after">
+                      <field name="document_type" string="Tipo de documento"/>
+                      <field name="num_doc" string="Número de documento"/>
+                      <field name="sex" string="Sexo"/>                     
+                    </field>
+
+                    <field name="category_id" position="after">
                       <field name="patient" string="Paciente"/>
-                      <field name="insurer" string="EPS"/>
+                      <field name="insurer" string="EPS"/>                      
                     </field>
 
                   </field>

@@ -38,5 +38,14 @@
         <field eval="1" name="number_increment"/>
     </record>
 
+    <record id="psychiatry_sf36_sequence" model="ir.sequence">
+        <field name="name">SF-36 N°</field>
+        <field name="code">sf36.sequence</field>
+        <field name="padding" eval="4"/>
+        <field name="prefix">SF-36 N° </field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+
   </data>
 </openerp>

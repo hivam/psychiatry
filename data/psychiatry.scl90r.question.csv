@@ -1,91 +1,91 @@
-id,name,category,answer_scale
-sq_1,Dolores de cabeza,Somatizaciones,G
-sq_2,Nerviosismo.,Ansiedad,G
-sq_3,Pensamientos desagradables que no se iban de mi cabeza.,Obsesiones y compulsiones,G
-sq_4,Sensación de mareo o desmayo.,Somatizaciones,G
-sq_5,Falta de interés en relaciones sexuales.,Depresión,G
-sq_6,Criticar a los demás.,Sensitividad interpersonal,G
-sq_7,Sentir que otro puede controlar mis pensamientos.,Psicoticismo,G
-sq_8,Sentir que otros son culpables de lo que me pasa.,Ideación paranoide,G
-sq_9,Tener dificultad para memorizar cosas.,Obsesiones y compulsiones,G
-sq_10,Estar preocupado/a por mí falta de ganas para hacer algo.,Obsesiones y compulsiones,G
-sq_11,"Sentirme enojado/a, malhumorado/a.",Hostilidad,G
-sq_12,Dolores en el pecho.,Somatizaciones,G
-sq_13,Miedo a los espacios abiertos o las calles.,Ansiedad fóbica,G
-sq_14,Sentirme con muy pocas energías.,Depresión,G
-sq_15,Pensar en quitarme la vida.,Depresión,G
-sq_16,Escuchar voces que otras personas no oyen.,Psicoticismo,G
-sq_17,Temblores en mi cuerpo.,Ansiedad,G
-sq_18,Perder la confianza en la mayoría de las personas.,Ideación paranoide,G
-sq_19,No tener ganas de comer.,Ítems adicionales,G
-sq_20,Llorar por cualquier cosa.,Depresión,G
-sq_21,Sentirme incómodo/a con personas del otro sexo.,Sensitividad interpersonal,G
-sq_22,Sentirme atrapada/o o encerrado/a.,Depresión,G
-sq_23,Asustarme de repente sin razón alguna.,Ansiedad,G
-sq_24,Explotar y no poder controlarme.,Hostilidad,G
-sq_25,Tener miedo a salir solo/a de mi casa.,Ansiedad fóbica,G
-sq_26,Sentirme culpable por cosas que ocurren.,Depresión,G
-sq_27,Dolores en la espalda.,Somatizaciones,G
-sq_28,No poder terminar las cosas que empecé a hacer.,Obsesiones y compulsiones,G
-sq_29,Sentirme solo/a.,Depresión,G
-sq_30,Sentirme triste.,Depresión,G
-sq_31,Preocuparme demasiado por todo lo que pasa.,Depresión,G
-sq_32,No tener interés por nada.,Depresión,G
-sq_33,Tener miedos.,Ansiedad,G
-sq_34,Sentirme herido en mis sentimientos.,Sensitividad interpersonal,G
-sq_35,Creer que la gente sabe qué estoy pensando.,Psicoticismo,G
-sq_36,Sentir que no me comprenden.,Sensitividad interpersonal,G
-sq_37,"Sentir que no caigo bien a la gente, que no les gusto.",Sensitividad interpersonal,G
-sq_38,Tener que hacer las cosas muy despacio para estar seguro/a de que están bien hechas.,Obsesiones y compulsiones,G
-sq_39,"Mi corazón late muy fuerte, se acelera.",Ansiedad,G
-sq_40,Náuseas o dolor de estómago.,Somatizaciones,G
-sq_41,Sentirme inferior a los demás.,Sensitividad interpersonal,G
-sq_42,"Calambres en manos, brazos o piernas.",Somatizaciones,G
-sq_43,Sentir que me vigilan o que hablan de mí.,Ideación paranoide,G
-sq_44,Tener problemas para dormirme.,Ítems adicionales,G
-sq_45,Tener que controlar una o más veces lo que hago.,Obsesiones y compulsiones,G
-sq_46,Tener dificultades para tomar decisiones.,Obsesiones y compulsiones,G
-sq_47,"Tener miedo de viajar en tren, ómnibus o subterráneos.",Ansiedad fóbica,G
-sq_48,Tener dificultades para respirar bien.,Somatizaciones,G
-sq_49,Ataques de frío o de calor.,Somatizaciones,G
-sq_50,Tener que evitar acercarme a algunos lugares o actividades porque me dan miedo.,Ansiedad fóbica,G
-sq_51,Sentir que mi mente queda en blanco.,Obsesiones y compulsiones,G
-sq_52,Hormigueos en alguna parte del cuerpo.,Somatizaciones,G
-sq_53,Tener un nudo en la garganta.,Somatizaciones,G
-sq_54,Perder las esperanzas en el futuro.,Depresión,G
-sq_55,Dificultades para concentrarme en lo que estoy haciendo.,Obsesiones y compulsiones,G
-sq_56,"Sentir flojedad, debilidad, en partes de mi cuerpo.",Somatizaciones,G
-sq_57,"Sentirme muy nervioso/a, agitado/a",Ansiedad,G
-sq_58,Sentir mis brazos y piernas muy pesados,Somatizaciones,G
-sq_59,Pensar que me estoy por morir.,Ítems adicionales,G
-sq_60,Comer demasiado.,Ítems adicionales,G
-sq_61,Sentirme incómodo/a cuando me miran o hablan de mí.,Sensitividad interpersonal,G
-sq_62,"Tener ideas, pensamientos que no son los míos.",Psicoticismo,G
-sq_63,Necesitar golpear o lastimar a alguien.,Hostilidad,G
-sq_64,Despertarme muy temprano por la mañana sin necesidad.,Ítems adicionales,G
-sq_65,"Repetir muchas veces algo que hago: contar, lavarme, tocar cosas.",Obsesiones y compulsiones,G
-sq_66,"Dormir con problemas, muy inquieto/a.",Ítems adicionales,G
-sq_67,Necesitar romper o destrozar cosas.,Hostilidad,G
-sq_68,"Tener ideas, pensamientos que los demás no entienden.",Ideación paranoide,G
-sq_69,Estar muy pendiente de lo que los demás puedan pensar de mí.,Sensitividad interpersonal,G
-sq_70,Sentirme incómodo/a en lugares donde hay mucha gente.,Ansiedad fóbica,G
-sq_71,Sentir que todo me cuesta mucho esfuerzo.,Depresión,G
-sq_72,Tener ataques de mucho miedo o de pánico.,Ansiedad,G
-sq_73,Sentirme mal si estoy comiendo o bebiendo en público.,Sensitividad interpersonal,G
-sq_74,Meterme muy seguido en discusiones.,Hostilidad,G
-sq_75,Ponerme nervioso/a cuando estoy solo/a.,Ansiedad fóbica,G
-sq_76,Sentir que los demás no me valoran como merezco.,Ideación paranoide,G
-sq_77,Sentirme solo/a aun estando con gente.,Psicoticismo,G
-sq_78,Estar inquieto/a; no poder estar sentado/a sin moverme.,Ansiedad,G
-sq_79,Sentirme un/a inútil.,Depresión,G
-sq_80,Sentir que algo malo me va a pasar.,Ansiedad,G
-sq_81,Gritar o tirar cosas.,Hostilidad,G
-sq_82,Miedo a desmayarme en medio de la gente.,Ansiedad fóbica,G
-sq_83,Sentir que se aprovechan de mí si los dejo.,Ideación paranoide,G
-sq_84,Pensar cosas sobre el sexo que me molestan.,Psicoticismo,G
-sq_85,Sentir que debo ser castigado/a por mis pecados.,Psicoticismo,G
-sq_86,Tener imágenes y pensamientos que me dan miedo.,Ansiedad,G
-sq_87,Sentir que algo anda mal en mi cuerpo.,Psicoticismo,G
-sq_88,Sentirme alejado/a de las demás personas.,Psicoticismo,G
-sq_89,Sentirme culpable.,Ítems adicionales,G
-sq_90,Pensar que en mi cabeza hay algo que no funciona bien.,Psicoticismo,G
+id,name,category,answer_scale,active
+sq_1,Dolores de cabeza,Somatizaciones,G,True
+sq_2,Nerviosismo.,Ansiedad,G,True
+sq_3,Pensamientos desagradables que no se iban de mi cabeza.,Obsesiones y compulsiones,G,True
+sq_4,Sensación de mareo o desmayo.,Somatizaciones,G,True
+sq_5,Falta de interés en relaciones sexuales.,Depresión,G,True
+sq_6,Criticar a los demás.,Sensitividad interpersonal,G,True
+sq_7,Sentir que otro puede controlar mis pensamientos.,Psicoticismo,G,True
+sq_8,Sentir que otros son culpables de lo que me pasa.,Ideación paranoide,G,True
+sq_9,Tener dificultad para memorizar cosas.,Obsesiones y compulsiones,G,True
+sq_10,Estar preocupado/a por mí falta de ganas para hacer algo.,Obsesiones y compulsiones,G,True
+sq_11,"Sentirme enojado/a, malhumorado/a.",Hostilidad,G,True
+sq_12,Dolores en el pecho.,Somatizaciones,G,True
+sq_13,Miedo a los espacios abiertos o las calles.,Ansiedad fóbica,G,True
+sq_14,Sentirme con muy pocas energías.,Depresión,G,True
+sq_15,Pensar en quitarme la vida.,Depresión,G,True
+sq_16,Escuchar voces que otras personas no oyen.,Psicoticismo,G,True
+sq_17,Temblores en mi cuerpo.,Ansiedad,G,True
+sq_18,Perder la confianza en la mayoría de las personas.,Ideación paranoide,G,True
+sq_19,No tener ganas de comer.,Ítems adicionales,G,True
+sq_20,Llorar por cualquier cosa.,Depresión,G,True
+sq_21,Sentirme incómodo/a con personas del otro sexo.,Sensitividad interpersonal,G,True
+sq_22,Sentirme atrapada/o o encerrado/a.,Depresión,G,True
+sq_23,Asustarme de repente sin razón alguna.,Ansiedad,G,True
+sq_24,Explotar y no poder controlarme.,Hostilidad,G,True
+sq_25,Tener miedo a salir solo/a de mi casa.,Ansiedad fóbica,G,True
+sq_26,Sentirme culpable por cosas que ocurren.,Depresión,G,True
+sq_27,Dolores en la espalda.,Somatizaciones,G,True
+sq_28,No poder terminar las cosas que empecé a hacer.,Obsesiones y compulsiones,G,True
+sq_29,Sentirme solo/a.,Depresión,G,True
+sq_30,Sentirme triste.,Depresión,G,True
+sq_31,Preocuparme demasiado por todo lo que pasa.,Depresión,G,True
+sq_32,No tener interés por nada.,Depresión,G,True
+sq_33,Tener miedos.,Ansiedad,G,True
+sq_34,Sentirme herido en mis sentimientos.,Sensitividad interpersonal,G,True
+sq_35,Creer que la gente sabe qué estoy pensando.,Psicoticismo,G,True
+sq_36,Sentir que no me comprenden.,Sensitividad interpersonal,G,True
+sq_37,"Sentir que no caigo bien a la gente, que no les gusto.",Sensitividad interpersonal,G,True
+sq_38,Tener que hacer las cosas muy despacio para estar seguro/a de que están bien hechas.,Obsesiones y compulsiones,G,True
+sq_39,"Mi corazón late muy fuerte, se acelera.",Ansiedad,G,True
+sq_40,Náuseas o dolor de estómago.,Somatizaciones,G,True
+sq_41,Sentirme inferior a los demás.,Sensitividad interpersonal,G,True
+sq_42,"Calambres en manos, brazos o piernas.",Somatizaciones,G,True
+sq_43,Sentir que me vigilan o que hablan de mí.,Ideación paranoide,G,True
+sq_44,Tener problemas para dormirme.,Ítems adicionales,G,True
+sq_45,Tener que controlar una o más veces lo que hago.,Obsesiones y compulsiones,G,True
+sq_46,Tener dificultades para tomar decisiones.,Obsesiones y compulsiones,G,True
+sq_47,"Tener miedo de viajar en tren, ómnibus o subterráneos.",Ansiedad fóbica,G,True
+sq_48,Tener dificultades para respirar bien.,Somatizaciones,G,True
+sq_49,Ataques de frío o de calor.,Somatizaciones,G,True
+sq_50,Tener que evitar acercarme a algunos lugares o actividades porque me dan miedo.,Ansiedad fóbica,G,True
+sq_51,Sentir que mi mente queda en blanco.,Obsesiones y compulsiones,G,True
+sq_52,Hormigueos en alguna parte del cuerpo.,Somatizaciones,G,True
+sq_53,Tener un nudo en la garganta.,Somatizaciones,G,True
+sq_54,Perder las esperanzas en el futuro.,Depresión,G,True
+sq_55,Dificultades para concentrarme en lo que estoy haciendo.,Obsesiones y compulsiones,G,True
+sq_56,"Sentir flojedad, debilidad, en partes de mi cuerpo.",Somatizaciones,G,True
+sq_57,"Sentirme muy nervioso/a, agitado/a",Ansiedad,G,True
+sq_58,Sentir mis brazos y piernas muy pesados,Somatizaciones,G,True
+sq_59,Pensar que me estoy por morir.,Ítems adicionales,G,True
+sq_60,Comer demasiado.,Ítems adicionales,G,True
+sq_61,Sentirme incómodo/a cuando me miran o hablan de mí.,Sensitividad interpersonal,G,True
+sq_62,"Tener ideas, pensamientos que no son los míos.",Psicoticismo,G,True
+sq_63,Necesitar golpear o lastimar a alguien.,Hostilidad,G,True
+sq_64,Despertarme muy temprano por la mañana sin necesidad.,Ítems adicionales,G,True
+sq_65,"Repetir muchas veces algo que hago: contar, lavarme, tocar cosas.",Obsesiones y compulsiones,G,True
+sq_66,"Dormir con problemas, muy inquieto/a.",Ítems adicionales,G,True
+sq_67,Necesitar romper o destrozar cosas.,Hostilidad,G,True
+sq_68,"Tener ideas, pensamientos que los demás no entienden.",Ideación paranoide,G,True
+sq_69,Estar muy pendiente de lo que los demás puedan pensar de mí.,Sensitividad interpersonal,G,True
+sq_70,Sentirme incómodo/a en lugares donde hay mucha gente.,Ansiedad fóbica,G,True
+sq_71,Sentir que todo me cuesta mucho esfuerzo.,Depresión,G,True
+sq_72,Tener ataques de mucho miedo o de pánico.,Ansiedad,G,True
+sq_73,Sentirme mal si estoy comiendo o bebiendo en público.,Sensitividad interpersonal,G,True
+sq_74,Meterme muy seguido en discusiones.,Hostilidad,G,True
+sq_75,Ponerme nervioso/a cuando estoy solo/a.,Ansiedad fóbica,G,True
+sq_76,Sentir que los demás no me valoran como merezco.,Ideación paranoide,G,True
+sq_77,Sentirme solo/a aun estando con gente.,Psicoticismo,G,True
+sq_78,Estar inquieto /a no poder estar sentado/a sin moverme.,Ansiedad,G,True
+sq_79,Sentirme un/a inútil.,Depresión,G,True
+sq_80,Sentir que algo malo me va a pasar.,Ansiedad,G,True
+sq_81,Gritar o tirar cosas.,Hostilidad,G,True
+sq_82,Miedo a desmayarme en medio de la gente.,Ansiedad fóbica,G,True
+sq_83,Sentir que se aprovechan de mí si los dejo.,Ideación paranoide,G,True
+sq_84,Pensar cosas sobre el sexo que me molestan.,Psicoticismo,G,True
+sq_85,Sentir que debo ser castigado/a por mis pecados.,Psicoticismo,G,True
+sq_86,Tener imágenes y pensamientos que me dan miedo.,Ansiedad,G,True
+sq_87,Sentir que algo anda mal en mi cuerpo.,Psicoticismo,G,True
+sq_88,Sentirme alejado/a de las demás personas.,Psicoticismo,G,True
+sq_89,Sentirme culpable.,Ítems adicionales,G,True
+sq_90,Pensar que en mi cabeza hay algo que no funciona bien.,Psicoticismo,G,True
