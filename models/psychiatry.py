@@ -31,7 +31,7 @@ class ResPartner(models.Model):
     #                               ('42','Documento de identificación extranjero'),
     #                               ('43','Sin identificación del exterior o para uso definido por la DIAN')],
     #                               string=u'Tipo de Documento')
-    # num_doc = fields.Char(string=u'Número de documento')
+    num_doc = fields.Char(string=u'Número de documento')
     whoqolbref_count= fields.Integer(compute='_count_whoqolbref', string=u'WHOQOL-BREF')
     whoqolbref_ids= fields.One2many('psychiatry.whoqolbref.evaluation','patient_id','WHOQOL-BREF')
     scl90r_count= fields.Integer(compute='_count_scl90r', string=u'SCL-90-R')
