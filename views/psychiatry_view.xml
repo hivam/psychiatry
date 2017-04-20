@@ -123,6 +123,7 @@
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
                                   <field name="sex"/>
+                                  <field name="age"/>
                                 </group>
                                 <separator string="Resultados"/>
                                 <group col="4" colspan="2">
@@ -626,6 +627,51 @@
 
             <!-- Definimos la accion del menu -->
                     <menuitem action="psychiatry.action_psychiatry_sf36_evaluation" id="psychiatry_sf36_evaluation" parent="menu_view_psychiatry_evaluations"/>
+
+      <!-- ################################################################################################################# -->
+
+
+            <!-- Vista  tipo lista rango edad-->
+                    <record model="ir.ui.view" id="view_psychiatry_answer_tree">
+                        <field name="name">Etapa del ciclo de vida</field>
+                        <field name="model">psychiatry.rango.edad</field>
+                        <field name="arch" type="xml">
+                            <tree string="Etapa del ciclo de vida" >
+                                <field name="name"/>
+                                <field name="rango_inic"/>
+                                <field name="rango_fin"/>
+                            </tree>
+                        </field>
+                    </record>
+
+            <!-- Vista  tipo formulario rango de edad-->
+                    <record model="ir.ui.view" id="view_psychiatry_rango_edad_form">
+                        <field name="name">Etapa del ciclo de vida</field>
+                        <field name="model">psychiatry.rango.edad</field>
+                        <field name="arch" type="xml">
+                            <form string="Etapa del ciclo de vida">
+                              <sheet>
+                                <group>
+                                  <field name="name"/>
+                                  <field name="rango_inic"/>
+                                  <field name="rango_fin"/>
+                                </group>
+                              </sheet>
+                            </form>
+                        </field>
+                    </record>
+
+            <!-- Definimos la accion para que abra el formulario -->
+                    <record model="ir.actions.act_window" id="action_psychiatry_rango_edad">
+                        <field name="name">Etapa del ciclo de vida</field>
+                        <field name="res_model">psychiatry.rango.edad</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                    </record>
+
+            <!-- Definimos la accion del menu -->
+                    <menuitem action="psychiatry.action_psychiatry_rango_edad" id="psychiatry_rando_edad" parent="menu_view_psychiatry_settings"/>
+
 
       <!-- ################################################################################################################# -->
 

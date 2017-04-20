@@ -18,12 +18,12 @@
                 'security/ir.model.access.csv',
                 'views/psychiatry_view.xml',
                 'data/psychiatry_sequences.xml',
-                'data/psychiatry.diseases.csv',
+                #~ 'data/psychiatry.diseases.csv',
                 'data/psychiatry.answer.csv',
                 'data/psychiatry.whoqolbref.question.csv',
                 'data/psychiatry.scl90r.question.csv',
                 'data/psychiatry.moca.question.csv',
-                'data/psychiatry.sf36.question.CVS'
+                'data/psychiatry.sf36.question.csv'
               ],
     'installable': True,
     'auto_install': False,

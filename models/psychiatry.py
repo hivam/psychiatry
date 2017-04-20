@@ -6,7 +6,9 @@ from openerp.tools.translate import _
 import re
 # from math import ceil
 import logging
-# from datetime import datetime
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
+
 # from openerp.tools import email_split
 # from math import floor
 logger = logging.getLogger(__name__)
@@ -70,6 +72,8 @@ class ResPartner(models.Model):
         for record in self:
             record.sf36_count = len(record.sf36_ids)
 
+
+
 #################################################################################################################
 
 class PsychiatryAnswer(models.Model):
@@ -112,7 +116,15 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     question_ids= fields.One2many('psychiatry.whoqolbref.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
-
+    age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
+    
+    @api.depends('patient_id.birth_date', 'date_evaluation')
+    def _age_evaluation(self):
+        
+        if self.patient_id.birth_date and self.date_evaluation:
+            d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
+            d2 = datetime.strptime(self.date_evaluation, "%Y-%m-%d").date()
+            self.age = relativedelta(d2, d1).years
 
     @api.model
     def create(self, vals):
@@ -435,16 +447,6 @@ class PsychiatryMocaQuestions(models.Model):
 #################################################################################################################
 #################################################################################################################
 
-#class res_partner_category2(models.Model):
-    #name = 'res.partner.category'
-    #_inherit = 'res.partner.category'
-
-    #category_id= fields.Many2one('res.partner', string = "Etiqueta")
-
-
-
-#################################################################################################################
-#################################################################################################################
 class PsychiatrySf36Question(models.Model):
     _name = 'psychiatry.sf36.question'
 
@@ -612,6 +614,17 @@ class PsychiatrySf36Questions(models.Model):
     answer_scale= fields.Selection(related='question_id.answer_scale', store=True)
     answer_id= fields.Many2one('psychiatry.answer', string=u'Respuesta')
     answer_measure= fields.Integer(related='answer_id.measure', store=True, string=u'Valor')
+
+
+#################################################################################################################
+
+class PsychiatryRangoEdad(models.Model):
+    _name = 'psychiatry.rango.edad'
+
+    name = fields.Char(string=u'Etapa del ciclo de vida')
+    rango_inic = fields.Integer(string=u'Rango Inicial')
+    rango_fin = fields.Integer(string=u'Rango Final')
+
 
 #################################################################################################################
 #################################################################################################################
