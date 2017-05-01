@@ -117,10 +117,12 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
     age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
-    
+    rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+
+
     @api.depends('patient_id.birth_date', 'date_evaluation')
     def _age_evaluation(self):
-        
+
         if self.patient_id.birth_date and self.date_evaluation:
             d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
             d2 = datetime.strptime(self.date_evaluation, "%Y-%m-%d").date()
@@ -169,6 +171,17 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
 
+    @api.onchange('age')
+    def _onchange_rango_edad(self):
+        rango_id = []
+        for record in self:
+            if record.age:
+                rango_id = self.env['psychiatry.rango.edad'].search([('rango_inic','<=', record.age), ('rango_fin','>=', record.age)], limit=1)
+                rango_id = rango_id.id
+            logger.info('rangoedad')
+            logger.info(rango_id)
+        self.rango_edad = rango_id
+
 class PsychiatryWhoqolbrefQuestions(models.Model):
     _name = "psychiatry.whoqolbref.questions"
 
@@ -214,6 +227,17 @@ class PsychiatryScl90rEvaluation(models.Model):
     question_ids= fields.One2many('psychiatry.scl90r.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
+    rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+
+    @api.depends('patient_id.birth_date', 'date_evaluation')
+    def _age_evaluation(self):
+
+        if self.patient_id.birth_date and self.date_evaluation:
+            d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
+            d2 = datetime.strptime(self.date_evaluation, "%Y-%m-%d").date()
+            self.age = relativedelta(d2, d1).years
+
 
     @api.model
     def create(self, vals):
@@ -318,10 +342,10 @@ class PsychiatryScl90rEvaluation(models.Model):
         if num_lineas_sp > 0:
             malestar_sintomatico_positivo = float(score_total/num_lineas_sp)
 
-        logger.info('##########################################')
-        logger.info(score_total)
-        logger.info(num_lineas_total)
-        logger.info('##########################################')
+        # logger.info('##########################################')
+        # logger.info(score_total)
+        # logger.info(num_lineas_total)
+        # logger.info('##########################################')
 
         record.score_somatizaciones = float(score_som/num_lineas_som)
         record.score_obsesiones_compulsiones = float(score_obs/num_lineas_obs)
@@ -344,6 +368,18 @@ class PsychiatryScl90rEvaluation(models.Model):
         for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
+
+    @api.onchange('age')
+    def _onchange_rango_edad(self):
+        rango_id = []
+        for record in self:
+            if record.age:
+                rango_id = self.env['psychiatry.rango.edad'].search([('rango_inic','<=', record.age), ('rango_fin','>=', record.age)], limit=1)
+                rango_id = rango_id.id
+            logger.info('rangoedad')
+            logger.info(rango_id)
+        self.rango_edad = rango_id
+
 
 class PsychiatryScl90rQuestions(models.Model):
     _name = "psychiatry.scl90r.questions"
@@ -380,6 +416,16 @@ class PsychiatryMocaEvaluation(models.Model):
     question_ids= fields.One2many('psychiatry.moca.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
+    rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+
+    @api.depends('patient_id.birth_date', 'date_evaluation')
+    def _age_evaluation(self):
+
+        if self.patient_id.birth_date and self.date_evaluation:
+            d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
+            d2 = datetime.strptime(self.date_evaluation, "%Y-%m-%d").date()
+            self.age = relativedelta(d2, d1).years
 
     @api.model
     def create(self, vals):
@@ -434,6 +480,17 @@ class PsychiatryMocaEvaluation(models.Model):
         for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
+        
+    @api.onchange('age')
+    def _onchange_rango_edad(self):
+        rango_id = []
+        for record in self:
+            if record.age:
+                rango_id = self.env['psychiatry.rango.edad'].search([('rango_inic','<=', record.age), ('rango_fin','>=', record.age)], limit=1)
+                rango_id = rango_id.id
+            logger.info('rangoedad')
+            logger.info(rango_id)
+        self.rango_edad = rango_id
 
 class PsychiatryMocaQuestions(models.Model):
     _name = "psychiatry.moca.questions"
@@ -480,6 +537,16 @@ class PsychiatrySf36Evaluation(models.Model):
     question_ids= fields.One2many('psychiatry.sf36.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
+    rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+
+    @api.depends('patient_id.birth_date', 'date_evaluation')
+    def _age_evaluation(self):
+
+        if self.patient_id.birth_date and self.date_evaluation:
+            d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
+            d2 = datetime.strptime(self.date_evaluation, "%Y-%m-%d").date()
+            self.age = relativedelta(d2, d1).years
 
     @api.model
     def create(self, vals):
@@ -581,10 +648,10 @@ class PsychiatrySf36Evaluation(models.Model):
             num_lineas_total = 1
 
 
-        logger.info('##########################################')
-        logger.info(score_total)
-        logger.info(num_lineas_total)
-        logger.info('##########################################')
+        # logger.info('##########################################')
+        # logger.info(score_total)
+        # logger.info(num_lineas_total)
+        # logger.info('##########################################')
 
         record.score_funcion_fisica = float(score_ff/num_lineas_ff)
         record.score_rol_fisico = float(score_rf/num_lineas_rf)
@@ -606,6 +673,17 @@ class PsychiatrySf36Evaluation(models.Model):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
 
+    @api.onchange('age')
+    def _onchange_rango_edad(self):
+        rango_id = []
+        for record in self:
+            if record.age:
+                rango_id = self.env['psychiatry.rango.edad'].search([('rango_inic','<=', record.age), ('rango_fin','>=', record.age)], limit=1)
+                rango_id = rango_id.id
+            logger.info('rangoedad')
+            logger.info(rango_id)
+        self.rango_edad = rango_id
+
 class PsychiatrySf36Questions(models.Model):
     _name = "psychiatry.sf36.questions"
 
@@ -624,7 +702,6 @@ class PsychiatryRangoEdad(models.Model):
     name = fields.Char(string=u'Etapa del ciclo de vida')
     rango_inic = fields.Integer(string=u'Rango Inicial')
     rango_fin = fields.Integer(string=u'Rango Final')
-
 
 #################################################################################################################
 #################################################################################################################
@@ -675,6 +752,16 @@ class PsychiatryHospitalization(models.Model):
     leave_ids= fields.One2many('psychiatry.leaves', 'hospitalization_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
+    age = fields.Integer(compute='_age_ing', string="Edad", store=True)
+    rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+
+    @api.depends('patient_id.birth_date', 'date_in')
+    def _age_ing(self):
+
+        if self.patient_id.birth_date and self.date_in:
+            d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
+            d2 = datetime.strptime(self.date_in, "%Y-%m-%d").date()
+            self.age = relativedelta(d2, d1).years
 
     @api.model
     def create(self, vals):
@@ -683,6 +770,17 @@ class PsychiatryHospitalization(models.Model):
                 'name': self.env['ir.sequence'].get('hospitalization.sequence')
             })
         return super(PsychiatryHospitalization, self).create(vals)
+
+    @api.onchange('age')
+    def _onchange_rango_edad(self):
+        rango_id = []
+        for record in self:
+            if record.age:
+                rango_id = self.env['psychiatry.rango.edad'].search([('rango_inic','<=', record.age), ('rango_fin','>=', record.age)], limit=1)
+                rango_id = rango_id.id
+            logger.info('rangoedad')
+            logger.info(rango_id)
+        self.rango_edad = rango_id
 
 class PsychiatrySpaConsume(models.Model):
     _name = "psychiatry.spa.consume"

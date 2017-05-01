@@ -124,6 +124,7 @@
                                   <field name="category_id" widget="many2many_tags"/>
                                   <field name="sex"/>
                                   <field name="age"/>
+                                  <field name="rango_edad"/>
                                 </group>
                                 <separator string="Resultados"/>
                                 <group col="4" colspan="2">
@@ -263,6 +264,8 @@
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
                                   <field name="sex"/>
+                                  <field name="age"/>
+                                  <field name="rango_edad"/>
                                 </group>
 
                                 <notebook colspan="2" col='2'>
@@ -415,6 +418,8 @@
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
                                   <field name="sex"/>
+                                  <field name="age"/>
+                                  <field name="rango_edad"/>
                                 </group>
                                 <separator string="Resultados"/>
                                 <group>
@@ -551,6 +556,8 @@
                                   <field name="patient_id" domain="[('patient', '=', 1)]"/>
                                   <field name="category_id" widget="many2many_tags"/>
                                   <field name="sex"/>
+                                  <field name="age"/>
+                                  <field name="rango_edad"/>
                                 </group>
 
                                 <notebook colspan="2" col='2'>
@@ -703,6 +710,8 @@
                             <field name="patient_id" domain="[('patient', '=', 1)]"/>
                             <field name="category_id" widget="many2many_tags"/>
                             <field name="sex"/>
+                            <field name="age"/>
+                            <field name="rango_edad"/>
                             <field name="insurer_id" domain="[('insurer', '=', 1)]"/>
                           </group>
                           <group col="4" colspan="2">
