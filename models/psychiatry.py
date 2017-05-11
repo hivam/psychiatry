@@ -754,6 +754,7 @@ class PsychiatryHospitalization(models.Model):
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
     age = fields.Integer(compute='_age_ing', string="Edad", store=True)
     rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
+    day_stay = fields.Integer(compute='_day_stay', string="Días de estancia", store=True)
 
     @api.depends('patient_id.birth_date', 'date_in')
     def _age_ing(self):
@@ -762,6 +763,20 @@ class PsychiatryHospitalization(models.Model):
             d1 = datetime.strptime(self.patient_id.birth_date, "%Y-%m-%d").date()
             d2 = datetime.strptime(self.date_in, "%Y-%m-%d").date()
             self.age = relativedelta(d2, d1).years
+
+    @api.depends('date_out', 'date_in')
+    def _day_stay(self):
+
+        if self.date_in and self.date_out:
+            d1 = datetime.strptime(self.date_in, "%Y-%m-%d")
+            d2 = datetime.strptime(self.date_out, "%Y-%m-%d")
+            dur = (d2 - d1) 
+            self.day_stay = dur.days +1
+        logger.info('d1')
+        logger.info(d1)
+        logger.info('d2')
+        logger.info(d2)
+        
 
     @api.model
     def create(self, vals):

@@ -727,6 +727,7 @@
                             <field name="date_out" string="Fecha de egreso"/>
                             <field name="type_out"/>
                             <field name="place_out"/>
+                            <field name="day_stay"/>
                           </group>
 
                           <notebook colspan="2" col='2'>
