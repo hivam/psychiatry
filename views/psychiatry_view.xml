@@ -704,6 +704,14 @@
                   <field name="arch" type="xml">
                       <form string="Hospitalizaciones">
                         <sheet>
+                          <div name="button_box" position="inside">
+                              <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"
+                                      type="action" attrs="{'invisible': [('patient_id', '=', False)]}"
+                                      icon="fa-pencil-square-o" help="Ingresos"
+                                      context="{'search_default_patient_id': active_id,'default_patient_id': active_id}">
+                                  <field string="Ingresos" name="hospitalization_count" widget="statinfo"/>
+                              </button>
+                          </div>
                           <group col="4" colspan="2">
                             <field name="date_in" string="Fecha de ingreso"/>
                             <field name="name" readonly="True"/>
@@ -729,7 +737,6 @@
                             <field name="place_out"/>
                             <field name="day_stay"/>
                           </group>
-
                           <notebook colspan="2" col='2'>
                               <page string="SPA">
                                   <field name="spa_ids" nolabel="1" >

@@ -755,7 +755,9 @@ class PsychiatryHospitalization(models.Model):
     age = fields.Integer(compute='_age_ing', string="Edad", store=True)
     rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
     day_stay = fields.Integer(compute='_day_stay', string="Días de estancia", store=True)
-
+    hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
+    hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
+    
     @api.depends('patient_id.birth_date', 'date_in')
     def _age_ing(self):
 
@@ -777,6 +779,10 @@ class PsychiatryHospitalization(models.Model):
         logger.info('d2')
         logger.info(d2)
         
+    @api.depends('hospitalization_ids')
+    def _count_hospitalization(self):
+        for record in self:
+            record.hospitalization_count = len(record.hospitalization_ids)
 
     @api.model
     def create(self, vals):

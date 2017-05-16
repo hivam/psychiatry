@@ -1,50 +1,50 @@
 id,name,category,answer_scale,active
-mq_1,Realiza la secuencia esperada,Alternancia conceptual,H,True
-mq_2,El dibujo realizado es tridimensional,Capacidades visuoconstructivas - Cubo,H,True
-mq_3,El dibujo tiene todas sus líneas,Capacidades visuoconstructivas - Cubo,H,True
-mq_4,La copia del cubo tiene líneas adicionales ,Capacidades visuoconstructivas - Cubo,H,True
-mq_5,Las líneas son relativamente paralelas,Capacidades visuoconstructivas - Cubo,H,True
-mq_6,Las líneas del cubo son aproximadamente de la misma longitud,Capacidades visuoconstructivas - Cubo,H,True
-mq_7,Los prismas rectangulares son aceptables,Capacidades visuoconstructivas - Cubo,H,True
-mq_8,El contorno del reloj tiene poca deformación,Capacidades visuoconstructivas - Reloj - Contorno,H,True
-mq_9,Todos los números del reloj están presentes,Capacidades visuoconstructivas - Reloj - Números,H,True
-mq_10,Se añadió un número que no corresponde,Capacidades visuoconstructivas - Reloj - Números,H,True
-mq_11,Se sigue el orden correcto de los números,Capacidades visuoconstructivas - Reloj - Números,H,True
-mq_12,Los números están bien colocados,Capacidades visuoconstructivas - Reloj - Números,H,True
-mq_13,Las agujas indican la hora solicitada,Capacidades visuoconstructivas - Reloj - Agujas,H,True
-mq_14,La aguja de las horas es más pequeña que la aguja de los minutos,Capacidades visuoconstructivas - Reloj - Agujas,H,True
-mq_15,El punto de unión de las agujas esta en la zona central del reloj,Capacidades visuoconstructivas - Reloj - Agujas,H,True
-mq_16,Camello o Dromedario,Denominación,H,True
-mq_17,León,Denominación,H,False
-mq_18,Rinoceronte,Denominación,H,False
-mq_19,Rostro,Memoria,L,False
-mq_20,Seda,Memoria,L,False
-mq_21,Iglesia,Memoria,L,False
-mq_22,Clavel,Memoria,L,False
-mq_23,Rojo,Memoria,L,False
-mq_24,2° Intento – Rostro,Memoria,L,False
-mq_25,2° Intento – Seda,Memoria,L,False
-mq_26,2° Intento – Iglesia,Memoria,L,False
-mq_27,2° Intento – Clavel,Memoria,L,False
-mq_28,2° Intento – Rojo,Memoria,L,False
-mq_29,Secuencia numérica,Atención,H,True
-mq_30,Secuencia numérica inversa,Atención,H,True
-mq_31,Concentración,Atención,I,True
-mq_32,Substracción en secuencia de 7,Atención,J,True
-mq_33,Repite correctamente la frase 1,Repetición de frases,H,True
-mq_34,Repite correctamente la frase 2,Repetición de frases,H,True
-mq_35,Dice 11 o más palabras con la condición establecida en un minuto,Fluidez verbal,H,True
-mq_36,Manzana/Naranja,Similitudes,L,True
-mq_37,Tren/Bicicleta,Similitudes,H,True
-mq_38,Regla/Reloj,Similitudes,H,True
-mq_39,Rostro,Recuerdo diferido,K,True
-mq_40,Seda,Recuerdo diferido,K,True
-mq_41,Iglesia,Recuerdo diferido,K,True
-mq_42,Clavel,Recuerdo diferido,K,True
-mq_43,Rojo,Recuerdo diferido,K,True
-mq_44,Día del mes,Orientación,H,True
-mq_45,Mes,Orientación,H,True
-mq_46,Año,Orientación,H,True
-mq_47,Día de la semana,Orientación,H,True
-mq_48,Lugar,Orientación,H,True
-mq_49,Localidad,Orientación,H,True
+mq_1,1- Realiza la secuencia esperada,Alternancia conceptual,H,True
+mq_2,2- El dibujo realizado es tridimensional,Capacidades visuoconstructivas - Cubo,H,True
+mq_3,3- El dibujo tiene todas sus líneas,Capacidades visuoconstructivas - Cubo,H,True
+mq_4,4- La copia del cubo tiene líneas adicionales ,Capacidades visuoconstructivas - Cubo,H,True
+mq_5,5- Las líneas son relativamente paralelas,Capacidades visuoconstructivas - Cubo,H,True
+mq_6,6- Las líneas del cubo son aproximadamente de la misma longitud,Capacidades visuoconstructivas - Cubo,H,True
+mq_7,7- Los prismas rectangulares son aceptables,Capacidades visuoconstructivas - Cubo,H,True
+mq_8,8- El contorno del reloj tiene poca deformación,Capacidades visuoconstructivas - Reloj - Contorno,H,True
+mq_9,9- Todos los números del reloj están presentes,Capacidades visuoconstructivas - Reloj - Números,H,True
+mq_10,10- Se añadió un número que no corresponde,Capacidades visuoconstructivas - Reloj - Números,H,True
+mq_11,11- Se sigue el orden correcto de los números,Capacidades visuoconstructivas - Reloj - Números,H,True
+mq_12,12- Los números están bien colocados,Capacidades visuoconstructivas - Reloj - Números,H,True
+mq_13,13- Las agujas indican la hora solicitada,Capacidades visuoconstructivas - Reloj - Agujas,H,True
+mq_14,14- La aguja de las horas es más pequeña que la aguja de los minutos,Capacidades visuoconstructivas - Reloj - Agujas,H,True
+mq_15,15- El punto de unión de las agujas esta en la zona central del reloj,Capacidades visuoconstructivas - Reloj - Agujas,H,True
+mq_16,16- Camello o Dromedario,Denominación,H,True
+mq_17,17- León,Denominación,H,False
+mq_18,18- Rinoceronte,Denominación,H,False
+mq_19,19- Rostro,Memoria,L,False
+mq_20,20- Seda,Memoria,L,False
+mq_21,21- Iglesia,Memoria,L,False
+mq_22,22- Clavel,Memoria,L,False
+mq_23,23- Rojo,Memoria,L,False
+mq_24,24- 2° Intento – Rostro,Memoria,L,False
+mq_25,25- 2° Intento – Seda,Memoria,L,False
+mq_26,26- 2° Intento – Iglesia,Memoria,L,False
+mq_27,27- 2° Intento – Clavel,Memoria,L,False
+mq_28,28- 2° Intento – Rojo,Memoria,L,False
+mq_29,29- Secuencia numérica,Atención,H,True
+mq_30,30- Secuencia numérica inversa,Atención,H,True
+mq_31,31- Concentración,Atención,I,True
+mq_32,32- Substracción en secuencia de 7,Atención,J,True
+mq_33,33- Repite correctamente la frase 1,Repetición de frases,H,True
+mq_34,34- Repite correctamente la frase 2,Repetición de frases,H,True
+mq_35,35- Dice 11 o más palabras con la condición establecida en un minuto,Fluidez verbal,H,True
+mq_36,36- Manzana/Naranja,Similitudes,L,True
+mq_37,37- Tren/Bicicleta,Similitudes,H,True
+mq_38,38- Regla/Reloj,Similitudes,H,True
+mq_39,39- Rostro,Recuerdo diferido,K,True
+mq_40,40- Seda,Recuerdo diferido,K,True
+mq_41,41- Iglesia,Recuerdo diferido,K,True
+mq_42,42- Clavel,Recuerdo diferido,K,True
+mq_43,43- Rojo,Recuerdo diferido,K,True
+mq_44,44- Día del mes,Orientación,H,True
+mq_45,45- Mes,Orientación,H,True
+mq_46,46- Año,Orientación,H,True
+mq_47,47- Día de la semana,Orientación,H,True
+mq_48,48- Lugar,Orientación,H,True
+mq_49,49- Localidad,Orientación,H,True
