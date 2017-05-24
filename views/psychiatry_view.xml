@@ -703,6 +703,13 @@
                   <field name="model">psychiatry.hospitalization</field>
                   <field name="arch" type="xml">
                       <form string="Hospitalizaciones">
+                      <header>
+                          <button name="button_cancel" states="confirm" string="Cambiar a borrador" type="object"/>
+                          <button name="button_confirm" states="draft" string="Abierto" type="object" class="oe_highlight"/>
+                          <button name="button_egreso" states="abierto" string="Egreso" type="object" class="oe_highlight"/>
+                          <button name="button_finalizar" states="egreso" string="Finalizar" type="object" class="oe_highlight"/>
+                          <field name="state" widget="statusbar" nolabel="1" />
+                      </header>
                         <sheet>
                           <div name="button_box" position="inside">
                               <button class="oe_stat_button" name="%(action_psychiatry_hospitalization)d"

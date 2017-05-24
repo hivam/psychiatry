@@ -119,7 +119,6 @@ class PsychiatryWhoqolbrefEvaluation(models.Model):
     age = fields.Integer(compute='_age_evaluation', string="Edad", store=True)
     rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
 
-
     @api.depends('patient_id.birth_date', 'date_evaluation')
     def _age_evaluation(self):
 
@@ -757,7 +756,35 @@ class PsychiatryHospitalization(models.Model):
     day_stay = fields.Integer(compute='_day_stay', string="Días de estancia", store=True)
     hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
     hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
-    
+    state = fields.Selection(
+            [('draft', 'Draft'),
+             ('cancel', 'Cancelled'),
+             ('abierto', 'Abierto'),
+             ('egreso', 'Egreso'),
+             ('finalizar', 'Finalizar')
+            ], 'Status', readonly=True, track_visibility='onchange', copy=False, default='draft')
+
+    #~ def button_confirm(self, cr, uid, ids, context=None):
+        #~ return self.write(cr, uid, ids, {'state': 'confirm'}, context=context)
+#~ 
+    #~ def button_cancel(self, cr, uid, ids, context=None):
+        #~ return self.write(cr, uid, ids, {'state': 'draft'}, context=context)
+#~ 
+     #~ def button_egreso(self, cr, uid, ids, context=None):
+        #~ return self.write(cr, uid, ids, {'state': 'egreso'}, context=context)
+#~ 
+    #~ def button_finalizar(self, cr, uid, ids, context=None):
+        #~ return self.write(cr, uid, ids, {'state': 'finalizar'}, context=context)
+
+    @api.multi
+    def button_confirm(self):
+        self.signal_workflow('confirm')
+        return {'type': 'ir.actions.act_window_close'}
+
+    @api.multi
+    def confirm(self):
+        self.action_move_line_create()    
+        
     @api.depends('patient_id.birth_date', 'date_in')
     def _age_ing(self):
 
