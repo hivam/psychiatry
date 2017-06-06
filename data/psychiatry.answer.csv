@@ -103,23 +103,19 @@ answer_106,Casi siempre,U,25
 answer_107,Algunas veces ,U,50
 answer_108,Sólo alguna vez,U,75
 answer_109,Nunca,U,100
-answer_110,Siempre,V,0
-answer_111,Casi siempre,V,20
-answer_112,Algunas veces ,V,40
-answer_113,Sólo alguna vez,V,60
-answer_119,Totalmente cierta,W,0
-answer_120,Bastante cierta ,W,25
-answer_121,No lo sé,W,50
-answer_122,Bastante falsa,W,75
-answer_123,Totalmente falsa,W,100
-answer_124,Totalmente cierta,X,100
-answer_125,Bastante cierta ,X,75
-answer_126,No lo sé,X,50
-answer_127,Bastante falsa,X,25
-answer_128,Totalmente falsa,X,0
-answer_129,Nada ,Y,100
-answer_130,Un poco,Y,80
-answer_131,Regular,Y,60
-answer_132,Bastante,Y,40
-answer_133,Mucho,Y,20
-answer_134,"Sí, muchísimo",Y,0
+answer_110,Totalmente cierta,W,0
+answer_111,Bastante cierta ,W,25
+answer_112,No lo sé,W,50
+answer_113,Bastante falsa,W,75
+answer_114,Totalmente falsa,W,100
+answer_115,Totalmente cierta,X,100
+answer_116,Bastante cierta ,X,75
+answer_117,No lo sé,X,50
+answer_118,Bastante falsa,X,25
+answer_119,Totalmente falsa,X,0
+answer_120,Nada ,Y,100
+answer_121,Un poco,Y,80
+answer_122,Regular,Y,60
+answer_123,Bastante,Y,40
+answer_124,Mucho,Y,20
+answer_125,"Sí, muchísimo",Y,0

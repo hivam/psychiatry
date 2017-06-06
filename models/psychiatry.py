@@ -479,7 +479,7 @@ class PsychiatryMocaEvaluation(models.Model):
         for record in questions_pool.search([('active','=', 1)]):
             question_fill.append([0, 0,{'question_id': record.id}])
         self.question_ids = question_fill
-        
+
     @api.onchange('age')
     def _onchange_rango_edad(self):
         rango_id = []
@@ -510,8 +510,8 @@ class PsychiatrySf36Question(models.Model):
     category= fields.Selection([('FF', 'Función Física'), ('RF', 'Rol Físico'),
                                 ('DC', 'Dolor Corporal'), ('SG', 'Salud General'),
                                 ('VI', 'Vitalidad'), ('FS', 'Función Social'),
-                                ('RE', 'Rol Emocional'), ('SM', 'Salud Mental'),
-                                ('SMR', 'Salud Mental'), ('SFR', 'Salud Física')], string=u'Dimensión')
+                                ('RE', 'Rol Emocional'), ('SM', 'Salud Mental'), 
+                                ('CES', 'Cambios Estado de Salud')], string=u'Dimensión')
     answer_scale= fields.Selection([('M', 'M'), ('N', 'N'), ('O', 'O'), ('P', 'P'), ('Q', 'Q'),
                                     ('R', 'R'), ('S', 'S'), ('T', 'T'), ('U', 'U'), ('V', 'V'),
                                     ('W', 'W'), ('X', 'X'), ('Y', 'Y')], string=u'Escala')
@@ -531,8 +531,9 @@ class PsychiatrySf36Evaluation(models.Model):
     score_funcion_social= fields.Float(compute='_score_sf36', string=u'Función Social')
     score_rol_emocional= fields.Float(compute='_score_sf36', string=u'Rol Emocional')
     score_salud_mental= fields.Float(compute='_score_sf36', string=u'Salud Mental')
-    score_salud_fisica_rs= fields.Float(compute='_score_sf36', string=u'Salud Física')
-    score_salud_mental_rs= fields.Float(compute='_score_sf36', string=u'Salud Mental')
+    score_cambios_salud= fields.Float(compute='_score_sf36', string=u'Cambios Estado de Salud')    
+    #~ score_salud_fisica_rs= fields.Float(compute='_score_sf36', string=u'Salud Física')
+    #~ score_salud_mental_rs= fields.Float(compute='_score_sf36', string=u'Salud Mental')
     question_ids= fields.One2many('psychiatry.sf36.questions', 'evaluation_id')
     category_id= fields.Many2many(related='patient_id.category_id', store=True, string='Etiqueta')
     sex = fields.Selection(related='patient_id.sex', store=True, string='Sexo')
@@ -576,10 +577,12 @@ class PsychiatrySf36Evaluation(models.Model):
             num_lineas_sm = 0
             score_rs = 0
             num_lineas_rs = 0
-            score_sfr = 0
-            num_lineas_sfr = 0
-            score_smr = 0
-            num_lineas_smr = 0
+            score_ces = 0
+            num_lineas_ces = 0
+            #~ score_sfr = 0
+            #~ num_lineas_sfr = 0
+            #~ score_smr = 0
+            #~ num_lineas_smr = 0
 
             for line in record.question_ids:
                 question_category = line.question_id.category
@@ -609,6 +612,9 @@ class PsychiatrySf36Evaluation(models.Model):
                 if question_category == 'SM' and answer_exist:
                     score_sm += float(line.answer_measure)
                     num_lineas_sm += 1
+                if question_category == 'CES' and answer_exist:
+                    score_ces += float(line.answer_measure)
+                    num_lineas_ces += 1                    
                 if answer_exist and (answer_score > 0):
                     num_lineas_rs += 1
 
@@ -628,23 +634,25 @@ class PsychiatrySf36Evaluation(models.Model):
             num_lineas_re = 1
         if num_lineas_sm == 0:
             num_lineas_sm = 1
-        if num_lineas_sfr == 0:
-            num_lineas_sfr = 1
-        if num_lineas_smr == 0:
-            num_lineas_smr = 1
+        #~ if num_lineas_sfr == 0:
+            #~ num_lineas_sfr = 1
+        #~ if num_lineas_smr == 0:
+            #~ num_lineas_smr = 1
         if num_lineas_rs == 0:
             num_lineas_rs = 1
+        if num_lineas_ces == 0:
+            num_lineas_ces = 1
+            
+        #~ score_total = float(score_ff + score_rf + score_dc + score_sg + score_vi +
+                            #~ score_fs + score_re + score_sm)
+        #~ score_sfr = float(score_ff + score_rf + score_dc + score_sg)
+        #~ score_smr = float(score_vi + score_fs + score_re + score_sm)
+#~ 
+        #~ num_lineas_total = float(num_lineas_ff + num_lineas_rf + num_lineas_dc + num_lineas_sg + num_lineas_vi +
+                                 #~ num_lineas_fs + num_lineas_re + num_lineas_sm)
 
-        score_total = float(score_ff + score_rf + score_dc + score_sg + score_vi +
-                            score_fs + score_re + score_sm)
-        score_sfr = float(score_ff + score_rf + score_dc + score_sg)
-        score_smr = float(score_vi + score_fs + score_re + score_sm)
-
-        num_lineas_total = float(num_lineas_ff + num_lineas_rf + num_lineas_dc + num_lineas_sg + num_lineas_vi +
-                                 num_lineas_fs + num_lineas_re + num_lineas_sm)
-
-        if num_lineas_total == 0:
-            num_lineas_total = 1
+        #~ if num_lineas_total == 0:
+            #~ num_lineas_total = 1
 
 
         # logger.info('##########################################')
@@ -660,8 +668,9 @@ class PsychiatrySf36Evaluation(models.Model):
         record.score_funcion_social = float(score_fs/num_lineas_fs)
         record.score_rol_emocional = float(score_re/num_lineas_re)
         record.score_salud_mental = float(score_sm/num_lineas_sm)
-        record.score_salud_fisica_rs = float(score_sfr/num_lineas_rs)
-        record.score_salud_mental_rs = float(score_smr/num_lineas_total)
+        record.score_cambios_salud = float(score_ces/num_lineas_ces)
+        #~ record.score_salud_fisica_rs = float(score_sfr/num_lineas_rs)
+        #~ record.score_salud_mental_rs = float(score_smr/num_lineas_total)
 
 
     @api.onchange('date_evaluation')
@@ -754,37 +763,25 @@ class PsychiatryHospitalization(models.Model):
     age = fields.Integer(compute='_age_ing', string="Edad", store=True)
     rango_edad= fields.Many2one('psychiatry.rango.edad', string='Rango de edad')
     day_stay = fields.Integer(compute='_day_stay', string="Días de estancia", store=True)
-    hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
-    hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
-    state = fields.Selection(
-            [('draft', 'Draft'),
-             ('cancel', 'Cancelled'),
-             ('abierto', 'Abierto'),
-             ('egreso', 'Egreso'),
-             ('finalizar', 'Finalizar')
-            ], 'Status', readonly=True, track_visibility='onchange', copy=False, default='draft')
+    #~ hospitalization_count= fields.Integer(compute='_count_hospitalization', string=u'Ingresos')
+    #~ hospitalization_ids= fields.One2many('psychiatry.hospitalization','patient_id','Ingresos')
+    #~ state = fields.Selection(
+            #~ [('draft', 'Draft'),
+             #~ ('cancel', 'Cancelled'),
+             #~ ('confirm', 'Confirmar'),
+             #~ ('egreso', 'Egreso'),
+             #~ ('finalizar', 'Finalizar')
+            #~ ], 'Status', readonly=True, track_visibility='onchange', copy=False, default='draft')
 
-    #~ def button_confirm(self, cr, uid, ids, context=None):
-        #~ return self.write(cr, uid, ids, {'state': 'confirm'}, context=context)
+    #~ @api.multi
+    #~ def button_confirm(self):
+        #~ self.signal_workflow('confirm')
+        #~ return {'type': 'ir.actions.act_window_close'}
 #~ 
-    #~ def button_cancel(self, cr, uid, ids, context=None):
-        #~ return self.write(cr, uid, ids, {'state': 'draft'}, context=context)
-#~ 
-     #~ def button_egreso(self, cr, uid, ids, context=None):
-        #~ return self.write(cr, uid, ids, {'state': 'egreso'}, context=context)
-#~ 
-    #~ def button_finalizar(self, cr, uid, ids, context=None):
-        #~ return self.write(cr, uid, ids, {'state': 'finalizar'}, context=context)
+    #~ @api.multi
+    #~ def confirm(self):
+        #~ self.action_move_line_create()
 
-    @api.multi
-    def button_confirm(self):
-        self.signal_workflow('confirm')
-        return {'type': 'ir.actions.act_window_close'}
-
-    @api.multi
-    def confirm(self):
-        self.action_move_line_create()    
-        
     @api.depends('patient_id.birth_date', 'date_in')
     def _age_ing(self):
 
@@ -799,17 +796,17 @@ class PsychiatryHospitalization(models.Model):
         if self.date_in and self.date_out:
             d1 = datetime.strptime(self.date_in, "%Y-%m-%d")
             d2 = datetime.strptime(self.date_out, "%Y-%m-%d")
-            dur = (d2 - d1) 
+            dur = (d2 - d1)
             self.day_stay = dur.days +1
-        logger.info('d1')
-        logger.info(d1)
-        logger.info('d2')
-        logger.info(d2)
-        
-    @api.depends('hospitalization_ids')
-    def _count_hospitalization(self):
-        for record in self:
-            record.hospitalization_count = len(record.hospitalization_ids)
+        #~ logger.info('d1')
+        #~ logger.info(d1)
+        #~ logger.info('d2')
+        #~ logger.info(d2)
+#~ 
+    #~ @api.depends('hospitalization_ids')
+    #~ def _count_hospitalization(self):
+        #~ for record in self:
+            #~ record.hospitalization_count = len(record.hospitalization_ids)
 
     @api.model
     def create(self, vals):
@@ -829,6 +826,10 @@ class PsychiatryHospitalization(models.Model):
             logger.info('rangoedad')
             logger.info(rango_id)
         self.rango_edad = rango_id
+#~ 
+    #~ @api.multi
+    #~ def action_move_line_create(self):
+
 
 class PsychiatrySpaConsume(models.Model):
     _name = "psychiatry.spa.consume"
